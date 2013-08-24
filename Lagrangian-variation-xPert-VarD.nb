@@ -1,9 +1,7 @@
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["\<\
-Variation of Lagrangian with xPert and VarD\
-\>", "Subtitle"],
+Cell["Variation of Lagrangian with xPert and VarD", "Subtitle"],
 
 Cell["\<\
 Leo C. Stein (leo.stein@gmail.com)
@@ -34,11 +32,12 @@ Cell[BoxData["\<\"------------------------------------------------------------\
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Package xAct`xPerm`  version \"\>", 
-   "\[InvisibleSpace]", "\<\"1.2.1\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
+   "\[InvisibleSpace]", "\<\"1.2.0\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
    "\[InvisibleSpace]", 
    RowBox[{"{", 
-    RowBox[{"2013", ",", "7", ",", "1"}], "}"}]}],
-  SequenceForm["Package xAct`xPerm`  version ", "1.2.1", ", ", {2013, 7, 1}],
+    RowBox[{"2013", ",", "1", ",", "27"}], "}"}]}],
+  SequenceForm["Package xAct`xPerm`  version ", "1.2.0", ", ", {2013, 1, 27}],
+  
   Editable->False]], "Print"],
 
 Cell[BoxData["\<\"CopyRight (C) 2003-2013, Jose M. Martin-Garcia, under the \
@@ -54,11 +53,12 @@ Cell[BoxData["\<\"------------------------------------------------------------\
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Package xAct`xTensor`  version \"\>", 
-   "\[InvisibleSpace]", "\<\"1.1.0\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
+   "\[InvisibleSpace]", "\<\"1.0.5\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
    "\[InvisibleSpace]", 
    RowBox[{"{", 
-    RowBox[{"2013", ",", "7", ",", "1"}], "}"}]}],
-  SequenceForm["Package xAct`xTensor`  version ", "1.1.0", ", ", {2013, 7, 1}],
+    RowBox[{"2013", ",", "1", ",", "27"}], "}"}]}],
+  SequenceForm[
+  "Package xAct`xTensor`  version ", "1.0.5", ", ", {2013, 1, 27}],
   Editable->False]], "Print"],
 
 Cell[BoxData["\<\"CopyRight (C) 2002-2013, Jose M. Martin-Garcia, under the \
@@ -70,11 +70,12 @@ Cell[BoxData["\<\"------------------------------------------------------------\
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Package xAct`xPert`  version \"\>", 
-   "\[InvisibleSpace]", "\<\"1.0.4\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
+   "\[InvisibleSpace]", "\<\"1.0.3\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
    "\[InvisibleSpace]", 
    RowBox[{"{", 
-    RowBox[{"2013", ",", "8", ",", "1"}], "}"}]}],
-  SequenceForm["Package xAct`xPert`  version ", "1.0.4", ", ", {2013, 8, 1}],
+    RowBox[{"2013", ",", "1", ",", "27"}], "}"}]}],
+  SequenceForm["Package xAct`xPert`  version ", "1.0.3", ", ", {2013, 1, 27}],
+  
   Editable->False]], "Print"],
 
 Cell[BoxData["\<\"CopyRight (C) 2005-2013, David Brizuela, Jose M. \
@@ -171,9 +172,7 @@ Cell[CellGroupData[{
 
 Cell["1. Example: GR in 4 dimensions", "Subsection"],
 
-Cell["\<\
-Define a 4-manifold with Lorentzian metric.\
-\>", "Text"],
+Cell["Define a 4-manifold with Lorentzian metric.", "Text"],
 
 Cell[BoxData[{
  RowBox[{"DefManifold", "[", 
@@ -547,9 +546,7 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["\<\
-2. Example: Scalar-Tensor theory\
-\>", "Subsection"],
+Cell["2. Example: Scalar-Tensor theory", "Subsection"],
 
 Cell["\<\
 Let\[CloseCurlyQuote]s add a scalar field \[Phi] with potential U(\[Phi]) and \
@@ -578,9 +575,7 @@ Cell[BoxData[
    RowBox[{"\[Phi]", "[", "]"}], ",", 
    RowBox[{"{", "M4", "}"}]}], "]"}]], "Input"],
 
-Cell["\<\
-Here is the Lagrangian for this theory\
-\>", "Text"],
+Cell["Here is the Lagrangian for this theory", "Text"],
 
 Cell[CellGroupData[{
 
@@ -1659,6 +1654,7 @@ Cell[BoxData[
 WindowSize->{868, 789},
 WindowMargins->{{619, Automatic}, {Automatic, 210}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
 2013)",
 StyleDefinitions->"Default.nb"
