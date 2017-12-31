@@ -14,7 +14,7 @@ Cell[TextData[{
   ButtonData->{
     URL["mailto:leo.stein@gmail.com"], None},
   ButtonNote->"mailto:leo.stein@gmail.com"],
- ")\nDate: 2017 Aug. 6\nSee also the companion ",
+ ")\nDate: 2017 Aug. 6. Updated 2017 Dec. 31\nSee also the companion ",
  ButtonBox["web note on my site",
   BaseStyle->"Hyperlink",
   ButtonData->{
@@ -172,7 +172,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"DefConstantSymbol", "/@", 
    RowBox[{"{", 
-    RowBox[{"mpl", ",", "\[ScriptL]"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"mpl", ",", "\[CurlyEpsilon]"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"PrintAs", "[", "mpl", "]"}], "^=", 
@@ -2388,8 +2389,7 @@ Cell[TextData[{
     SuperscriptBox[
      SubscriptBox["m", "pl"], 
      RowBox[{"-", "2"}]], "=", 
-    RowBox[{"8", "\[Pi]", " ", "G"}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    RowBox[{"8", "\[Pi]", " ", "G"}]}], TraditionalForm]]],
  ")"
 }], "Text"],
 
@@ -2789,27 +2789,9 @@ $CellContext`f],
     Editable->False]}]}]], "Output"]
 }, Open  ]],
 
-Cell[TextData[{
- "The conventions on \[ScriptL] match some of my papers, e.g. [",
- ButtonBox["1310.6743",
-  BaseStyle->"Hyperlink",
-  ButtonData->{
-    URL["https://arxiv.org/abs/1310.6743"], None},
-  ButtonNote->"https://arxiv.org/abs/1310.6743"],
- "], [",
- ButtonBox["1407.2350",
-  BaseStyle->"Hyperlink",
-  ButtonData->{
-    URL["https://arxiv.org/abs/1407.2350"], None},
-  ButtonNote->"https://arxiv.org/abs/1407.2350"],
- "], [",
- ButtonBox["1705.07924",
-  BaseStyle->"Hyperlink",
-  ButtonData->{
-    URL["https://arxiv.org/abs/1705.07924"], None},
-  ButtonNote->"https://arxiv.org/abs/1705.07924"],
- "].\nFirst, the interaction term for Einstein-dilaton-Gauss-Bonnet:"
-}], "Text"],
+Cell["\<\
+First, the interaction term for Einstein-dilaton-Gauss-Bonnet:\
+\>", "Text"],
 
 Cell[CellGroupData[{
 
@@ -2818,295 +2800,206 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     RowBox[{
-     RowBox[{"Sqrt", "[", 
-      RowBox[{"-", 
-       RowBox[{"Detmet", "[", "]"}]}], "]"}], 
-     RowBox[{"(", 
-      RowBox[{
+     RowBox[{
+      RowBox[{"Sqrt", "[", 
        RowBox[{"-", 
-        FractionBox["1", "8"]}], "mpl", " ", 
-       SuperscriptBox["\[ScriptL]", "2"]}], ")"}], 
-     RowBox[{"F", "[", 
-      RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}], 
-     RowBox[{"(", 
-      RowBox[{
-       FractionBox["1", "2"], 
-       RowBox[{"epsilonmet", "[", 
-        RowBox[{"a", ",", "b", ",", "e", ",", "f"}], "]"}], 
-       RowBox[{"RiemannCD", "[", 
-        RowBox[{
-         RowBox[{"-", "e"}], ",", 
-         RowBox[{"-", "f"}], ",", 
-         RowBox[{"-", "g"}], ",", 
-         RowBox[{"-", "h"}]}], "]"}], 
-       FractionBox["1", "2"], 
-       RowBox[{"epsilonmet", "[", 
-        RowBox[{"g", ",", "h", ",", "c", ",", "d"}], "]"}], 
-       RowBox[{"RiemannCD", "[", 
-        RowBox[{
-         RowBox[{"-", "a"}], ",", 
-         RowBox[{"-", "b"}], ",", 
-         RowBox[{"-", "d"}], ",", 
-         RowBox[{"-", "c"}]}], "]"}]}], ")"}]}], "//", "ContractMetric"}], "//",
-    "ToCanonical"}]}]], "Input"],
+        RowBox[{"Detmet", "[", "]"}]}], "]"}], 
+      FractionBox["\[CurlyEpsilon]", "8"], 
+      RowBox[{"F", "[", 
+       RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}], 
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox["1", "2"], 
+        RowBox[{"epsilonmet", "[", 
+         RowBox[{"a", ",", "b", ",", "e", ",", "f"}], "]"}], 
+        RowBox[{"RiemannCD", "[", 
+         RowBox[{
+          RowBox[{"-", "e"}], ",", 
+          RowBox[{"-", "f"}], ",", 
+          RowBox[{"-", "g"}], ",", 
+          RowBox[{"-", "h"}]}], "]"}], 
+        FractionBox["1", "2"], 
+        RowBox[{"epsilonmet", "[", 
+         RowBox[{"g", ",", "h", ",", "c", ",", "d"}], "]"}], 
+        RowBox[{"RiemannCD", "[", 
+         RowBox[{
+          RowBox[{"-", "a"}], ",", 
+          RowBox[{"-", "b"}], ",", 
+          RowBox[{"-", "d"}], ",", 
+          RowBox[{"-", "c"}]}], "]"}]}], ")"}]}], "//", "ContractMetric"}], "//",
+     "ToCanonical"}], "//", "Factor"}]}]], "Input"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   FractionBox["1", "2"], " ", 
-   InterpretationBox[
-    StyleBox[
-     SubscriptBox["m", "pl"],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`mpl,
-    Editable->False], " ", 
-   SuperscriptBox[
-    InterpretationBox[
-     StyleBox["\[ScriptL]",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`\[ScriptL],
-     Editable->False], "2"], " ", 
-   SqrtBox[
-    RowBox[{"-", 
-     InterpretationBox[
-      StyleBox[
-       OverscriptBox["g", 
-        OverscriptBox[
-         StyleBox["~",
-          FontColor->RGBColor[0, 0, 0]], 
-         StyleBox["~",
-          FontColor->RGBColor[0, 0, 0]]]],
-       ShowAutoStyles->False,
-       AutoSpacing->False],
-      $CellContext`Detmet[],
-      Editable->False]}]], " ", 
-   RowBox[{
-    InterpretationBox[
-     StyleBox["F",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`F,
-     Editable->False], "[", 
-    InterpretationBox[
-     StyleBox["\[CurlyTheta]",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`\[CurlyTheta][],
-     Editable->False], "]"}], " ", 
-   InterpretationBox[
-    StyleBox[GridBox[{
-       {
-        RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-        StyleBox[GridBox[{
-           {" ", " "},
-           {"a", "b"}
-          },
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-               Offset[0.]}}, "RowsIndexed" -> {}}],
-         FontSize->Rational[39, 4]]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
-        "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.034999999999999996`]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`RicciCD[-$CellContext`a, -$CellContext`b],
-    Editable->False], " ", 
-   InterpretationBox[
-    StyleBox[GridBox[{
-       {
-        RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-        StyleBox[GridBox[{
-           {"a", "b"},
-           {" ", " "}
-          },
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-               Offset[0.]}}, "RowsIndexed" -> {}}],
-         FontSize->Rational[39, 4]]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
-        "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.034999999999999996`]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`RicciCD[$CellContext`a, $CellContext`b],
-    Editable->False]}], "-", 
-  RowBox[{
-   FractionBox["1", "8"], " ", 
-   InterpretationBox[
-    StyleBox[
-     SubscriptBox["m", "pl"],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`mpl,
-    Editable->False], " ", 
-   SuperscriptBox[
-    InterpretationBox[
-     StyleBox["\[ScriptL]",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`\[ScriptL],
-     Editable->False], "2"], " ", 
-   SqrtBox[
-    RowBox[{"-", 
-     InterpretationBox[
-      StyleBox[
-       OverscriptBox["g", 
-        OverscriptBox[
-         StyleBox["~",
-          FontColor->RGBColor[0, 0, 0]], 
-         StyleBox["~",
-          FontColor->RGBColor[0, 0, 0]]]],
-       ShowAutoStyles->False,
-       AutoSpacing->False],
-      $CellContext`Detmet[],
-      Editable->False]}]], " ", 
-   RowBox[{
-    InterpretationBox[
-     StyleBox["F",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`F,
-     Editable->False], "[", 
-    InterpretationBox[
-     StyleBox["\[CurlyTheta]",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`\[CurlyTheta][],
-     Editable->False], "]"}], " ", 
-   SuperscriptBox[
+  RowBox[{"-", 
+   FractionBox["1", "8"]}], " ", 
+  InterpretationBox[
+   StyleBox["\[CurlyEpsilon]",
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`\[CurlyEpsilon],
+   Editable->False], " ", 
+  SqrtBox[
+   RowBox[{"-", 
     InterpretationBox[
      StyleBox[
-      RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}],
+      OverscriptBox["g", 
+       OverscriptBox[
+        StyleBox["~",
+         FontColor->RGBColor[0, 0, 0]], 
+        StyleBox["~",
+         FontColor->RGBColor[0, 0, 0]]]],
       ShowAutoStyles->False,
       AutoSpacing->False],
-     $CellContext`RicciScalarCD[],
-     Editable->False], "2"]}], "-", 
+     $CellContext`Detmet[],
+     Editable->False]}]], " ", 
   RowBox[{
-   FractionBox["1", "8"], " ", 
    InterpretationBox[
-    StyleBox[
-     SubscriptBox["m", "pl"],
+    StyleBox["F",
      ShowAutoStyles->False,
      AutoSpacing->False],
-    $CellContext`mpl,
-    Editable->False], " ", 
-   SuperscriptBox[
-    InterpretationBox[
-     StyleBox["\[ScriptL]",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`\[ScriptL],
-     Editable->False], "2"], " ", 
-   SqrtBox[
-    RowBox[{"-", 
+    $CellContext`F,
+    Editable->False], "[", 
+   InterpretationBox[
+    StyleBox["\[CurlyTheta]",
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`\[CurlyTheta][],
+    Editable->False], "]"}], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"4", " ", 
      InterpretationBox[
-      StyleBox[
-       OverscriptBox["g", 
-        OverscriptBox[
-         StyleBox["~",
-          FontColor->RGBColor[0, 0, 0]], 
-         StyleBox["~",
-          FontColor->RGBColor[0, 0, 0]]]],
+      StyleBox[GridBox[{
+         {
+          RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+          StyleBox[GridBox[{
+             {" ", " "},
+             {"a", "b"}
+            },
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.], {
+                 Offset[0.034999999999999996`]}, 
+                Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                 Offset[0.]}}, "RowsIndexed" -> {}}],
+           FontSize->Rational[39, 4]]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
        ShowAutoStyles->False,
        AutoSpacing->False],
-      $CellContext`Detmet[],
-      Editable->False]}]], " ", 
-   RowBox[{
-    InterpretationBox[
-     StyleBox["F",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`F,
-     Editable->False], "[", 
-    InterpretationBox[
-     StyleBox["\[CurlyTheta]",
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`\[CurlyTheta][],
-     Editable->False], "]"}], " ", 
-   InterpretationBox[
-    StyleBox[GridBox[{
-       {
-        RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-        StyleBox[GridBox[{
-           {" ", " ", " ", " "},
-           {"a", "b", "e", "f"}
-          },
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-               Offset[0.]}}, "RowsIndexed" -> {}}],
-         FontSize->Rational[39, 4]]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
-        "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.034999999999999996`]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`RiemannCD[-$CellContext`a, -$CellContext`b, -$CellContext`e, \
--$CellContext`f],
-    Editable->False], " ", 
-   InterpretationBox[
-    StyleBox[GridBox[{
-       {
-        RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-        StyleBox[GridBox[{
-           {"a", "b", "e", "f"},
-           {" ", " ", " ", " "}
-          },
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-               Offset[0.]}}, "RowsIndexed" -> {}}],
-         FontSize->Rational[39, 4]]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
-        "RowsIndexed" -> {}},
-      GridBoxSpacings->{"Columns" -> {
-          Offset[0.27999999999999997`], {
-           Offset[0.034999999999999996`]}, 
-          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-          Offset[0.2], {
-           Offset[0.4]}, 
-          Offset[0.2]}, "RowsIndexed" -> {}}],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`RiemannCD[$CellContext`a, $CellContext`b, $CellContext`e, \
+      $CellContext`RicciCD[-$CellContext`a, -$CellContext`b],
+      Editable->False], " ", 
+     InterpretationBox[
+      StyleBox[GridBox[{
+         {
+          RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+          StyleBox[GridBox[{
+             {"a", "b"},
+             {" ", " "}
+            },
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.], {
+                 Offset[0.034999999999999996`]}, 
+                Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                 Offset[0.]}}, "RowsIndexed" -> {}}],
+           FontSize->Rational[39, 4]]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`RicciCD[$CellContext`a, $CellContext`b],
+      Editable->False]}], "-", 
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox[
+       RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}],
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`RicciScalarCD[],
+      Editable->False], "2"], "-", 
+    RowBox[{
+     InterpretationBox[
+      StyleBox[GridBox[{
+         {
+          RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+          StyleBox[GridBox[{
+             {" ", " ", " ", " "},
+             {"a", "b", "e", "f"}
+            },
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.], {
+                 Offset[0.034999999999999996`]}, 
+                Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                 Offset[0.]}}, "RowsIndexed" -> {}}],
+           FontSize->Rational[39, 4]]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`RiemannCD[-$CellContext`a, -$CellContext`b, \
+-$CellContext`e, -$CellContext`f],
+      Editable->False], " ", 
+     InterpretationBox[
+      StyleBox[GridBox[{
+         {
+          RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+          StyleBox[GridBox[{
+             {"a", "b", "e", "f"},
+             {" ", " ", " ", " "}
+            },
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.], {
+                 Offset[0.034999999999999996`]}, 
+                Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                 Offset[0.]}}, "RowsIndexed" -> {}}],
+           FontSize->Rational[39, 4]]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`RiemannCD[$CellContext`a, $CellContext`b, $CellContext`e, \
 $CellContext`f],
-    Editable->False]}]}]], "Output"]
+      Editable->False]}]}], ")"}]}]], "Output"]
 }, Open  ]],
 
 Cell["And now for dynamical Chern-Simons:", "Text"],
@@ -3119,10 +3012,7 @@ Cell[BoxData[
    RowBox[{"Sqrt", "[", 
     RowBox[{"-", 
      RowBox[{"Detmet", "[", "]"}]}], "]"}], 
-   RowBox[{"(", 
-    RowBox[{
-     FractionBox["1", "8"], "mpl", " ", 
-     SuperscriptBox["\[ScriptL]", "2"]}], ")"}], 
+   FractionBox["\[CurlyEpsilon]", "8"], 
    RowBox[{"F", "[", 
     RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}], 
    RowBox[{"(", 
@@ -3145,19 +3035,11 @@ Cell[BoxData[
  RowBox[{
   FractionBox["1", "16"], " ", 
   InterpretationBox[
-   StyleBox[
-    SubscriptBox["m", "pl"],
+   StyleBox["\[CurlyEpsilon]",
     ShowAutoStyles->False,
     AutoSpacing->False],
-   $CellContext`mpl,
+   $CellContext`\[CurlyEpsilon],
    Editable->False], " ", 
-  SuperscriptBox[
-   InterpretationBox[
-    StyleBox["\[ScriptL]",
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`\[ScriptL],
-    Editable->False], "2"], " ", 
   SqrtBox[
    RowBox[{"-", 
     InterpretationBox[
@@ -3291,7 +3173,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"LCS", "=", 
    RowBox[{"LEH", "+", "L\[CurlyTheta]", "+", "LCSint"}]}], ";"}]}], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3336,7 +3218,7 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"Perturbation", "[", "LCS", "]"}], "//", "ExpandPerturbation"}],
       "//", "ContractMetric"}], "//", "ToCanonical"}]}], ";"}]}], "Input"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3385,15 +3267,13 @@ Cell[TextData[{
  "The prefactor in front of ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["G", "ab"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SubscriptBox["G", "ab"], TraditionalForm]]],
  " is ",
  Cell[BoxData[
   FormBox[
    SuperscriptBox[
     SubscriptBox["m", "pl"], 
-    RowBox[{"-", "2"}]], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    RowBox[{"-", "2"}]], TraditionalForm]]],
  ". Here\[CloseCurlyQuote]s the usual Einstein equations, with GB terms \
 turned off:"
 }], "Text"],
@@ -3407,8 +3287,8 @@ Cell[BoxData[
     RowBox[{
      FractionBox["1", 
       SuperscriptBox["mpl", "2"]], "EOMgGB"}], "/.", 
-    RowBox[{"\[ScriptL]", "\[Rule]", "0"}]}], "//", "RicciToEinstein"}], "//",
-   "ToCanonical"}]], "Input"],
+    RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "//", "RicciToEinstein"}], 
+  "//", "ToCanonical"}]], "Input"],
 
 Cell[BoxData[
  RowBox[{
@@ -3540,7 +3420,10 @@ Cell[BoxData[
  RowBox[{"T\[CurlyTheta]", "=", 
   RowBox[{
    RowBox[{"-", "EOMgGB"}], "/.", 
-   RowBox[{"mpl", "\[Rule]", "0"}]}]}]], "Input"],
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"mpl", "\[Rule]", "0"}], ",", 
+     RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "}"}]}]}]], "Input"],
 
 Cell[BoxData[
  RowBox[{
@@ -3617,24 +3500,18 @@ Cell[BoxData[
      Editable->False], ")"}]}]}]], "Output"]
 }, Open  ]],
 
-Cell[TextData[{
- "Extract the piece proportional to ",
- Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[ScriptL]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
- ", which is the \[OpenCurlyDoubleQuote]C-tensor\[CloseCurlyDoubleQuote] for \
-EDGB, written in the usual messy way:"
-}], "Text"],
+Cell["\<\
+Extract the piece proportional to \[CurlyEpsilon], which is the \
+\[OpenCurlyDoubleQuote]C-tensor\[CloseCurlyDoubleQuote] for EDGB, written in \
+the usual messy way:\
+\>", "Text"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"Coefficient", "[", 
-   RowBox[{"EOMgGB", ",", 
-    RowBox[{
-     SuperscriptBox["\[ScriptL]", "2"], "mpl"}]}], "]"}], 
+   RowBox[{"EOMgGB", ",", "\[CurlyEpsilon]"}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -3665,7 +3542,8 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      FractionBox["1", "2"], " ", 
+      RowBox[{"-", 
+       FractionBox["1", "2"]}], " ", 
       InterpretationBox[
        StyleBox[
         RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}],
@@ -3684,7 +3562,7 @@ Cell[BoxData[
         $CellContext`CD[-$CellContext`b][
          $CellContext`CD[-$CellContext`a][
           $CellContext`\[CurlyTheta][]]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -3726,7 +3604,7 @@ Cell[BoxData[
         $CellContext`CD[-$CellContext`c][
          $CellContext`CD[-$CellContext`a][
           $CellContext`\[CurlyTheta][]]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -3768,7 +3646,7 @@ Cell[BoxData[
         $CellContext`CD[-$CellContext`c][
          $CellContext`CD[-$CellContext`b][
           $CellContext`\[CurlyTheta][]]],
-        Editable->False], ")"}]}], "+", 
+        Editable->False], ")"}]}], "-", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -3810,7 +3688,7 @@ Cell[BoxData[
         $CellContext`CD[-$CellContext`c][
          $CellContext`CD[$CellContext`c][
           $CellContext`\[CurlyTheta][]]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       FractionBox["1", "2"], " ", 
       InterpretationBox[
@@ -3859,7 +3737,7 @@ Cell[BoxData[
         $CellContext`CD[-$CellContext`c][
          $CellContext`CD[$CellContext`c][
           $CellContext`\[CurlyTheta][]]],
-        Editable->False], ")"}]}], "+", 
+        Editable->False], ")"}]}], "-", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -3929,7 +3807,7 @@ Cell[BoxData[
         $CellContext`CD[-$CellContext`d][
          $CellContext`CD[-$CellContext`c][
           $CellContext`\[CurlyTheta][]]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -3992,7 +3870,8 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      FractionBox["1", "2"], " ", 
+      RowBox[{"-", 
+       FractionBox["1", "2"]}], " ", 
       InterpretationBox[
        StyleBox[
         RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}],
@@ -4019,7 +3898,7 @@ Cell[BoxData[
          AutoSpacing->False],
         $CellContext`CD[-$CellContext`b][
          $CellContext`\[CurlyTheta][]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -4069,7 +3948,7 @@ Cell[BoxData[
          AutoSpacing->False],
         $CellContext`CD[$CellContext`c][
          $CellContext`\[CurlyTheta][]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -4119,7 +3998,7 @@ Cell[BoxData[
          AutoSpacing->False],
         $CellContext`CD[$CellContext`c][
          $CellContext`\[CurlyTheta][]],
-        Editable->False], ")"}]}], "+", 
+        Editable->False], ")"}]}], "-", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -4169,7 +4048,7 @@ Cell[BoxData[
          AutoSpacing->False],
         $CellContext`CD[$CellContext`c][
          $CellContext`\[CurlyTheta][]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       FractionBox["1", "2"], " ", 
       InterpretationBox[
@@ -4226,7 +4105,7 @@ Cell[BoxData[
          AutoSpacing->False],
         $CellContext`CD[$CellContext`c][
          $CellContext`\[CurlyTheta][]],
-        Editable->False], ")"}]}], "+", 
+        Editable->False], ")"}]}], "-", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -4304,7 +4183,7 @@ Cell[BoxData[
          AutoSpacing->False],
         $CellContext`CD[$CellContext`d][
          $CellContext`\[CurlyTheta][]],
-        Editable->False], ")"}]}], "-", 
+        Editable->False], ")"}]}], "+", 
      RowBox[{
       InterpretationBox[
        StyleBox[GridBox[{
@@ -4381,17 +4260,16 @@ Cell[TextData[{
     RowBox[{
      SubscriptBox["C", "ab"], "\[DotEqual]", 
      RowBox[{
-      RowBox[{"-", 
+      RowBox[{
+       SuperscriptBox["\[Del]", "c"], 
        RowBox[{
-        SuperscriptBox["\[Del]", "c"], 
-        RowBox[{
-         SuperscriptBox["\[Del]", "d"], 
-         SuperscriptBox[
-          RowBox[{"[", " "}], "*"]}]}]}], "\[NegativeThinSpace]", 
+        SuperscriptBox["\[Del]", "d"], 
+        SuperscriptBox[
+         RowBox[{"[", " "}], "*"]}]}], "\[NegativeThinSpace]", 
       SubscriptBox[
-       SuperscriptBox["R", "*"], "cabd"], 
-      RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}], "]"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+       SuperscriptBox["R", "*"], "dabc"], 
+      RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}], "]"}], 
+   TraditionalForm]]],
  "\nor\n  ",
  Cell[BoxData[
   FormBox[
@@ -4399,34 +4277,30 @@ Cell[TextData[{
     RowBox[{
      SubscriptBox["C", "ab"], "\[DotEqual]", 
      RowBox[{
-      RowBox[{"-", 
-       RowBox[{
-        SuperscriptBox["\[Del]", "c"], 
-        SuperscriptBox[
-         RowBox[{"[", " "}], "*"]}]}], "\[NegativeThinSpace]", 
+      RowBox[{
+       SuperscriptBox["\[Del]", "c"], 
+       SuperscriptBox[
+        RowBox[{"[", " "}], "*"]}], "\[NegativeThinSpace]", 
       SubscriptBox[
-       SuperscriptBox["R", "*"], "cabd"], 
+       SuperscriptBox["R", "*"], "dabc"], 
       RowBox[{
        SuperscriptBox["\[Del]", "d"], 
        RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}]}], "]"}], 
-   TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   TraditionalForm]]],
  "\nor even\n  ",
  Cell[BoxData[
   FormBox[
    RowBox[{
-    SubscriptBox["C", "ab"], "\[DotEqual]", 
+    SubscriptBox["C", "ab"], 
+    SuperscriptBox["\[DotEqual]", "*"], "\[NegativeThinSpace]", 
     RowBox[{
-     RowBox[{
-      SuperscriptBox["-", "*"], "\[NegativeThinSpace]", 
-      SubscriptBox[
-       SuperscriptBox["R", "*"], "cabd"]}], 
+     SubscriptBox[
+      SuperscriptBox["R", "*"], "dabc"], 
      RowBox[{
       SuperscriptBox["\[Del]", "c"], 
       RowBox[{
        SuperscriptBox["\[Del]", "d"], 
-       RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+       RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}]}]}], TraditionalForm]]],
  ",\nbecause the double-dual of Riemann is divergence-free [see e.g. MTW \
 (13.51) and exercise 13.11]:"
 }], "Text"],
@@ -4435,185 +4309,15 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"Hold", "[", 
-  RowBox[{"-", 
-   RowBox[{
-    RowBox[{"CD", "[", "c", "]"}], "@", 
-    RowBox[{
-     RowBox[{"CD", "[", "d", "]"}], "[", 
-     RowBox[{
-      FractionBox["1", "4"], 
-      RowBox[{"epsilonmet", "[", 
-       RowBox[{
-        RowBox[{"-", "c"}], ",", 
-        RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
-      RowBox[{"RiemannCD", "[", 
-       RowBox[{
-        RowBox[{"-", "e"}], ",", 
-        RowBox[{"-", "f"}], ",", 
-        RowBox[{"-", "g"}], ",", 
-        RowBox[{"-", "h"}]}], "]"}], 
-      RowBox[{"epsilonmet", "[", 
-       RowBox[{"g", ",", "h", ",", 
-        RowBox[{"-", "b"}], ",", 
-        RowBox[{"-", "d"}]}], "]"}], 
-      RowBox[{"F", "[", 
-       RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}], "]"}]}]}], 
-  "]"}], "\[IndentingNewLine]", 
- RowBox[{
   RowBox[{
+   RowBox[{"CD", "[", "c", "]"}], "@", 
    RowBox[{
-    RowBox[{"%", "//", "ReleaseHold"}], "//", "ContractMetric"}], "//", 
-   "ToCanonical"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"%", "/.", "RuleDivRicci"}], "/.", "RuleDivRiemann"}], "//", 
-   "ToCanonical"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"%", "==", "CEDGB"}], "//", "ToCanonical"}]}], "Input"],
-
-Cell[BoxData[
- RowBox[{"Hold", "[", 
-  RowBox[{"-", 
-   RowBox[{"(", 
-    InterpretationBox[
-     StyleBox[
-      RowBox[{
-       SuperscriptBox["\[EmptyDownTriangle]", "c"], 
-       SuperscriptBox["\[EmptyDownTriangle]", "d"], "[", 
-       RowBox[{
-        FractionBox["1", "4"], " ", 
-        InterpretationBox[
-         StyleBox[GridBox[{
-            {"\[Epsilon]g", 
-             StyleBox[GridBox[{
-                {" ", " ", "e", "f"},
-                {"c", "a", " ", " "}
-               },
-               GridBoxSpacings->{"Columns" -> {
-                   Offset[0.], {
-                    Offset[0.034999999999999996`]}, 
-                   Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                    Offset[0.]}}, "RowsIndexed" -> {}}],
-              FontSize->Rational[39, 4]]}
-           },
-           
-           GridBoxAlignment->{
-            "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-             "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-           GridBoxSpacings->{"Columns" -> {
-               Offset[0.27999999999999997`], {
-                Offset[0.034999999999999996`]}, 
-               Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-               Offset[0.2], {
-                Offset[0.4]}, 
-               Offset[0.2]}, "RowsIndexed" -> {}}],
-          ShowAutoStyles->False,
-          AutoSpacing->False],
-         $CellContext`epsilonmet[-$CellContext`c, -$CellContext`a, \
-$CellContext`e, $CellContext`f],
-         Editable->False], " ", 
-        InterpretationBox[
-         StyleBox[GridBox[{
-            {
-             RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-             StyleBox[GridBox[{
-                {" ", " ", " ", " "},
-                {"e", "f", "g", "h"}
-               },
-               GridBoxSpacings->{"Columns" -> {
-                   Offset[0.], {
-                    Offset[0.034999999999999996`]}, 
-                   Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                    Offset[0.]}}, "RowsIndexed" -> {}}],
-              FontSize->Rational[39, 4]]}
-           },
-           
-           GridBoxAlignment->{
-            "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-             "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-           GridBoxSpacings->{"Columns" -> {
-               Offset[0.27999999999999997`], {
-                Offset[0.034999999999999996`]}, 
-               Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-               Offset[0.2], {
-                Offset[0.4]}, 
-               Offset[0.2]}, "RowsIndexed" -> {}}],
-          ShowAutoStyles->False,
-          AutoSpacing->False],
-         $CellContext`RiemannCD[-$CellContext`e, -$CellContext`f, \
--$CellContext`g, -$CellContext`h],
-         Editable->False], " ", 
-        InterpretationBox[
-         StyleBox[GridBox[{
-            {"\[Epsilon]g", 
-             StyleBox[GridBox[{
-                {"g", "h", " ", " "},
-                {" ", " ", "b", "d"}
-               },
-               GridBoxSpacings->{"Columns" -> {
-                   Offset[0.], {
-                    Offset[0.034999999999999996`]}, 
-                   Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                    Offset[0.]}}, "RowsIndexed" -> {}}],
-              FontSize->Rational[39, 4]]}
-           },
-           
-           GridBoxAlignment->{
-            "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-             "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-           GridBoxSpacings->{"Columns" -> {
-               Offset[0.27999999999999997`], {
-                Offset[0.034999999999999996`]}, 
-               Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-               Offset[0.2], {
-                Offset[0.4]}, 
-               Offset[0.2]}, "RowsIndexed" -> {}}],
-          ShowAutoStyles->False,
-          AutoSpacing->False],
-         $CellContext`epsilonmet[$CellContext`g, $CellContext`h, \
--$CellContext`b, -$CellContext`d],
-         Editable->False], " ", 
-        RowBox[{
-         InterpretationBox[
-          StyleBox["F",
-           ShowAutoStyles->False,
-           AutoSpacing->False],
-          $CellContext`F,
-          Editable->False], "[", 
-         InterpretationBox[
-          StyleBox["\[CurlyTheta]",
-           ShowAutoStyles->False,
-           AutoSpacing->False],
-          $CellContext`\[CurlyTheta][],
-          Editable->False], "]"}]}], "]"}],
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`CD[$CellContext`c][
-      $CellContext`CD[$CellContext`d][(1/
-        4) $CellContext`epsilonmet[-$CellContext`c, -$CellContext`a, \
-$CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
--$CellContext`f, -$CellContext`g, -$CellContext`h] \
-$CellContext`epsilonmet[$CellContext`g, $CellContext`h, -$CellContext`b, \
--$CellContext`d] $CellContext`F[
-         $CellContext`\[CurlyTheta][]]]],
-     Editable->False], ")"}]}], "]"}]], "Output"],
-
-Cell[BoxData["True"], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{"Hold", "[", 
-  RowBox[{"-", 
-   RowBox[{
-    RowBox[{"CD", "[", "c", "]"}], "[", 
+    RowBox[{"CD", "[", "d", "]"}], "[", 
     RowBox[{
      FractionBox["1", "4"], 
      RowBox[{"epsilonmet", "[", 
       RowBox[{
-       RowBox[{"-", "c"}], ",", 
+       RowBox[{"-", "d"}], ",", 
        RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
      RowBox[{"RiemannCD", "[", 
       RowBox[{
@@ -4624,11 +4328,9 @@ Cell[BoxData[{
      RowBox[{"epsilonmet", "[", 
       RowBox[{"g", ",", "h", ",", 
        RowBox[{"-", "b"}], ",", 
-       RowBox[{"-", "d"}]}], "]"}], " ", 
-     RowBox[{
-      RowBox[{"CD", "[", "d", "]"}], "@", 
-      RowBox[{"F", "[", 
-       RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}]}], "]"}]}], 
+       RowBox[{"-", "c"}]}], "]"}], 
+     RowBox[{"F", "[", 
+      RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}], "]"}]}], 
   "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -4645,138 +4347,125 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{"Hold", "[", 
-  RowBox[{"-", 
-   InterpretationBox[
-    StyleBox[
+  InterpretationBox[
+   StyleBox[
+    RowBox[{
+     SuperscriptBox["\[EmptyDownTriangle]", "c"], 
+     SuperscriptBox["\[EmptyDownTriangle]", "d"], "[", 
      RowBox[{
-      SuperscriptBox["\[EmptyDownTriangle]", "c"], "[", 
-      RowBox[{
-       FractionBox["1", "4"], " ", 
-       InterpretationBox[
-        StyleBox[GridBox[{
-           {"\[Epsilon]g", 
-            StyleBox[GridBox[{
-               {" ", " ", "e", "f"},
-               {"c", "a", " ", " "}
-              },
-              GridBoxSpacings->{"Columns" -> {
-                  Offset[0.], {
-                   Offset[0.034999999999999996`]}, 
-                  Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                   Offset[0.]}}, "RowsIndexed" -> {}}],
-             FontSize->Rational[39, 4]]}
-          },
-          
-          GridBoxAlignment->{
-           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-            "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.27999999999999997`], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-              Offset[0.2], {
-               Offset[0.4]}, 
-              Offset[0.2]}, "RowsIndexed" -> {}}],
-         ShowAutoStyles->False,
-         AutoSpacing->False],
-        $CellContext`epsilonmet[-$CellContext`c, -$CellContext`a, \
+      FractionBox["1", "4"], " ", 
+      InterpretationBox[
+       StyleBox[GridBox[{
+          {"\[Epsilon]g", 
+           StyleBox[GridBox[{
+              {" ", " ", "e", "f"},
+              {"d", "a", " ", " "}
+             },
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.], {
+                  Offset[0.034999999999999996`]}, 
+                 Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                  Offset[0.]}}, "RowsIndexed" -> {}}],
+            FontSize->Rational[39, 4]]}
+         },
+         GridBoxAlignment->{
+          "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}}],
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
 $CellContext`e, $CellContext`f],
-        Editable->False], " ", 
-       InterpretationBox[
-        StyleBox[GridBox[{
-           {
-            RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-            StyleBox[GridBox[{
-               {" ", " ", " ", " "},
-               {"e", "f", "g", "h"}
-              },
-              GridBoxSpacings->{"Columns" -> {
-                  Offset[0.], {
-                   Offset[0.034999999999999996`]}, 
-                  Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                   Offset[0.]}}, "RowsIndexed" -> {}}],
-             FontSize->Rational[39, 4]]}
-          },
-          
-          GridBoxAlignment->{
-           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-            "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.27999999999999997`], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-              Offset[0.2], {
-               Offset[0.4]}, 
-              Offset[0.2]}, "RowsIndexed" -> {}}],
-         ShowAutoStyles->False,
-         AutoSpacing->False],
-        $CellContext`RiemannCD[-$CellContext`e, -$CellContext`f, \
+       Editable->False], " ", 
+      InterpretationBox[
+       StyleBox[GridBox[{
+          {
+           RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+           StyleBox[GridBox[{
+              {" ", " ", " ", " "},
+              {"e", "f", "g", "h"}
+             },
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.], {
+                  Offset[0.034999999999999996`]}, 
+                 Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                  Offset[0.]}}, "RowsIndexed" -> {}}],
+            FontSize->Rational[39, 4]]}
+         },
+         GridBoxAlignment->{
+          "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}}],
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`RiemannCD[-$CellContext`e, -$CellContext`f, \
 -$CellContext`g, -$CellContext`h],
-        Editable->False], " ", 
+       Editable->False], " ", 
+      InterpretationBox[
+       StyleBox[GridBox[{
+          {"\[Epsilon]g", 
+           StyleBox[GridBox[{
+              {"g", "h", " ", " "},
+              {" ", " ", "b", "c"}
+             },
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.], {
+                  Offset[0.034999999999999996`]}, 
+                 Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                  Offset[0.]}}, "RowsIndexed" -> {}}],
+            FontSize->Rational[39, 4]]}
+         },
+         GridBoxAlignment->{
+          "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}}],
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`epsilonmet[$CellContext`g, $CellContext`h, \
+-$CellContext`b, -$CellContext`c],
+       Editable->False], " ", 
+      RowBox[{
        InterpretationBox[
-        StyleBox[GridBox[{
-           {"\[Epsilon]g", 
-            StyleBox[GridBox[{
-               {"g", "h", " ", " "},
-               {" ", " ", "b", "d"}
-              },
-              GridBoxSpacings->{"Columns" -> {
-                  Offset[0.], {
-                   Offset[0.034999999999999996`]}, 
-                  Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                   Offset[0.]}}, "RowsIndexed" -> {}}],
-             FontSize->Rational[39, 4]]}
-          },
-          
-          GridBoxAlignment->{
-           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-            "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-          GridBoxSpacings->{"Columns" -> {
-              Offset[0.27999999999999997`], {
-               Offset[0.034999999999999996`]}, 
-              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-              Offset[0.2], {
-               Offset[0.4]}, 
-              Offset[0.2]}, "RowsIndexed" -> {}}],
+        StyleBox["F",
          ShowAutoStyles->False,
          AutoSpacing->False],
-        $CellContext`epsilonmet[$CellContext`g, $CellContext`h, \
--$CellContext`b, -$CellContext`d],
-        Editable->False], " ", 
-       RowBox[{"(", 
-        InterpretationBox[
-         StyleBox[
-          RowBox[{
-           SuperscriptBox["\[EmptyDownTriangle]", "d"], 
-           InterpretationBox[
-            StyleBox["F",
-             ShowAutoStyles->False,
-             AutoSpacing->False],
-            $CellContext`F,
-            Editable->False], "[", 
-           InterpretationBox[
-            StyleBox["\[CurlyTheta]",
-             ShowAutoStyles->False,
-             AutoSpacing->False],
-            $CellContext`\[CurlyTheta][],
-            Editable->False], "]"}],
-          ShowAutoStyles->False,
-          AutoSpacing->False],
-         $CellContext`CD[$CellContext`d][
-          $CellContext`F[
-           $CellContext`\[CurlyTheta][]]],
-         Editable->False], ")"}]}], "]"}],
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`CD[$CellContext`c][(1/
-      4) $CellContext`epsilonmet[-$CellContext`c, -$CellContext`a, \
+        $CellContext`F,
+        Editable->False], "[", 
+       InterpretationBox[
+        StyleBox["\[CurlyTheta]",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`\[CurlyTheta][],
+        Editable->False], "]"}]}], "]"}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`CD[$CellContext`c][
+    $CellContext`CD[$CellContext`d][(1/
+      4) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
 $CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
 -$CellContext`f, -$CellContext`g, -$CellContext`h] \
 $CellContext`epsilonmet[$CellContext`g, $CellContext`h, -$CellContext`b, \
--$CellContext`d] $CellContext`CD[$CellContext`d][
-       $CellContext`F[
-        $CellContext`\[CurlyTheta][]]]],
-    Editable->False]}], "]"}]], "Output"],
+-$CellContext`c] $CellContext`F[
+       $CellContext`\[CurlyTheta][]]]],
+   Editable->False], "]"}]], "Output"],
 
 Cell[BoxData["True"], "Output"]
 }, Open  ]],
@@ -4786,11 +4475,184 @@ Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"Hold", "[", 
   RowBox[{
-   RowBox[{"-", 
-    FractionBox["1", "4"]}], 
+   RowBox[{"CD", "[", "c", "]"}], "[", 
+   RowBox[{
+    FractionBox["1", "4"], 
+    RowBox[{"epsilonmet", "[", 
+     RowBox[{
+      RowBox[{"-", "d"}], ",", 
+      RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
+    RowBox[{"RiemannCD", "[", 
+     RowBox[{
+      RowBox[{"-", "e"}], ",", 
+      RowBox[{"-", "f"}], ",", 
+      RowBox[{"-", "g"}], ",", 
+      RowBox[{"-", "h"}]}], "]"}], 
+    RowBox[{"epsilonmet", "[", 
+     RowBox[{"g", ",", "h", ",", 
+      RowBox[{"-", "b"}], ",", 
+      RowBox[{"-", "c"}]}], "]"}], " ", 
+    RowBox[{
+     RowBox[{"CD", "[", "d", "]"}], "@", 
+     RowBox[{"F", "[", 
+      RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}]}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"%", "//", "ReleaseHold"}], "//", "ContractMetric"}], "//", 
+   "ToCanonical"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"%", "/.", "RuleDivRicci"}], "/.", "RuleDivRiemann"}], "//", 
+   "ToCanonical"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"%", "==", "CEDGB"}], "//", "ToCanonical"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  InterpretationBox[
+   StyleBox[
+    RowBox[{
+     SuperscriptBox["\[EmptyDownTriangle]", "c"], "[", 
+     RowBox[{
+      FractionBox["1", "4"], " ", 
+      InterpretationBox[
+       StyleBox[GridBox[{
+          {"\[Epsilon]g", 
+           StyleBox[GridBox[{
+              {" ", " ", "e", "f"},
+              {"d", "a", " ", " "}
+             },
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.], {
+                  Offset[0.034999999999999996`]}, 
+                 Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                  Offset[0.]}}, "RowsIndexed" -> {}}],
+            FontSize->Rational[39, 4]]}
+         },
+         GridBoxAlignment->{
+          "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}}],
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f],
+       Editable->False], " ", 
+      InterpretationBox[
+       StyleBox[GridBox[{
+          {
+           RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+           StyleBox[GridBox[{
+              {" ", " ", " ", " "},
+              {"e", "f", "g", "h"}
+             },
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.], {
+                  Offset[0.034999999999999996`]}, 
+                 Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                  Offset[0.]}}, "RowsIndexed" -> {}}],
+            FontSize->Rational[39, 4]]}
+         },
+         GridBoxAlignment->{
+          "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}}],
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`RiemannCD[-$CellContext`e, -$CellContext`f, \
+-$CellContext`g, -$CellContext`h],
+       Editable->False], " ", 
+      InterpretationBox[
+       StyleBox[GridBox[{
+          {"\[Epsilon]g", 
+           StyleBox[GridBox[{
+              {"g", "h", " ", " "},
+              {" ", " ", "b", "c"}
+             },
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.], {
+                  Offset[0.034999999999999996`]}, 
+                 Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                  Offset[0.]}}, "RowsIndexed" -> {}}],
+            FontSize->Rational[39, 4]]}
+         },
+         GridBoxAlignment->{
+          "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}}],
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`epsilonmet[$CellContext`g, $CellContext`h, \
+-$CellContext`b, -$CellContext`c],
+       Editable->False], " ", 
+      RowBox[{"(", 
+       InterpretationBox[
+        StyleBox[
+         RowBox[{
+          SuperscriptBox["\[EmptyDownTriangle]", "d"], 
+          InterpretationBox[
+           StyleBox["F",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`F,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[CurlyTheta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[CurlyTheta][],
+           Editable->False], "]"}],
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`CD[$CellContext`d][
+         $CellContext`F[
+          $CellContext`\[CurlyTheta][]]],
+        Editable->False], ")"}]}], "]"}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`CD[$CellContext`c][(1/
+     4) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
+-$CellContext`f, -$CellContext`g, -$CellContext`h] \
+$CellContext`epsilonmet[$CellContext`g, $CellContext`h, -$CellContext`b, \
+-$CellContext`c] $CellContext`CD[$CellContext`d][
+      $CellContext`F[
+       $CellContext`\[CurlyTheta][]]]],
+   Editable->False], "]"}]], "Output"],
+
+Cell[BoxData["True"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Hold", "[", 
+  RowBox[{
+   FractionBox["1", "4"], 
    RowBox[{"epsilonmet", "[", 
     RowBox[{
-     RowBox[{"-", "c"}], ",", 
+     RowBox[{"-", "d"}], ",", 
      RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
    RowBox[{"RiemannCD", "[", 
     RowBox[{
@@ -4801,7 +4663,7 @@ Cell[BoxData[{
    RowBox[{"epsilonmet", "[", 
     RowBox[{"g", ",", "h", ",", 
      RowBox[{"-", "b"}], ",", 
-     RowBox[{"-", "d"}]}], "]"}], 
+     RowBox[{"-", "c"}]}], "]"}], 
    RowBox[{
     RowBox[{"CD", "[", "c", "]"}], "@", " ", 
     RowBox[{
@@ -4825,14 +4687,13 @@ Cell[BoxData[{
 Cell[BoxData[
  RowBox[{"Hold", "[", 
   RowBox[{
-   RowBox[{"-", 
-    FractionBox["1", "4"]}], " ", 
+   FractionBox["1", "4"], " ", 
    InterpretationBox[
     StyleBox[GridBox[{
        {"\[Epsilon]g", 
         StyleBox[GridBox[{
            {" ", " ", "e", "f"},
-           {"c", "a", " ", " "}
+           {"d", "a", " ", " "}
           },
           GridBoxSpacings->{"Columns" -> {
               Offset[0.], {
@@ -4853,7 +4714,7 @@ Cell[BoxData[
           Offset[0.2]}, "RowsIndexed" -> {}}],
      ShowAutoStyles->False,
      AutoSpacing->False],
-    $CellContext`epsilonmet[-$CellContext`c, -$CellContext`a, $CellContext`e, \
+    $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, $CellContext`e, \
 $CellContext`f],
     Editable->False], " ", 
    InterpretationBox[
@@ -4891,7 +4752,7 @@ $CellContext`f],
        {"\[Epsilon]g", 
         StyleBox[GridBox[{
            {"g", "h", " ", " "},
-           {" ", " ", "b", "d"}
+           {" ", " ", "b", "c"}
           },
           GridBoxSpacings->{"Columns" -> {
               Offset[0.], {
@@ -4913,7 +4774,7 @@ $CellContext`f],
      ShowAutoStyles->False,
      AutoSpacing->False],
     $CellContext`epsilonmet[$CellContext`g, $CellContext`h, -$CellContext`b, \
--$CellContext`d],
+-$CellContext`c],
     Editable->False], " ", 
    RowBox[{"(", 
     InterpretationBox[
@@ -4954,10 +4815,8 @@ Cell[TextData[{
       RowBox[{
        SuperscriptBox[
         SubscriptBox["m", "pl"], "2"], 
-       SubscriptBox["G", "ab"]}], "-", 
-      RowBox[{
-       SubscriptBox["m", "pl"], 
-       SuperscriptBox["\[ScriptL]", "2"], 
+       SubscriptBox["G", "ab"]}], "+", 
+      RowBox[{"\[CurlyEpsilon]", 
        RowBox[{
         SuperscriptBox["\[Del]", "c"], 
         RowBox[{
@@ -4965,10 +4824,9 @@ Cell[TextData[{
          SuperscriptBox[
           RowBox[{"[", " "}], "*"]}]}], "\[NegativeThinSpace]", 
        SubscriptBox[
-        SuperscriptBox["R", "*"], "cabd"], 
+        SuperscriptBox["R", "*"], "dabc"], 
        RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}], "]"}], "=", 
-    SubscriptBox["T", "ab"]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+    SubscriptBox["T", "ab"]}], TraditionalForm]]]
 }], "Text"],
 
 Cell[CellGroupData[{
@@ -4984,9 +4842,8 @@ Cell[BoxData[{
        RowBox[{"EinsteinCD", "[", 
         RowBox[{
          RowBox[{"-", "a"}], ",", 
-         RowBox[{"-", "b"}]}], "]"}]}], "-", "T\[CurlyTheta]", "-", 
-      RowBox[{"mpl", " ", 
-       SuperscriptBox["\[ScriptL]", "2"], 
+         RowBox[{"-", "b"}]}], "]"}]}], "-", "T\[CurlyTheta]", "+", 
+      RowBox[{"\[CurlyEpsilon]", " ", 
        RowBox[{
         RowBox[{"CD", "[", "c", "]"}], "@", 
         RowBox[{
@@ -4995,7 +4852,7 @@ Cell[BoxData[{
           FractionBox["1", "4"], 
           RowBox[{"epsilonmet", "[", 
            RowBox[{
-            RowBox[{"-", "c"}], ",", 
+            RowBox[{"-", "d"}], ",", 
             RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
           RowBox[{"RiemannCD", "[", 
            RowBox[{
@@ -5006,7 +4863,7 @@ Cell[BoxData[{
           RowBox[{"epsilonmet", "[", 
            RowBox[{"g", ",", "h", ",", 
             RowBox[{"-", "b"}], ",", 
-            RowBox[{"-", "d"}]}], "]"}], 
+            RowBox[{"-", "c"}]}], "]"}], 
           RowBox[{"F", "[", 
            RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}], "]"}]}]}]}]}], "//", 
     "ContractMetric"}], "//", "ToCanonical"}], ";"}], "\[IndentingNewLine]", 
@@ -5026,7 +4883,7 @@ Cell[BoxData[{
 
 Cell[BoxData["True"], "Output"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -5064,9 +4921,7 @@ Cell[BoxData[
 Cell[TextData[{
  "Extract the piece proportional to ",
  Cell[BoxData[
-  FormBox[
-   SuperscriptBox["\[ScriptL]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+  FormBox["\[CurlyEpsilon]", TraditionalForm]]],
  ", which is the \[OpenCurlyDoubleQuote]C-tensor\[CloseCurlyDoubleQuote] for \
 dCS, written in the usual messy way:"
 }], "Text"],
@@ -5079,9 +4934,7 @@ Cell[BoxData[{
    RowBox[{
     RowBox[{
      RowBox[{"Coefficient", "[", 
-      RowBox[{"EOMgCS", ",", 
-       RowBox[{
-        SuperscriptBox["\[ScriptL]", "2"], "mpl"}]}], "]"}], "/.", 
+      RowBox[{"EOMgCS", ",", "\[CurlyEpsilon]"}], "]"}], "/.", 
      "EpsBianchiRules"}], "/.", "RuleDivRiemann"}], "//", "ToCanonical"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"CDCS", "=", 
@@ -5595,50 +5448,47 @@ Cell[TextData[{
     RowBox[{
      SubscriptBox["C", "ab"], "\[DotEqual]", 
      RowBox[{
-      RowBox[{"-", 
+      RowBox[{
+       SuperscriptBox["\[Del]", "c"], 
        RowBox[{
-        SuperscriptBox["\[Del]", "c"], 
-        RowBox[{
-         SuperscriptBox["\[Del]", "d"], 
-         SuperscriptBox[
-          RowBox[{"[", " "}], "*"]}]}]}], "\[NegativeThinSpace]", 
+        SuperscriptBox["\[Del]", "d"], 
+        SuperscriptBox[
+         RowBox[{"[", " "}], "*"]}]}], "\[NegativeThinSpace]", 
       SubscriptBox["R", 
        RowBox[{
-        RowBox[{"c", "(", "ab", ")"}], "d"}]], 
-      RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}], "]"}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+        RowBox[{"d", "(", "ab", ")"}], "c"}]], 
+      RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}], "]"}], TraditionalForm]]]
 }], "Text"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{"Hold", "[", 
-  RowBox[{"-", 
+  RowBox[{
+   RowBox[{"CD", "[", "c", "]"}], "@", 
    RowBox[{
-    RowBox[{"CD", "[", "c", "]"}], "@", 
+    RowBox[{"CD", "[", "d", "]"}], "[", 
     RowBox[{
-     RowBox[{"CD", "[", "d", "]"}], "[", 
-     RowBox[{
-      RowBox[{"Symmetrize", "[", 
+     RowBox[{"Symmetrize", "[", 
+      RowBox[{
        RowBox[{
-        RowBox[{
-         FractionBox["1", "2"], 
-         RowBox[{"epsilonmet", "[", 
-          RowBox[{
-           RowBox[{"-", "d"}], ",", 
-           RowBox[{"-", "b"}], ",", "f", ",", "e"}], "]"}], 
-         RowBox[{"RiemannCD", "[", 
-          RowBox[{
-           RowBox[{"-", "e"}], ",", 
-           RowBox[{"-", "f"}], ",", 
-           RowBox[{"-", "a"}], ",", 
-           RowBox[{"-", "c"}]}], "]"}]}], ",", 
-        RowBox[{"{", 
+        FractionBox["1", "2"], 
+        RowBox[{"epsilonmet", "[", 
          RowBox[{
-          RowBox[{"-", "a"}], ",", 
-          RowBox[{"-", "b"}]}], "}"}]}], "]"}], 
-      RowBox[{"F", "[", 
-       RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}], "]"}]}]}], 
+          RowBox[{"-", "d"}], ",", 
+          RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
+        RowBox[{"RiemannCD", "[", 
+         RowBox[{
+          RowBox[{"-", "e"}], ",", 
+          RowBox[{"-", "f"}], ",", 
+          RowBox[{"-", "b"}], ",", 
+          RowBox[{"-", "c"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "a"}], ",", 
+         RowBox[{"-", "b"}]}], "}"}]}], "]"}], 
+     RowBox[{"F", "[", 
+      RowBox[{"\[CurlyTheta]", "[", "]"}], "]"}]}], "]"}]}], 
   "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -5654,109 +5504,105 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{"Hold", "[", 
-  RowBox[{"-", 
-   RowBox[{"(", 
-    InterpretationBox[
-     StyleBox[
-      RowBox[{
-       SuperscriptBox["\[EmptyDownTriangle]", "c"], 
-       SuperscriptBox["\[EmptyDownTriangle]", "d"], "[", 
+  InterpretationBox[
+   StyleBox[
+    RowBox[{
+     SuperscriptBox["\[EmptyDownTriangle]", "c"], 
+     SuperscriptBox["\[EmptyDownTriangle]", "d"], "[", 
+     RowBox[{
+      RowBox[{"Symmetrize", "[", 
        RowBox[{
-        RowBox[{"Symmetrize", "[", 
-         RowBox[{
-          RowBox[{
-           FractionBox["1", "2"], " ", 
-           InterpretationBox[
-            StyleBox[GridBox[{
-               {"\[Epsilon]g", 
-                StyleBox[GridBox[{
-                   {" ", " ", "f", "e"},
-                   {"d", "b", " ", " "}
-                  },
-                  GridBoxSpacings->{"Columns" -> {
-                    Offset[0.], {
-                    Offset[0.034999999999999996`]}, 
-                    Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                    Offset[0.]}}, "RowsIndexed" -> {}}],
-                 FontSize->Rational[39, 4]]}
-              },
-              
-              GridBoxAlignment->{
-               "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-                "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-              GridBoxSpacings->{"Columns" -> {
-                  Offset[0.27999999999999997`], {
-                   Offset[0.034999999999999996`]}, 
-                  Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
-                "Rows" -> {
-                  Offset[0.2], {
-                   Offset[0.4]}, 
-                  Offset[0.2]}, "RowsIndexed" -> {}}],
-             ShowAutoStyles->False,
-             AutoSpacing->False],
-            $CellContext`epsilonmet[-$CellContext`d, -$CellContext`b, \
-$CellContext`f, $CellContext`e],
-            Editable->False], " ", 
-           InterpretationBox[
-            StyleBox[GridBox[{
-               {
-                RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
-                StyleBox[GridBox[{
-                   {" ", " ", " ", " "},
-                   {"e", "f", "a", "c"}
-                  },
-                  GridBoxSpacings->{"Columns" -> {
-                    Offset[0.], {
-                    Offset[0.034999999999999996`]}, 
-                    Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-                    Offset[0.]}}, "RowsIndexed" -> {}}],
-                 FontSize->Rational[39, 4]]}
-              },
-              
-              GridBoxAlignment->{
-               "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
-                "Rows" -> {{Center}}, "RowsIndexed" -> {}},
-              GridBoxSpacings->{"Columns" -> {
-                  Offset[0.27999999999999997`], {
-                   Offset[0.034999999999999996`]}, 
-                  Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
-                "Rows" -> {
-                  Offset[0.2], {
-                   Offset[0.4]}, 
-                  Offset[0.2]}, "RowsIndexed" -> {}}],
-             ShowAutoStyles->False,
-             AutoSpacing->False],
-            $CellContext`RiemannCD[-$CellContext`e, -$CellContext`f, \
--$CellContext`a, -$CellContext`c],
-            Editable->False]}], ",", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"-", "a"}], ",", 
-            RowBox[{"-", "b"}]}], "}"}]}], "]"}], " ", 
         RowBox[{
+         FractionBox["1", "2"], " ", 
          InterpretationBox[
-          StyleBox["F",
+          StyleBox[GridBox[{
+             {"\[Epsilon]g", 
+              StyleBox[GridBox[{
+                 {" ", " ", "e", "f"},
+                 {"d", "a", " ", " "}
+                },
+                GridBoxSpacings->{"Columns" -> {
+                    Offset[0.], {
+                    Offset[0.034999999999999996`]}, 
+                    Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                    Offset[0.]}}, "RowsIndexed" -> {}}],
+               FontSize->Rational[39, 4]]}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.034999999999999996`]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
            ShowAutoStyles->False,
            AutoSpacing->False],
-          $CellContext`F,
-          Editable->False], "[", 
+          $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f],
+          Editable->False], " ", 
          InterpretationBox[
-          StyleBox["\[CurlyTheta]",
+          StyleBox[GridBox[{
+             {
+              RowBox[{"R", "[", "\[EmptyDownTriangle]", "]"}], 
+              StyleBox[GridBox[{
+                 {" ", " ", " ", " "},
+                 {"e", "f", "b", "c"}
+                },
+                GridBoxSpacings->{"Columns" -> {
+                    Offset[0.], {
+                    Offset[0.034999999999999996`]}, 
+                    Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+                    Offset[0.]}}, "RowsIndexed" -> {}}],
+               FontSize->Rational[39, 4]]}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Center}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.034999999999999996`]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
            ShowAutoStyles->False,
            AutoSpacing->False],
-          $CellContext`\[CurlyTheta][],
-          Editable->False], "]"}]}], "]"}],
-      ShowAutoStyles->False,
-      AutoSpacing->False],
-     $CellContext`CD[$CellContext`c][
-      $CellContext`CD[$CellContext`d][
-      xAct`xTensor`Symmetrize[(1/
-          2) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`b, \
-$CellContext`f, $CellContext`e] $CellContext`RiemannCD[-$CellContext`e, \
--$CellContext`f, -$CellContext`a, -$CellContext`c], {-$CellContext`a, \
+          $CellContext`RiemannCD[-$CellContext`e, -$CellContext`f, \
+-$CellContext`b, -$CellContext`c],
+          Editable->False]}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "a"}], ",", 
+          RowBox[{"-", "b"}]}], "}"}]}], "]"}], " ", 
+      RowBox[{
+       InterpretationBox[
+        StyleBox["F",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`F,
+        Editable->False], "[", 
+       InterpretationBox[
+        StyleBox["\[CurlyTheta]",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`\[CurlyTheta][],
+        Editable->False], "]"}]}], "]"}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`CD[$CellContext`c][
+    $CellContext`CD[$CellContext`d][
+    xAct`xTensor`Symmetrize[(1/
+        2) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
+-$CellContext`f, -$CellContext`b, -$CellContext`c], {-$CellContext`a, \
 -$CellContext`b}] $CellContext`F[
-         $CellContext`\[CurlyTheta][]]]],
-     Editable->False], ")"}]}], "]"}]], "Output"],
+       $CellContext`\[CurlyTheta][]]]],
+   Editable->False], "]"}]], "Output"],
 
 Cell[BoxData["True"], "Output"]
 }, Open  ]],
@@ -5771,10 +5617,8 @@ Cell[TextData[{
       RowBox[{
        SuperscriptBox[
         SubscriptBox["m", "pl"], "2"], 
-       SubscriptBox["G", "ab"]}], "-", 
-      RowBox[{
-       SubscriptBox["m", "pl"], 
-       SuperscriptBox["\[ScriptL]", "2"], 
+       SubscriptBox["G", "ab"]}], "+", 
+      RowBox[{"\[CurlyEpsilon]", 
        RowBox[{
         SuperscriptBox["\[Del]", "c"], 
         RowBox[{
@@ -5783,10 +5627,9 @@ Cell[TextData[{
           RowBox[{"[", " "}], "*"]}]}], "\[NegativeThinSpace]", 
        SubscriptBox["R", 
         RowBox[{
-         RowBox[{"c", "(", "ab", ")"}], "d"}]], 
+         RowBox[{"d", "(", "ab", ")"}], "c"}]], 
        RowBox[{"F", "[", "\[CurlyTheta]", "]"}]}]}], "]"}], "=", 
-    SubscriptBox["T", "ab"]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+    SubscriptBox["T", "ab"]}], TraditionalForm]]]
 }], "Text"],
 
 Cell[CellGroupData[{
@@ -5801,9 +5644,8 @@ Cell[BoxData[{
       RowBox[{"EinsteinCD", "[", 
        RowBox[{
         RowBox[{"-", "a"}], ",", 
-        RowBox[{"-", "b"}]}], "]"}]}], "-", "T\[CurlyTheta]", "-", 
-     RowBox[{"mpl", " ", 
-      SuperscriptBox["\[ScriptL]", "2"], 
+        RowBox[{"-", "b"}]}], "]"}]}], "-", "T\[CurlyTheta]", "+", 
+     RowBox[{"\[CurlyEpsilon]", " ", 
       RowBox[{
        RowBox[{"CD", "[", "c", "]"}], "@", 
        RowBox[{
@@ -5816,12 +5658,12 @@ Cell[BoxData[{
             RowBox[{"epsilonmet", "[", 
              RowBox[{
               RowBox[{"-", "d"}], ",", 
-              RowBox[{"-", "b"}], ",", "f", ",", "e"}], "]"}], 
+              RowBox[{"-", "a"}], ",", "e", ",", "f"}], "]"}], 
             RowBox[{"RiemannCD", "[", 
              RowBox[{
               RowBox[{"-", "e"}], ",", 
               RowBox[{"-", "f"}], ",", 
-              RowBox[{"-", "a"}], ",", 
+              RowBox[{"-", "b"}], ",", 
               RowBox[{"-", "c"}]}], "]"}]}], ",", 
            RowBox[{"{", 
             RowBox[{
@@ -5838,14 +5680,15 @@ Cell[BoxData[{
 
 Cell[BoxData["True"], "Output"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1078, 648},
-WindowMargins->{{72, Automatic}, {Automatic, 50}},
+WindowSize->{1280, 774},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 ShowAutoSpellCheck->False,
 FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
 21, 2016)",
 StyleDefinitions->"Default.nb"
 ]
+
