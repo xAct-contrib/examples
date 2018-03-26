@@ -1201,10 +1201,9 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DefMetric", "::", "\<\"old\"\>"}], 
-  RowBox[{
-  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"There are already metrics \\\
-\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\({met}\\), \
+  RowBox[{"DefMetric", "::", "\<\"old\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"There are already metrics \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\({met}\\), \
 \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" in vbundle \
 \\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(TangentM\\), \\\
 \"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\".\\\\\\\"\\\", \
@@ -1670,9 +1669,7 @@ Cell[BoxData[
   Editable->False]], "Print"]
 }, Open  ]],
 
-Cell["\<\
-\[Sigma] is tracefree under contraction with h.\
-\>", "Text"],
+Cell["\[Sigma] is tracefree under contraction with h.", "Text"],
 
 Cell[CellGroupData[{
 
@@ -3253,8 +3250,7 @@ Cell[TextData[{
 RiemannToWeyl, and by defining an auxilliary field ",
  Cell[BoxData[
   FormBox[
-   OverscriptBox["R", "~"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   OverscriptBox["R", "~"], TraditionalForm]]],
  "."
 }], "Text"]
 }, Open  ]]
@@ -3264,6 +3260,9 @@ WindowSize->{1385, 651},
 WindowMargins->{{10, Automatic}, {Automatic, 12}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 ShowSelection->True,
-FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
 StyleDefinitions->"Default.nb"
 ]
+

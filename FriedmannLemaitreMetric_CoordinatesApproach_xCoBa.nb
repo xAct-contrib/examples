@@ -230,8 +230,7 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    RowBox[{
-    SubscriptBox["g", "\[Mu]\[Nu]"], " "}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SubscriptBox["g", "\[Mu]\[Nu]"], " "}], TraditionalForm]]],
  "on this manifold. With covariant derivative CD and Lorentz signature (-1)."
 }], "Text"],
 
@@ -2072,8 +2071,8 @@ Cell[BoxData[
     "\[InvisibleSpace]", "g"}],
   SequenceForm[
   "Added independent rule ", $CellContext`g[{2, -$CellContext`BS}, {
-     2, -$CellContext`BS}] -> K^(-2) $CellContext`a[
-       $CellContext`\[Eta][]]^2 Sin[K $CellContext`r[]]^2, 
+     2, -$CellContext`BS}] -> (K^(-2) $CellContext`a[
+        $CellContext`\[Eta][]]^2) Sin[K $CellContext`r[]]^2, 
    " for tensor ", $CellContext`g],
   Editable->False]], "Print"],
 
@@ -2441,8 +2440,8 @@ Cell[BoxData[
     "\[InvisibleSpace]", "g"}],
   SequenceForm[
   "Added independent rule ", $CellContext`g[{3, -$CellContext`BS}, {
-     3, -$CellContext`BS}] -> K^(-2) $CellContext`a[
-       $CellContext`\[Eta][]]^2 Sin[K $CellContext`r[]]^2 Sin[
+     3, -$CellContext`BS}] -> ((K^(-2) $CellContext`a[
+         $CellContext`\[Eta][]]^2) Sin[K $CellContext`r[]]^2) Sin[
        $CellContext`\[Theta][]]^2, " for tensor ", $CellContext`g],
   Editable->False]], "Print"]
 }, Open  ]],
@@ -27703,8 +27702,7 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    RowBox[{
-    SubscriptBox["G", "rr"], " ", "component"}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+    SubscriptBox["G", "rr"], " ", "component"}], TraditionalForm]]]
 }], "Text"],
 
 Cell[CellGroupData[{
@@ -29101,11 +29099,11 @@ Cell[BoxData[
   SequenceForm[
   "Added independent rule ", 
    xAct`xTensor`Basis[{1, -$CellContext`BC}, {
-     2, $CellContext`BS}] -> $CellContext`x[] $CellContext`z[] \
+     2, $CellContext`BS}] -> (($CellContext`x[] $CellContext`z[]) \
 (($CellContext`x[]^2 + $CellContext`y[]^2)/($CellContext`x[]^2 + \
 $CellContext`y[]^2 + $CellContext`z[]^2))^
-     Rational[-1, 
-       2] ($CellContext`x[]^2 + $CellContext`y[]^2 + $CellContext`z[]^2)^
+      Rational[-1, 
+        2]) ($CellContext`x[]^2 + $CellContext`y[]^2 + $CellContext`z[]^2)^
      Rational[-3, 2], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -29228,11 +29226,11 @@ Cell[BoxData[
   SequenceForm[
   "Added independent rule ", 
    xAct`xTensor`Basis[{2, -$CellContext`BC}, {
-     2, $CellContext`BS}] -> $CellContext`y[] $CellContext`z[] \
+     2, $CellContext`BS}] -> (($CellContext`y[] $CellContext`z[]) \
 (($CellContext`x[]^2 + $CellContext`y[]^2)/($CellContext`x[]^2 + \
 $CellContext`y[]^2 + $CellContext`z[]^2))^
-     Rational[-1, 
-       2] ($CellContext`x[]^2 + $CellContext`y[]^2 + $CellContext`z[]^2)^
+      Rational[-1, 
+        2]) ($CellContext`x[]^2 + $CellContext`y[]^2 + $CellContext`z[]^2)^
      Rational[-3, 2], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -29340,11 +29338,11 @@ Cell[BoxData[
   SequenceForm[
   "Added independent rule ", 
    xAct`xTensor`Basis[{3, -$CellContext`BC}, {
-     2, $CellContext`BS}] -> -(($CellContext`x[]^2 + \
+     2, $CellContext`BS}] -> (-(($CellContext`x[]^2 + \
 $CellContext`y[]^2)/($CellContext`x[]^2 + $CellContext`y[]^2 + \
 $CellContext`z[]^2))^
-     Rational[1, 
-       2] ($CellContext`x[]^2 + $CellContext`y[]^2 + $CellContext`z[]^2)^
+      Rational[1, 
+        2]) ($CellContext`x[]^2 + $CellContext`y[]^2 + $CellContext`z[]^2)^
      Rational[-1, 2], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -29454,7 +29452,7 @@ Cell[BoxData[
   SequenceForm[
   "Added independent rule ", 
    xAct`xTensor`Basis[{1, -$CellContext`BC}, {
-     3, $CellContext`BS}] -> -$CellContext`y[]/($CellContext`x[]^2 + \
+     3, $CellContext`BS}] -> (-$CellContext`y[])/($CellContext`x[]^2 + \
 $CellContext`y[]^2), " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -29925,9 +29923,9 @@ Cell[BoxData[
    "\[InvisibleSpace]", "Basis"}],
   SequenceForm[
   "Added independent rule ", 
-   xAct`xTensor`Basis[{2, -$CellContext`BS}, {1, $CellContext`BC}] -> Cos[
-      $CellContext`\[Theta][]] Cos[
-      $CellContext`\[Phi][]] $CellContext`r[], " for tensor ", 
+   xAct`xTensor`Basis[{2, -$CellContext`BS}, {1, $CellContext`BC}] -> (Cos[
+       $CellContext`\[Theta][]] Cos[
+       $CellContext`\[Phi][]]) $CellContext`r[], " for tensor ", 
    xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -30005,8 +30003,8 @@ Cell[BoxData[
   SequenceForm[
   "Added independent rule ", 
    xAct`xTensor`Basis[{3, -$CellContext`BS}, {
-     1, $CellContext`BC}] -> -$CellContext`r[] Sin[
-      $CellContext`\[Theta][]] Sin[
+     1, $CellContext`BC}] -> ((-$CellContext`r[]) Sin[
+       $CellContext`\[Theta][]]) Sin[
       $CellContext`\[Phi][]], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -30196,8 +30194,8 @@ Cell[BoxData[
    "\[InvisibleSpace]", "\<\" for tensor \"\>", "\[InvisibleSpace]", "Basis"}],
   SequenceForm[
   "Added independent rule ", 
-   xAct`xTensor`Basis[{2, -$CellContext`BS}, {2, $CellContext`BC}] -> Cos[
-      $CellContext`\[Theta][]] $CellContext`r[] Sin[
+   xAct`xTensor`Basis[{2, -$CellContext`BS}, {2, $CellContext`BC}] -> (Cos[
+       $CellContext`\[Theta][]] $CellContext`r[]) Sin[
       $CellContext`\[Phi][]], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -30273,8 +30271,8 @@ Cell[BoxData[
    "\[InvisibleSpace]", "\<\" for tensor \"\>", "\[InvisibleSpace]", "Basis"}],
   SequenceForm[
   "Added independent rule ", 
-   xAct`xTensor`Basis[{3, -$CellContext`BS}, {2, $CellContext`BC}] -> Cos[
-      $CellContext`\[Phi][]] $CellContext`r[] Sin[
+   xAct`xTensor`Basis[{3, -$CellContext`BS}, {2, $CellContext`BC}] -> (Cos[
+       $CellContext`\[Phi][]] $CellContext`r[]) Sin[
       $CellContext`\[Theta][]], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -30438,7 +30436,7 @@ Cell[BoxData[
   SequenceForm[
   "Added independent rule ", 
    xAct`xTensor`Basis[{2, -$CellContext`BS}, {
-     3, $CellContext`BC}] -> -$CellContext`r[] Sin[
+     3, $CellContext`BC}] -> (-$CellContext`r[]) Sin[
       $CellContext`\[Theta][]], " for tensor ", xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
@@ -36637,7 +36635,9 @@ WindowSize->{1227, 723},
 WindowMargins->{{Automatic, 241}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 ShowSelection->True,
+TrackCellChangeTimes->False,
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
 2016)",
 StyleDefinitions->"Default.nb"
 ]
+

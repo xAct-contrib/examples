@@ -3,13 +3,16 @@ Example xAct notebooks
 
 This is a collection of example xAct notebooks that contain common xAct usage patterns.
 
+**ActionVariation_Metric_Fields**
+General function to vary a Lagrangian
+
 
 **Angular-integration**
-Description
+Example of angular integration on multiple direction vectors (adapted from Post-Newtonian computations)
 
 
 **EDGB-and-DCS-EOMs-and-C-tensors-simplified**
-Description
+Getting equations of motion and simplifying "C-tensors" for Einstein-dilaton-Gauss-Bonnet and dynamical Chern-Simons theories
 
 
 **FriedmannLemaitreMetric_CoordinatesApproach_xCoBa**
@@ -17,16 +20,16 @@ It shows how to define charts and specify the components of the metric so as to 
 
 
 **Lagrangian-variation-xPert-VarD.nb**
-Description
+A common usage pattern for varying a Lagrangian with respect to the metric to get Einstein equations
 
 
 **Raychaudhuri**
-Description
+Follows section 9.2 of Wald's book (General Relativity) on Raychaudhuri for null geodesics
 
 
 **SymManipulatorLovelockExample**
-Description
+Application of the Spinors and SymManipulator package to show the Lovelock tensor is non-dynamical.
 
 
 **Warped-product**
-Description
+Minimal example 1) creating a warped product geometry and 2) breaking down the Einstein-Hilbert Lagrangian into the effective lower-dimensional Lagrangian.

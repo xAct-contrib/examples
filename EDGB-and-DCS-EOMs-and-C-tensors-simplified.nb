@@ -4458,12 +4458,12 @@ $CellContext`e, $CellContext`f],
     ShowAutoStyles->False,
     AutoSpacing->False],
    $CellContext`CD[$CellContext`c][
-    $CellContext`CD[$CellContext`d][(1/
-      4) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
-$CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
--$CellContext`f, -$CellContext`g, -$CellContext`h] \
+    $CellContext`CD[$CellContext`d][((((1/
+         4) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f]) $CellContext`RiemannCD[-$CellContext`e, \
+-$CellContext`f, -$CellContext`g, -$CellContext`h]) \
 $CellContext`epsilonmet[$CellContext`g, $CellContext`h, -$CellContext`b, \
--$CellContext`c] $CellContext`F[
+-$CellContext`c]) $CellContext`F[
        $CellContext`\[CurlyTheta][]]]],
    Editable->False], "]"}]], "Output"],
 
@@ -4631,12 +4631,12 @@ $CellContext`e, $CellContext`f],
         Editable->False], ")"}]}], "]"}],
     ShowAutoStyles->False,
     AutoSpacing->False],
-   $CellContext`CD[$CellContext`c][(1/
-     4) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
-$CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
--$CellContext`f, -$CellContext`g, -$CellContext`h] \
+   $CellContext`CD[$CellContext`c][((((1/
+        4) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f]) $CellContext`RiemannCD[-$CellContext`e, \
+-$CellContext`f, -$CellContext`g, -$CellContext`h]) \
 $CellContext`epsilonmet[$CellContext`g, $CellContext`h, -$CellContext`b, \
--$CellContext`c] $CellContext`CD[$CellContext`d][
+-$CellContext`c]) $CellContext`CD[$CellContext`d][
       $CellContext`F[
        $CellContext`\[CurlyTheta][]]]],
    Editable->False], "]"}]], "Output"],
@@ -5596,9 +5596,9 @@ $CellContext`e, $CellContext`f],
     AutoSpacing->False],
    $CellContext`CD[$CellContext`c][
     $CellContext`CD[$CellContext`d][
-    xAct`xTensor`Symmetrize[(1/
-        2) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
-$CellContext`e, $CellContext`f] $CellContext`RiemannCD[-$CellContext`e, \
+    xAct`xTensor`Symmetrize[((1/
+         2) $CellContext`epsilonmet[-$CellContext`d, -$CellContext`a, \
+$CellContext`e, $CellContext`f]) $CellContext`RiemannCD[-$CellContext`e, \
 -$CellContext`f, -$CellContext`b, -$CellContext`c], {-$CellContext`a, \
 -$CellContext`b}] $CellContext`F[
        $CellContext`\[CurlyTheta][]]]],
@@ -5684,11 +5684,12 @@ Cell[BoxData["True"], "Output"]
 }, Open  ]]
 },
 WindowSize->{1280, 774},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{Automatic, 105}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
-ShowAutoSpellCheck->False,
-FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
-21, 2016)",
-StyleDefinitions->"Default.nb"
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
+StyleDefinitions->"Default.nb",
+ShowAutoSpellCheck -> False
 ]
 
