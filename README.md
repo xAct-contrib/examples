@@ -6,11 +6,13 @@ This is a collection of example xAct notebooks that contain common xAct usage pa
 **ActionVariation_Metric_Fields**
 General function to vary a Lagrangian
 
-**Bianchi_I_xCoBa**
-Bianchi I Einstein equation using the CTensor framework of xCoBa
 
 **Angular-integration**
 Example of angular integration on multiple direction vectors (adapted from Post-Newtonian computations)
+
+
+**Bianchi_I_xCoBa**
+Bianchi I Einstein equation using the CTensor framework of xCoBa
 
 
 **EDGB-and-DCS-EOMs-and-C-tensors-simplified**
