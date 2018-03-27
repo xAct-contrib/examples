@@ -10,6 +10,9 @@ General function to vary a Lagrangian
 **Angular-integration**
 Example of angular integration on multiple direction vectors (adapted from Post-Newtonian computations)
 
+**Bianchi_I_xCoBa**
+Derives Einstein equations for Bianchi I universe using the CTensor framework provided by xCoBa
+
 
 **EDGB-and-DCS-EOMs-and-C-tensors-simplified**
 Getting equations of motion and simplifying "C-tensors" for Einstein-dilaton-Gauss-Bonnet and dynamical Chern-Simons theories
