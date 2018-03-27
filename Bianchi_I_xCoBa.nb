@@ -1,0 +1,5099 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ StyleBox["Bianchi I equations in coordinates approach\n",
+  FontSize->36],
+ StyleBox["Uses CTensor framwork of xCoBa ",
+  FontSize->16]
+}], "Subtitle"],
+
+Cell["\<\
+Cyril Pitrou (pitrou@iap.fr)
+March 2018\
+\>", "Subsubtitle"],
+
+Cell[TextData[{
+ "Summary: A basic example to show how to use CTensor\n\nFor a covariant \
+approach readily usable for obtaining cosmological perturbation theory, \nsee \
+the additional package ",
+ ButtonBox["xPand",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www2.iap.fr/users/pitrou/xpand.htm"], None},
+  ButtonNote->"http://www2.iap.fr/users/pitrou/xpand.htm"],
+ ".\n"
+}], "Subsubtitle"],
+
+Cell[CellGroupData[{
+
+Cell["Loading xCoBa", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "xAct`xCoBa`"}]], "Input",
+ ExpressionUUID -> "8765d220-1399-49fc-a566-623e538a8631"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"------------------------------------------------------------\
+\"\>"], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Package xAct`xPerm`  version \"\>", 
+   "\[InvisibleSpace]", "\<\"1.2.3\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2015", ",", "8", ",", "23"}], "}"}]}],
+  SequenceForm["Package xAct`xPerm`  version ", "1.2.3", ", ", {2015, 8, 23}],
+  
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"CopyRight (C) 2003-2018, Jose M. Martin-Garcia, under the \
+General Public License.\"\>"], "Print"],
+
+Cell[BoxData["\<\"Connecting to external mac executable...\"\>"], "Print"],
+
+Cell[BoxData["\<\"Connection established.\"\>"], "Print"],
+
+Cell[BoxData["\<\"------------------------------------------------------------\
+\"\>"], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Package xAct`xTensor`  version \"\>", 
+   "\[InvisibleSpace]", "\<\"1.1.3\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2018", ",", "2", ",", "28"}], "}"}]}],
+  SequenceForm[
+  "Package xAct`xTensor`  version ", "1.1.3", ", ", {2018, 2, 28}],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"CopyRight (C) 2002-2018, Jose M. Martin-Garcia, under the \
+General Public License.\"\>"], "Print"],
+
+Cell[BoxData["\<\"------------------------------------------------------------\
+\"\>"], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Package xAct`xCoba`  version \"\>", 
+   "\[InvisibleSpace]", "\<\"0.8.4\"\>", "\[InvisibleSpace]", "\<\", \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2018", ",", "2", ",", "28"}], "}"}]}],
+  SequenceForm["Package xAct`xCoba`  version ", "0.8.4", ", ", {2018, 2, 28}],
+  
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"CopyRight (C) 2005-2018, David Yllanes and Jose M. \
+Martin-Garcia, under the General Public License.\"\>"], "Print"],
+
+Cell[BoxData["\<\"------------------------------------------------------------\
+\"\>"], "Print"],
+
+Cell[BoxData["\<\"These packages come with ABSOLUTELY NO WARRANTY; for \
+details type Disclaimer[]. This is free software, and you are welcome to \
+redistribute it under certain conditions. See the General Public License for \
+details.\"\>"], "Print"],
+
+Cell[BoxData["\<\"------------------------------------------------------------\
+\"\>"], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$DefInfoQ", "=", "False"}], ";"}]], "Input",
+ ExpressionUUID -> "b301e1b7-703a-4bef-88ab-9f16c279c338"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Manifold", "Subsubsection"],
+
+Cell["Define a manifold . For the moment we work in xTensor.", "Text",
+ ExpressionUUID -> "0a79ba1c-d802-44c7-8ac9-c81043a7e211"],
+
+Cell[BoxData[
+ RowBox[{"DefManifold", "[", 
+  RowBox[{"M4", ",", "4", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "\[Mu]", ",", "\[Nu]", ",", "\[Alpha]", ",", "\[Beta]", ",", "\[Sigma]", 
+     ",", "\[Lambda]", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f"}], 
+    "}"}]}], "]"}]], "Input",
+ CellID->980217220,
+ ExpressionUUID -> "6c0eb81e-55d7-4c6a-8c33-ccaee072e171"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"DefMetric", "[", 
+   RowBox[{
+    RowBox[{"-", "1"}], ",", 
+    RowBox[{"g", "[", 
+     RowBox[{
+      RowBox[{"-", "a"}], ",", 
+      RowBox[{"-", "b"}]}], "]"}], ",", "CD"}], "]"}], "*)"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Charts ", "Subsubsection"],
+
+Cell["We define a chart of cartesian coordinates.", "Text"],
+
+Cell[BoxData[
+ RowBox[{"DefChart", "[", 
+  RowBox[{"cart", ",", "M4", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Eta]", "[", "]"}], ",", 
+     RowBox[{"x", "[", "]"}], ",", 
+     RowBox[{"y", "[", "]"}], ",", 
+     RowBox[{"z", "[", "]"}]}], "}"}]}], "]"}]], "Input",
+ CellID->1163760403,
+ ExpressionUUID -> "dee8c00d-3195-424a-85a5-015fda47973c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefScalarFunction", "/@", 
+   RowBox[{"{", 
+    RowBox[{
+    "\[Beta]1", ",", "\[Beta]2", ",", "\[Beta]3", ",", "a", ",", "H"}], 
+    "}"}]}], ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Beta]3", "[", 
+    RowBox[{"\[Eta]", "[", "]"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"\[Beta]1", "[", 
+      RowBox[{"\[Eta]", "[", "]"}], "]"}]}], "-", 
+    RowBox[{"\[Beta]2", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "'"}], "[", 
+    RowBox[{"\[Eta]", "[", "]"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"H", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}], 
+    RowBox[{"a", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "''"}], "[", 
+    RowBox[{"\[Eta]", "[", "]"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"H", "'"}], "[", 
+      RowBox[{"\[Eta]", "[", "]"}], "]"}], 
+     RowBox[{"a", "[", 
+      RowBox[{"\[Eta]", "[", "]"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"H", "[", 
+      RowBox[{"\[Eta]", "[", "]"}], "]"}], 
+     RowBox[{
+      RowBox[{"a", "'"}], "[", 
+      RowBox[{"\[Eta]", "[", "]"}], "]"}]}]}]}], ";"}]}], "Input"],
+
+Cell["We will consider this Bianchi I metric :", "Text",
+ ExpressionUUID -> "49f68e48-fc66-4512-bb5c-49b98391b0c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"MatrixMetric", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", 
+      RowBox[{"\[Eta]", "[", "]"}], "]"}], "^", "2"}], 
+    RowBox[{"DiagonalMatrix", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"2", " ", 
+         RowBox[{"\[Beta]1", "[", 
+          RowBox[{"\[Eta]", "[", "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"2", " ", 
+         RowBox[{"\[Beta]2", "[", 
+          RowBox[{"\[Eta]", "[", "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"2", " ", 
+         RowBox[{"\[Beta]3", "[", 
+          RowBox[{"\[Eta]", "[", "]"}], "]"}]}], "]"}]}], "}"}], "]"}]}]}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", 
+       SuperscriptBox[
+        RowBox[{
+         InterpretationBox[
+          StyleBox["a",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`a,
+          Editable->False], "[", 
+         InterpretationBox[
+          StyleBox["\[Eta]",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Eta][],
+          Editable->False], "]"}], "2"]}], "0", "0", "0"},
+     {"0", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"2", " ", 
+         RowBox[{
+          InterpretationBox[
+           StyleBox["\[Beta]1",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Beta]1,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}]], " ", 
+       SuperscriptBox[
+        RowBox[{
+         InterpretationBox[
+          StyleBox["a",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`a,
+          Editable->False], "[", 
+         InterpretationBox[
+          StyleBox["\[Eta]",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Eta][],
+          Editable->False], "]"}], "2"]}], "0", "0"},
+     {"0", "0", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"2", " ", 
+         RowBox[{
+          InterpretationBox[
+           StyleBox["\[Beta]2",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Beta]2,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}]], " ", 
+       SuperscriptBox[
+        RowBox[{
+         InterpretationBox[
+          StyleBox["a",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`a,
+          Editable->False], "[", 
+         InterpretationBox[
+          StyleBox["\[Eta]",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Eta][],
+          Editable->False], "]"}], "2"]}], "0"},
+     {"0", "0", "0", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{
+             InterpretationBox[
+              StyleBox["\[Beta]1",
+               ShowAutoStyles->False,
+               AutoSpacing->False],
+              $CellContext`\[Beta]1,
+              Editable->False], "[", 
+             InterpretationBox[
+              StyleBox["\[Eta]",
+               ShowAutoStyles->False,
+               AutoSpacing->False],
+              $CellContext`\[Eta][],
+              Editable->False], "]"}]}], "-", 
+           RowBox[{
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "[", 
+            InterpretationBox[
+             StyleBox["\[Eta]",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Eta][],
+             Editable->False], "]"}]}], ")"}]}]], " ", 
+       SuperscriptBox[
+        RowBox[{
+         InterpretationBox[
+          StyleBox["a",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`a,
+          Editable->False], "[", 
+         InterpretationBox[
+          StyleBox["\[Eta]",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Eta][],
+          Editable->False], "]"}], "2"]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell["\<\
+And we define a CTensor object which has these components with down indices.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"met", "=", 
+  RowBox[{"CTensor", "[", 
+   RowBox[{"MatrixMetric", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "cart"}], ",", 
+      RowBox[{"-", "cart"}]}], "}"}]}], "]"}]}]], "Input",
+ CellID->40036345,
+ ExpressionUUID -> "9b359698-c3fb-493a-99a5-a4ae8784f2d3"],
+
+Cell[BoxData[
+ RowBox[{"CTensor", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]}], ",", "0", ",", "0", ",", "0"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}]], " ", 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]}], ",", "0", ",", "0"}], "}"}], ",", 
+     
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}]], " ", 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{
+              InterpretationBox[
+               StyleBox["\[Beta]1",
+                ShowAutoStyles->False,
+                AutoSpacing->False],
+               $CellContext`\[Beta]1,
+               Editable->False], "[", 
+              InterpretationBox[
+               StyleBox["\[Eta]",
+                ShowAutoStyles->False,
+                AutoSpacing->False],
+               $CellContext`\[Eta][],
+               Editable->False], "]"}]}], "-", 
+            RowBox[{
+             InterpretationBox[
+              StyleBox["\[Beta]2",
+               ShowAutoStyles->False,
+               AutoSpacing->False],
+              $CellContext`\[Beta]2,
+              Editable->False], "[", 
+             InterpretationBox[
+              StyleBox["\[Eta]",
+               ShowAutoStyles->False,
+               AutoSpacing->False],
+              $CellContext`\[Eta][],
+              Editable->False], "]"}]}], ")"}]}]], " ", 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]}]}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "cart"}], ",", 
+     RowBox[{"-", "cart"}]}], "}"}], ",", "0"}], "]"}]], "Output",
+ ExpressionUUID -> "c364df9a-6a29-4af8-836b-bd339031adbe"]
+}, Open  ]],
+
+Cell["We decide that this tensor should be our metric", "Text"],
+
+Cell[BoxData[
+ RowBox[{"SetCMetric", "[", 
+  RowBox[{"met", ",", "cart", ",", 
+   RowBox[{"SignatureOfMetric", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "1"}], ",", "3", ",", "0"}], "}"}]}]}], "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"met", "[", 
+  RowBox[{
+   RowBox[{"-", "\[Mu]"}], ",", 
+   RowBox[{"-", "\[Nu]"}]}], "]"}]], "Input",
+ ExpressionUUID -> "9f63a4cf-e756-416f-8c29-eb36bc7461b5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      StyleBox[GridBox[{
+         {
+          TagBox[
+           TooltipBox[
+            RowBox[{"-", 
+             SuperscriptBox[
+              RowBox[{
+               InterpretationBox[
+                StyleBox["a",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`a,
+                Editable->False], "[", 
+               InterpretationBox[
+                StyleBox["\[Eta]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Eta][],
+                Editable->False], "]"}], "2"]}],
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+              RowBox[{"-", 
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                 "2"]}]}]],
+           Annotation[#, {1, 1} -> -$CellContext`a[
+                $CellContext`\[Eta][]]^2, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2", " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["\[Beta]1",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Beta]1,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}]], " ", 
+             SuperscriptBox[
+              RowBox[{
+               InterpretationBox[
+                StyleBox["a",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`a,
+                Editable->False], "[", 
+               InterpretationBox[
+                StyleBox["\[Eta]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Eta][],
+                Editable->False], "]"}], "2"]}],
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+              RowBox[{
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"2", " ", 
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                 "2"]}]}]],
+           Annotation[#, {2, 2} -> E^(2 $CellContext`\[Beta]1[
+                 $CellContext`\[Eta][]]) $CellContext`a[
+                $CellContext`\[Eta][]]^2, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2", " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["\[Beta]2",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Beta]2,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}]], " ", 
+             SuperscriptBox[
+              RowBox[{
+               InterpretationBox[
+                StyleBox["a",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`a,
+                Editable->False], "[", 
+               InterpretationBox[
+                StyleBox["\[Eta]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Eta][],
+                Editable->False], "]"}], "2"]}],
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+              RowBox[{
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"2", " ", 
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                 "2"]}]}]],
+           Annotation[#, {3, 3} -> E^(2 $CellContext`\[Beta]2[
+                 $CellContext`\[Eta][]]) $CellContext`a[
+                $CellContext`\[Eta][]]^2, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", 
+                  RowBox[{
+                   InterpretationBox[
+                    StyleBox["\[Beta]1",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`\[Beta]1,
+                    Editable->False], "[", 
+                   InterpretationBox[
+                    StyleBox["\[Eta]",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`\[Eta][],
+                    Editable->False], "]"}]}], "-", 
+                 RowBox[{
+                  InterpretationBox[
+                   StyleBox["\[Beta]2",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Beta]2,
+                   Editable->False], "[", 
+                  InterpretationBox[
+                   StyleBox["\[Eta]",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Eta][],
+                   Editable->False], "]"}]}], ")"}]}]], " ", 
+             SuperscriptBox[
+              RowBox[{
+               InterpretationBox[
+                StyleBox["a",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`a,
+                Editable->False], "[", 
+               InterpretationBox[
+                StyleBox["\[Eta]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Eta][],
+                Editable->False], "]"}], "2"]}],
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", 
+              RowBox[{
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"2", " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox["\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "-", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}]], " ", 
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                 "2"]}]}]],
+           Annotation[#, {4, 4} -> E^(2 (-$CellContext`\[Beta]1[
+                   $CellContext`\[Eta][]] - $CellContext`\[Beta]2[
+                 $CellContext`\[Eta][]])) $CellContext`a[
+                $CellContext`\[Eta][]]^2, "Tooltip"]& ]}
+        },
+        AutoDelete->False,
+        GridBoxDividers->{
+         "ColumnsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]},
+           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
+       FontSize->Small], 
+      StyleBox[GridBox[{
+         {" ", " "},
+         {"\[Mu]", "\[Nu]"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.]}}, "RowsIndexed" -> {}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xCoba`CTensor[{{-$CellContext`a[
+        $CellContext`\[Eta][]]^2, 0, 0, 0}, {0, E^(2 $CellContext`\[Beta]1[
+         $CellContext`\[Eta][]]) $CellContext`a[
+        $CellContext`\[Eta][]]^2, 0, 0}, {0, 0, E^(2 $CellContext`\[Beta]2[
+         $CellContext`\[Eta][]]) $CellContext`a[
+        $CellContext`\[Eta][]]^2, 0}, {0, 0, 0, E^(2 (-$CellContext`\[Beta]1[
+           $CellContext`\[Eta][]] - $CellContext`\[Beta]2[
+         $CellContext`\[Eta][]])) $CellContext`a[
+        $CellContext`\[Eta][]]^2}}, {-$CellContext`cart, -$CellContext`cart}, 
+   0][-$CellContext`\[Mu], -$CellContext`\[Nu]],
+  Editable->False]], "Output"]
+}, Open  ]],
+
+Cell["The Levi - Civita connection of this metric is CD", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CD", "=", 
+   RowBox[{"LC", "[", "met", "]"}]}], ";"}]], "Input"],
+
+Cell["\<\
+We compute the components of all curvature tensors related to this metric\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"MetricCompute", "[", 
+  RowBox[{"met", ",", "cart", ",", "All"}], "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Einstein Tensor", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Einstein", "[", "CD", "]"}], "[", 
+   RowBox[{
+    RowBox[{"-", "\[Mu]"}], ",", 
+    RowBox[{"-", "\[Nu]"}]}], "]"}], "//", "Simplify"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      StyleBox[GridBox[{
+         {
+          TagBox[
+           TooltipBox["\<\"\[GrayCircle]\"\>",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{"3", " ", 
+                  SuperscriptBox[
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]}], 
+                "-", 
+                SuperscriptBox[
+                 RowBox[{
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                "-", 
+                RowBox[{
+                  RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                  RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "-", 
+                SuperscriptBox[
+                 RowBox[{
+                   SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                 "2"]}]}]],
+           Annotation[#, {1, 1} -> 3 $CellContext`H[
+                 $CellContext`\[Eta][]]^2 - 
+             Derivative[1][$CellContext`\[Beta]1][
+               $CellContext`\[Eta][]]^2 - Derivative[1][$CellContext`\[Beta]1][
+               $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+               $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]2][
+               $CellContext`\[Eta][]]^2, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["\<\"\[GrayCircle]\"\>",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{"-", 
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]]}], 
+                " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "\[Prime]", 
+                    MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "-", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                  ")"}]}]}]],
+           Annotation[#, {2, 2} -> -E^(2 $CellContext`\[Beta]1[
+                 $CellContext`\[Eta][]]) ($CellContext`H[
+                 $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+                 $CellContext`\[Eta][]] - 2 $CellContext`H[
+                $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+                $CellContext`\[Eta][]] + 
+              Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]]^2 + 
+              Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]]^2 - Derivative[
+              2][$CellContext`\[Beta]1][
+               $CellContext`\[Eta][]]), "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["\<\"\[GrayCircle]\"\>",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{"-", 
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]]}], 
+                " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "\[Prime]", 
+                    MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "-", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, 
+                    Editable -> False], "\[Prime]", MultilineFunction -> 
+                    None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                  ")"}]}]}]],
+           Annotation[#, {3, 3} -> -E^(2 $CellContext`\[Beta]2[
+                 $CellContext`\[Eta][]]) ($CellContext`H[
+                 $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
+                $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                $CellContext`\[Eta][]] + 
+              Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]]^2 - Derivative[
+              2][$CellContext`\[Beta]2][
+               $CellContext`\[Eta][]]), "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["\<\"\[GrayCircle]\"\>",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", 
+              RowBox[{
+                RowBox[{"-", 
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{
+                    RowBox[{"-", "2"}], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}]]}], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "\[Prime]", 
+                    MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                  ")"}]}]}]],
+           Annotation[#, {4, 4} -> -E^((-2) ($CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]])) ($CellContext`H[
+                 $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]]^2 + 
+              Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
+                 $CellContext`\[Eta][]] (
+                Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] + 
+                Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]) + 
+              Derivative[2][$CellContext`\[Beta]1][
+                $CellContext`\[Eta][]] + 
+              Derivative[2][$CellContext`\[Beta]2][
+                $CellContext`\[Eta][]]), "Tooltip"]& ]}
+        },
+        AutoDelete->False,
+        GridBoxDividers->{
+         "ColumnsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]},
+           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
+       FontSize->Small], 
+      StyleBox[GridBox[{
+         {" ", " "},
+         {"\[Mu]", "\[Nu]"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.]}}, "RowsIndexed" -> {}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xCoba`CTensor[{{3 $CellContext`H[
+         $CellContext`\[Eta][]]^2 - Derivative[1][$CellContext`\[Beta]1][
+       $CellContext`\[Eta][]]^2 - Derivative[1][$CellContext`\[Beta]1][
+       $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+       $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]2][
+       $CellContext`\[Eta][]]^2, 0, 0, 0}, {0, -E^(2 $CellContext`\[Beta]1[
+         $CellContext`\[Eta][]]) ($CellContext`H[
+         $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+         $CellContext`\[Eta][]] - 2 $CellContext`H[
+        $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+        $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]1][
+       $CellContext`\[Eta][]]), 0, 0}, {0, 0, -E^(2 $CellContext`\[Beta]2[
+         $CellContext`\[Eta][]]) ($CellContext`H[
+         $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
+        $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+        $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]2][
+       $CellContext`\[Eta][]]), 0}, {
+    0, 0, 0, -E^((-2) ($CellContext`\[Beta]1[
+          $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]])) ($CellContext`H[
+         $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
+         $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]) + Derivative[2][$CellContext`\[Beta]1][
+        $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
+        $CellContext`\[Eta][]])}}, {-$CellContext`cart, -$CellContext`cart}, 
+   0][-$CellContext`\[Mu], -$CellContext`\[Nu]],
+  Editable->False]], "Output",
+ FontSize->24]
+}, Open  ]],
+
+Cell["This works to get a table of components", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "@", 
+  RowBox[{"ComponentArray", "[", 
+   RowBox[{
+    RowBox[{"Einstein", "[", "CD", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"cart", ",", 
+      RowBox[{"-", "cart"}]}], "}"}]}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "3"}], " ", 
+         SuperscriptBox[
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"]}], "+", 
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"], "+", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}], "+", 
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]}], 
+       SuperscriptBox[
+        RowBox[{
+         InterpretationBox[
+          StyleBox["a",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`a,
+          Editable->False], "[", 
+         InterpretationBox[
+          StyleBox["\[Eta]",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Eta][],
+          Editable->False], "]"}], "2"]], "0", "0", "0"},
+     {"0", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "+", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["H",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`H,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "+", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "-", 
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}], 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]]}], "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "+", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["H",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`H,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "-", 
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}], 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]]}], "0"},
+     {"0", "0", "0", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "+", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["H",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`H,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "+", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]1",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]1,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], " ", 
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}]}], "+", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox[
+            InterpretationBox[
+             StyleBox["\[Beta]2",
+              ShowAutoStyles->False,
+              AutoSpacing->False],
+             $CellContext`\[Beta]2,
+             Editable->False], "\[Prime]",
+            MultilineFunction->None], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], "2"], "+", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           InterpretationBox[
+            StyleBox["H",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`H,
+            Editable->False], "[", 
+           InterpretationBox[
+            StyleBox["\[Eta]",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Eta][],
+            Editable->False], "]"}], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox[
+              InterpretationBox[
+               StyleBox["\[Beta]1",
+                ShowAutoStyles->False,
+                AutoSpacing->False],
+               $CellContext`\[Beta]1,
+               Editable->False], "\[Prime]",
+              MultilineFunction->None], "[", 
+             InterpretationBox[
+              StyleBox["\[Eta]",
+               ShowAutoStyles->False,
+               AutoSpacing->False],
+              $CellContext`\[Eta][],
+              Editable->False], "]"}], "+", 
+            RowBox[{
+             SuperscriptBox[
+              InterpretationBox[
+               StyleBox["\[Beta]2",
+                ShowAutoStyles->False,
+                AutoSpacing->False],
+               $CellContext`\[Beta]2,
+               Editable->False], "\[Prime]",
+              MultilineFunction->None], "[", 
+             InterpretationBox[
+              StyleBox["\[Eta]",
+               ShowAutoStyles->False,
+               AutoSpacing->False],
+              $CellContext`\[Eta][],
+              Editable->False], "]"}]}], ")"}]}], "+", 
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "+", 
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}], 
+        SuperscriptBox[
+         RowBox[{
+          InterpretationBox[
+           StyleBox["a",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`a,
+           Editable->False], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Stress - energy Tensor", "Subsubsection"],
+
+Cell["We define scalar functions for energy density and Pressure", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefScalarFunction", "/@", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]", ",", "P"}], "}"}]}], ";"}]], "Input"],
+
+Cell["We define a CTensor for the velocity vector", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cu", "=", 
+  RowBox[{"CTensor", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"1", "/", 
+       RowBox[{"a", "[", 
+        RowBox[{"\[Eta]", "[", "]"}], "]"}]}], ",", "0", ",", "0", ",", "0"}],
+      "}"}], ",", 
+    RowBox[{"{", "cart", "}"}], ",", "0"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"CTensor", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       InterpretationBox[
+        StyleBox["a",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`a,
+        Editable->False], "[", 
+       InterpretationBox[
+        StyleBox["\[Eta]",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`\[Eta][],
+        Editable->False], "]"}]], ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   
+   RowBox[{"{", "cart", "}"}], ",", "0"}], "]"}]], "Output"]
+}, Open  ]],
+
+Cell["It is normalized", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Cu", "[", "\[Mu]", "]"}], 
+  RowBox[{"Cu", "[", "\[Nu]", "]"}], 
+  RowBox[{"met", "[", 
+   RowBox[{
+    RowBox[{"-", "\[Mu]"}], ",", 
+    RowBox[{"-", "\[Nu]"}]}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"-", "1"}]], "Output"]
+}, Open  ]],
+
+Cell["A spatial projector is useful", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"h", "[", 
+    RowBox[{"\[Mu]_", ",", "\[Nu]_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"met", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "+", 
+    RowBox[{
+     RowBox[{"Cu", "[", "\[Mu]", "]"}], 
+     RowBox[{"Cu", "[", "\[Nu]", "]"}]}]}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"h", "[", 
+  RowBox[{"\[Mu]", ",", 
+   RowBox[{"-", "\[Nu]"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      StyleBox[GridBox[{
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["1",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", "1"}]],
+           Annotation[#, {2, 2} -> 1, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["1",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", "1"}]],
+           Annotation[#, {3, 3} -> 1, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["1",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", "1"}]],
+           Annotation[#, {4, 4} -> 1, "Tooltip"]& ]}
+        },
+        AutoDelete->False,
+        GridBoxDividers->{
+         "ColumnsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]},
+           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
+       FontSize->Small], 
+      StyleBox[GridBox[{
+         {"\[Mu]", " "},
+         {" ", "\[Nu]"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.]}}, "RowsIndexed" -> {}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xCoba`CTensor[{{0, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 
+   1}}, {$CellContext`cart, -$CellContext`cart}, 
+   0][$CellContext`\[Mu], -$CellContext`\[Nu]],
+  Editable->False]], "Output"]
+}, Open  ]],
+
+Cell["We use it to build the stress - energy tensor. ", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"T", "[", 
+   RowBox[{"\[Mu]_", ",", "\[Nu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Rho]", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}], 
+    RowBox[{"Cu", "[", "\[Mu]", "]"}], 
+    RowBox[{"Cu", "[", "\[Nu]", "]"}]}], "+", 
+   RowBox[{
+    RowBox[{"P", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}], 
+    RowBox[{"h", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DefConstantSymbol", "[", "\[Kappa]", "]"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"\[Kappa]", "=", 
+    RowBox[{"8", "\[Pi]", " ", "G"}]}], "*)"}]}]], "Input"],
+
+Cell["Einstein Equations", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Kappa]", " ", 
+   RowBox[{"T", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "==", 
+  RowBox[{
+   RowBox[{"Einstein", "[", "CD", "]"}], "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  InterpretationBox[
+   StyleBox[GridBox[{
+      {
+       StyleBox[GridBox[{
+          {
+           TagBox[
+            TooltipBox[
+             FractionBox[
+              RowBox[{
+               InterpretationBox[
+                StyleBox["\[Kappa]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Kappa],
+                Editable->False], " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["\[Rho]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Rho],
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}], 
+              SuperscriptBox[
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["a",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`a,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}], "2"]],
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+               FractionBox[
+                RowBox[{
+                  InterpretationBox[
+                   StyleBox[
+                    RowBox[{"\[Kappa]"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Kappa], Editable -> 
+                   False], " ", 
+                  RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Rho]"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`\[Rho], Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
+            Annotation[#, {1, 1} -> $CellContext`\[Kappa] $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2) $CellContext`\[Rho][
+                $CellContext`\[Eta][]], "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
+          {
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox[
+             FractionBox[
+              RowBox[{
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "2"}], " ", 
+                 RowBox[{
+                  InterpretationBox[
+                   StyleBox["\[Beta]1",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Beta]1,
+                   Editable->False], "[", 
+                  InterpretationBox[
+                   StyleBox["\[Eta]",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Eta][],
+                   Editable->False], "]"}]}]], " ", 
+               InterpretationBox[
+                StyleBox["\[Kappa]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Kappa],
+                Editable->False], " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["P",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`P,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}], 
+              SuperscriptBox[
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["a",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`a,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}], "2"]],
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+               FractionBox[
+                RowBox[{
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{
+                    RowBox[{"-", "2"}], " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                  
+                  InterpretationBox[
+                   StyleBox[
+                    RowBox[{"\[Kappa]"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Kappa], Editable -> 
+                   False], " ", 
+                  RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"P"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`P, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
+            Annotation[#, {2, 2} -> E^((-2) $CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2) $CellContext`P[
+                $CellContext`\[Eta][]], "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
+          {
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox[
+             FractionBox[
+              RowBox[{
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{
+                 RowBox[{"-", "2"}], " ", 
+                 RowBox[{
+                  InterpretationBox[
+                   StyleBox["\[Beta]2",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Beta]2,
+                   Editable->False], "[", 
+                  InterpretationBox[
+                   StyleBox["\[Eta]",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Eta][],
+                   Editable->False], "]"}]}]], " ", 
+               InterpretationBox[
+                StyleBox["\[Kappa]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Kappa],
+                Editable->False], " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["P",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`P,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}], 
+              SuperscriptBox[
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["a",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`a,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}], "2"]],
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+               FractionBox[
+                RowBox[{
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{
+                    RowBox[{"-", "2"}], " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                  
+                  InterpretationBox[
+                   StyleBox[
+                    RowBox[{"\[Kappa]"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Kappa], Editable -> 
+                   False], " ", 
+                  RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"P"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`P, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
+            Annotation[#, {3, 3} -> E^((-2) $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2) $CellContext`P[
+                $CellContext`\[Eta][]], "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
+          {
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox[
+             FractionBox[
+              RowBox[{
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"2", " ", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox["\[Beta]1",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`\[Beta]1,
+                    Editable->False], "[", 
+                    InterpretationBox[
+                    StyleBox["\[Eta]",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`\[Eta][],
+                    Editable->False], "]"}], "+", 
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox["\[Beta]2",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`\[Beta]2,
+                    Editable->False], "[", 
+                    InterpretationBox[
+                    StyleBox["\[Eta]",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                    $CellContext`\[Eta][],
+                    Editable->False], "]"}]}], ")"}]}]], " ", 
+               InterpretationBox[
+                StyleBox["\[Kappa]",
+                 ShowAutoStyles->False,
+                 AutoSpacing->False],
+                $CellContext`\[Kappa],
+                Editable->False], " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["P",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`P,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}], 
+              SuperscriptBox[
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["a",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`a,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}], "2"]],
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", 
+               FractionBox[
+                RowBox[{
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{"2", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}]], " ", 
+                  InterpretationBox[
+                   StyleBox[
+                    RowBox[{"\[Kappa]"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Kappa], Editable -> 
+                   False], " ", 
+                  RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"P"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`P, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                SuperscriptBox[
+                 RowBox[{
+                   InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                   InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
+            Annotation[#, {4, 4} -> E^(2 ($CellContext`\[Beta]1[
+                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                   $CellContext`\[Eta][]])) $CellContext`\[Kappa] \
+$CellContext`a[
+                 $CellContext`\[Eta][]]^(-2) $CellContext`P[
+                $CellContext`\[Eta][]], "Tooltip"]& ]}
+         },
+         AutoDelete->False,
+         GridBoxDividers->{
+          "ColumnsIndexed" -> {
+            1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}, 
+           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
+        FontSize->Small], 
+       StyleBox[GridBox[{
+          {"\[Mu]", "\[Nu]"},
+          {" ", " "}
+         },
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+              Offset[0.]}}, "RowsIndexed" -> {}}],
+        FontSize->Rational[39, 4]]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.034999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   xAct`xCoba`CTensor[{{$CellContext`\[Kappa] $CellContext`a[
+         $CellContext`\[Eta][]]^(-2) $CellContext`\[Rho][
+        $CellContext`\[Eta][]], 0, 0, 0}, {0, E^((-2) $CellContext`\[Beta]1[
+          $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
+         $CellContext`\[Eta][]]^(-2) $CellContext`P[
+        $CellContext`\[Eta][]], 0, 0}, {0, 0, E^((-2) $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
+         $CellContext`\[Eta][]]^(-2) $CellContext`P[
+        $CellContext`\[Eta][]], 0}, {0, 0, 0, E^(2 ($CellContext`\[Beta]1[
+           $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+           $CellContext`\[Eta][]])) $CellContext`\[Kappa] $CellContext`a[
+         $CellContext`\[Eta][]]^(-2) $CellContext`P[
+        $CellContext`\[Eta][]]}}, {$CellContext`cart, $CellContext`cart}, 
+    0][$CellContext`\[Mu], $CellContext`\[Nu]],
+   Editable->False], "\[Equal]", 
+  InterpretationBox[
+   StyleBox[GridBox[{
+      {
+       StyleBox[GridBox[{
+          {
+           TagBox[
+            TooltipBox["\<\"\[GrayCircle]\"\>",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+               RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "3"}], " ", 
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]}], 
+                    "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]}], 
+                  
+                  SuperscriptBox[
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                   "4"]]}]}]],
+            Annotation[#, {1, 1} -> -$CellContext`a[
+                 $CellContext`\[Eta][]]^(-4) ((-3) $CellContext`H[
+                   $CellContext`\[Eta][]]^2 + 
+               Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]]^2 + 
+               Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] 
+                Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]] + 
+               Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]^2), "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
+          {
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["\<\"\[GrayCircle]\"\>",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+               RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{
+                    RowBox[{"-", "2"}], " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                    
+                    RowBox[{"(", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "\[Prime]", 
+                    MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "-", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}], 
+                  SuperscriptBox[
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                   "4"]]}]}]],
+            Annotation[#, {2, 2} -> -E^((-2) $CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]]) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+                  $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+                  $CellContext`\[Eta][]] - 2 $CellContext`H[
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]]^2 + 
+               Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] 
+                Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]] + 
+               Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]^2 - Derivative[
+               2][$CellContext`\[Beta]1][
+                $CellContext`\[Eta][]]), "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
+          {
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["\<\"\[GrayCircle]\"\>",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+               RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{
+                    RowBox[{"-", "2"}], " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                    
+                    RowBox[{"(", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "\[Prime]", 
+                    MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "-", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}], 
+                  SuperscriptBox[
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                   "4"]]}]}]],
+            Annotation[#, {3, 3} -> -E^((-2) $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]]) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+                  $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+                  $CellContext`\[Eta][]] + 
+               Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] 
+                Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]] + 
+               Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]^2 - Derivative[
+               2][$CellContext`\[Beta]2][
+                $CellContext`\[Eta][]]), "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
+          {
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["0",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+            Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
+           TagBox[
+            TooltipBox["\<\"\[GrayCircle]\"\>",
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", 
+               RowBox[{"-", 
+                 FractionBox[
+                  RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"2", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}]], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "\[Prime]", 
+                    MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    SuperscriptBox[
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
+                    "+", 
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}], 
+                  SuperscriptBox[
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"a"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`a, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], 
+                   "4"]]}]}]],
+            Annotation[#, {4, 4} -> -E^(2 ($CellContext`\[Beta]1[
+                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                   $CellContext`\[Eta][]])) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+                  $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+                  $CellContext`\[Eta][]] + 
+               Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]]^2 + 
+               Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] 
+                Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]] + 
+               Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
+                  $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+                   $CellContext`\[Eta][]] + 
+                 Derivative[1][$CellContext`\[Beta]2][
+                   $CellContext`\[Eta][]]) + 
+               Derivative[2][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]]), "Tooltip"]& ]}
+         },
+         AutoDelete->False,
+         GridBoxDividers->{
+          "ColumnsIndexed" -> {
+            1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}, 
+           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
+        FontSize->Small], 
+       StyleBox[GridBox[{
+          {"\[Mu]", "\[Nu]"},
+          {" ", " "}
+         },
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+              Offset[0.]}}, "RowsIndexed" -> {}}],
+        FontSize->Rational[39, 4]]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.034999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   xAct`xCoba`CTensor[{{-$CellContext`a[
+         $CellContext`\[Eta][]]^(-4) ((-3) $CellContext`H[
+           $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]^2), 0, 0, 0}, {
+     0, -E^((-2) $CellContext`\[Beta]1[
+          $CellContext`\[Eta][]]) $CellContext`a[
+         $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+          $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+          $CellContext`\[Eta][]] - 2 $CellContext`H[
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]1][
+        $CellContext`\[Eta][]]), 0, 0}, {
+     0, 0, -E^((-2) $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]]) $CellContext`a[
+         $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+          $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]2][
+        $CellContext`\[Eta][]]), 0}, {0, 0, 0, -E^(2 ($CellContext`\[Beta]1[
+           $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+           $CellContext`\[Eta][]])) $CellContext`a[
+         $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+          $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
+          $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+           $CellContext`\[Eta][]]) + Derivative[2][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]])}}, {$CellContext`cart, $CellContext`cart}, 
+    0][$CellContext`\[Mu], $CellContext`\[Nu]],
+   Editable->False]}]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"EinsteinEq", "[", 
+    RowBox[{"\[Mu]_", ",", "\[Nu]_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Einstein", "[", "CD", "]"}], "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "-", 
+    RowBox[{"\[Kappa]", " ", 
+     RowBox[{"T", "[", 
+      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]}]}], ";"}]], "Input"],
+
+Cell[TextData[{
+ "1) Friedmann equation to get ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["H", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}], "^", "2"}], 
+   RowBox[{"EinsteinEq", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "cart"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "cart"}]}], "}"}]}], "]"}]}], "//", 
+  "Simplify"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "3"}], " ", 
+   SuperscriptBox[
+    RowBox[{
+     InterpretationBox[
+      StyleBox["H",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`H,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], "2"]}], "+", 
+  RowBox[{
+   InterpretationBox[
+    StyleBox["\[Kappa]",
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`\[Kappa],
+    Editable->False], " ", 
+   SuperscriptBox[
+    RowBox[{
+     InterpretationBox[
+      StyleBox["a",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`a,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], "2"], " ", 
+   RowBox[{
+    InterpretationBox[
+     StyleBox["\[Rho]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Rho],
+     Editable->False], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}]}], "+", 
+  SuperscriptBox[
+   RowBox[{
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["\[Beta]1",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Beta]1,
+      Editable->False], "\[Prime]",
+     MultilineFunction->None], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}], "2"], "+", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["\[Beta]1",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Beta]1,
+      Editable->False], "\[Prime]",
+     MultilineFunction->None], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}], " ", 
+   RowBox[{
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["\[Beta]2",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Beta]2,
+      Editable->False], "\[Prime]",
+     MultilineFunction->None], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}]}], "+", 
+  SuperscriptBox[
+   RowBox[{
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["\[Beta]2",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Beta]2,
+      Editable->False], "\[Prime]",
+     MultilineFunction->None], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}], "2"]}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+ "2) Acceleration equation from ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     SuperscriptBox["G", "i"], "i"], "=", 
+    SubscriptBox[
+     SuperscriptBox["T", "i"], "i"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " to get H\[CloseCurlyQuote]"
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", 
+     RowBox[{"\[Eta]", "[", "]"}], "]"}], "^", "2"}], 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"EinsteinEq", "[", 
+       RowBox[{
+        RowBox[{"-", "\[Mu]"}], ",", 
+        RowBox[{"-", "\[Nu]"}]}], "]"}], 
+      RowBox[{"h", "[", 
+       RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"EinsteinEq", "[", 
+       RowBox[{
+        RowBox[{"-", "\[Mu]"}], ",", 
+        RowBox[{"-", "\[Nu]"}]}], "]"}], 
+      RowBox[{"Cu", "[", "\[Mu]", "]"}], 
+      RowBox[{"Cu", "[", "\[Nu]", "]"}]}]}], ")"}]}], "//", 
+  "FullSimplify"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", 
+    InterpretationBox[
+     StyleBox["\[Kappa]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Kappa],
+     Editable->False]}], " ", 
+   SuperscriptBox[
+    RowBox[{
+     InterpretationBox[
+      StyleBox["a",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`a,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], "2"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"3", " ", 
+      RowBox[{
+       InterpretationBox[
+        StyleBox["P",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`P,
+        Editable->False], "[", 
+       InterpretationBox[
+        StyleBox["\[Eta]",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`\[Eta][],
+        Editable->False], "]"}]}], "+", 
+     RowBox[{
+      InterpretationBox[
+       StyleBox["\[Rho]",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Rho],
+       Editable->False], "[", 
+      InterpretationBox[
+       StyleBox["\[Eta]",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Eta][],
+       Editable->False], "]"}]}], ")"}]}], "-", 
+  RowBox[{"2", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"3", " ", 
+      RowBox[{
+       SuperscriptBox[
+        InterpretationBox[
+         StyleBox["H",
+          ShowAutoStyles->False,
+          AutoSpacing->False],
+         $CellContext`H,
+         Editable->False], "\[Prime]",
+        MultilineFunction->None], "[", 
+       InterpretationBox[
+        StyleBox["\[Eta]",
+         ShowAutoStyles->False,
+         AutoSpacing->False],
+        $CellContext`\[Eta][],
+        Editable->False], "]"}]}], "+", 
+     RowBox[{"2", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"], "+", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]1",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]1,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], " ", 
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}]}], "+", 
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox[
+           InterpretationBox[
+            StyleBox["\[Beta]2",
+             ShowAutoStyles->False,
+             AutoSpacing->False],
+            $CellContext`\[Beta]2,
+            Editable->False], "\[Prime]",
+           MultilineFunction->None], "[", 
+          InterpretationBox[
+           StyleBox["\[Eta]",
+            ShowAutoStyles->False,
+            AutoSpacing->False],
+           $CellContext`\[Eta][],
+           Editable->False], "]"}], "2"]}], ")"}]}]}], ")"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+ "3) TracelessPart with respect to the spatial metric to get ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    SubscriptBox["\[Beta]", "1"], "'"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    SubscriptBox["\[Beta]", "2"], "'"], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EinsteinSTF", "[", 
+   RowBox[{"\[Mu]_", ",", "\[Nu]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"h", "[", 
+      RowBox[{"\[Mu]", ",", "\[Alpha]"}], "]"}], 
+     RowBox[{"h", "[", 
+      RowBox[{"\[Nu]", ",", "\[Beta]"}], "]"}], 
+     RowBox[{"EinsteinEq", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Alpha]"}], ",", 
+       RowBox[{"-", "\[Beta]"}]}], "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"1", "/", "3"}], "*", 
+     RowBox[{"h", "[", 
+      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], 
+     RowBox[{"EinsteinEq", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Alpha]"}], ",", 
+       RowBox[{"-", "\[Beta]"}]}], "]"}], 
+     RowBox[{"h", "[", 
+      RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]}]}], "//", 
+   "Simplify"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EinsteinSTF", "[", 
+  RowBox[{
+   RowBox[{"-", "\[Mu]"}], ",", 
+   RowBox[{"-", "\[Nu]"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      StyleBox[GridBox[{
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2", " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["\[Beta]1",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Beta]1,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}]], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"2", " ", 
+                RowBox[{
+                 InterpretationBox[
+                  StyleBox["H",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`H,
+                  Editable->False], "[", 
+                 InterpretationBox[
+                  StyleBox["\[Eta]",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`\[Eta][],
+                  Editable->False], "]"}], " ", 
+                RowBox[{
+                 SuperscriptBox[
+                  InterpretationBox[
+                   StyleBox["\[Beta]1",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Beta]1,
+                   Editable->False], "\[Prime]",
+                  MultilineFunction->None], "[", 
+                 InterpretationBox[
+                  StyleBox["\[Eta]",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`\[Eta][],
+                  Editable->False], "]"}]}], "+", 
+               RowBox[{
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["\[Beta]1",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`\[Beta]1,
+                  Editable->False], "\[Prime]\[Prime]",
+                 MultilineFunction->None], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}], ")"}]}],
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", 
+              RowBox[{
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"2", " ", 
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                  ")"}]}]}]],
+           Annotation[#, {2, 2} -> E^(2 $CellContext`\[Beta]1[
+                 $CellContext`\[Eta][]]) (2 $CellContext`H[
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]1][
+                $CellContext`\[Eta][]]), "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox[
+            RowBox[{
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2", " ", 
+               RowBox[{
+                InterpretationBox[
+                 StyleBox["\[Beta]2",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Beta]2,
+                 Editable->False], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}]], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"2", " ", 
+                RowBox[{
+                 InterpretationBox[
+                  StyleBox["H",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`H,
+                  Editable->False], "[", 
+                 InterpretationBox[
+                  StyleBox["\[Eta]",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`\[Eta][],
+                  Editable->False], "]"}], " ", 
+                RowBox[{
+                 SuperscriptBox[
+                  InterpretationBox[
+                   StyleBox["\[Beta]2",
+                    ShowAutoStyles->False,
+                    AutoSpacing->False],
+                   $CellContext`\[Beta]2,
+                   Editable->False], "\[Prime]",
+                  MultilineFunction->None], "[", 
+                 InterpretationBox[
+                  StyleBox["\[Eta]",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`\[Eta][],
+                  Editable->False], "]"}]}], "+", 
+               RowBox[{
+                SuperscriptBox[
+                 InterpretationBox[
+                  StyleBox["\[Beta]2",
+                   ShowAutoStyles->False,
+                   AutoSpacing->False],
+                  $CellContext`\[Beta]2,
+                  Editable->False], "\[Prime]\[Prime]",
+                 MultilineFunction->None], "[", 
+                InterpretationBox[
+                 StyleBox["\[Eta]",
+                  ShowAutoStyles->False,
+                  AutoSpacing->False],
+                 $CellContext`\[Eta][],
+                 Editable->False], "]"}]}], ")"}]}],
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", 
+              RowBox[{
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{"2", " ", 
+                   RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}]], " ", 
+                
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{"2", " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                  ")"}]}]}]],
+           Annotation[#, {3, 3} -> E^(2 $CellContext`\[Beta]2[
+                 $CellContext`\[Eta][]]) (2 $CellContext`H[
+                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
+                $CellContext`\[Eta][]]), "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
+         {
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["0",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
+           Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
+          TagBox[
+           TooltipBox["\<\"\[GrayCircle]\"\>",
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", 
+              RowBox[{
+                SuperscriptBox["\[ExponentialE]", 
+                 RowBox[{
+                   RowBox[{"-", "2"}], " ", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}]], " ", 
+                RowBox[{"(", 
+                  RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "2"}], " ", 
+                    RowBox[{
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
+                    False], $CellContext`H, Editable -> False], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "+", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]", MultilineFunction -> None], "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}], "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]1"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]1, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}], "-", 
+                    RowBox[{
+                    SuperscriptBox[
+                    InterpretationBox[
+                    StyleBox[
+                    RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "\[Prime]\[Prime]", MultilineFunction -> None], 
+                    "[", 
+                    InterpretationBox[
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                  ")"}]}]}]],
+           Annotation[#, {4, 4} -> E^((-2) ($CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]])) ((-2) $CellContext`H[
+                 $CellContext`\[Eta][]] (
+                Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] + 
+                Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]) - Derivative[
+              2][$CellContext`\[Beta]1][
+               $CellContext`\[Eta][]] - Derivative[2][$CellContext`\[Beta]2][
+               $CellContext`\[Eta][]]), "Tooltip"]& ]}
+        },
+        AutoDelete->False,
+        GridBoxDividers->{
+         "ColumnsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]},
+           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
+       FontSize->Small], 
+      StyleBox[GridBox[{
+         {" ", " "},
+         {"\[Mu]", "\[Nu]"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.]}}, "RowsIndexed" -> {}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xCoba`CTensor[{{0, 0, 0, 0}, {0, E^(2 $CellContext`\[Beta]1[
+         $CellContext`\[Eta][]]) (2 $CellContext`H[
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]1][
+        $CellContext`\[Eta][]]), 0, 0}, {0, 0, E^(2 $CellContext`\[Beta]2[
+         $CellContext`\[Eta][]]) (2 $CellContext`H[
+         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
+        $CellContext`\[Eta][]]), 0}, {
+    0, 0, 0, E^((-2) ($CellContext`\[Beta]1[
+          $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]])) ((-2) $CellContext`H[
+         $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]) - Derivative[2][$CellContext`\[Beta]1][
+       $CellContext`\[Eta][]] - Derivative[2][$CellContext`\[Beta]2][
+       $CellContext`\[Eta][]])}}, {-$CellContext`cart, -$CellContext`cart}, 
+   0][-$CellContext`\[Mu], -$CellContext`\[Nu]],
+  Editable->False]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"EinsteinSTF", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "cart"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"-", "cart"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"EinsteinSTF", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "cart"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{"-", "cart"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"EinsteinSTF", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3", ",", "cart"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     RowBox[{"-", "cart"}]}], "}"}]}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{
+     InterpretationBox[
+      StyleBox["H",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`H,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], " ", 
+    RowBox[{
+     SuperscriptBox[
+      InterpretationBox[
+       StyleBox["\[Beta]1",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Beta]1,
+       Editable->False], "\[Prime]",
+      MultilineFunction->None], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}]}], "+", 
+   RowBox[{
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["\[Beta]1",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Beta]1,
+      Editable->False], "\[Prime]\[Prime]",
+     MultilineFunction->None], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}]}], 
+  SuperscriptBox[
+   RowBox[{
+    InterpretationBox[
+     StyleBox["a",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`a,
+     Editable->False], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}], "2"]]], "Output"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    RowBox[{
+     InterpretationBox[
+      StyleBox["H",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`H,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], " ", 
+    RowBox[{
+     SuperscriptBox[
+      InterpretationBox[
+       StyleBox["\[Beta]2",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Beta]2,
+       Editable->False], "\[Prime]",
+      MultilineFunction->None], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}]}], "+", 
+   RowBox[{
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["\[Beta]2",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Beta]2,
+      Editable->False], "\[Prime]\[Prime]",
+     MultilineFunction->None], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}]}], 
+  SuperscriptBox[
+   RowBox[{
+    InterpretationBox[
+     StyleBox["a",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`a,
+     Editable->False], "[", 
+    InterpretationBox[
+     StyleBox["\[Eta]",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Eta][],
+     Editable->False], "]"}], "2"]]], "Output"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"2", " ", 
+     RowBox[{
+      InterpretationBox[
+       StyleBox["H",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`H,
+       Editable->False], "[", 
+      InterpretationBox[
+       StyleBox["\[Eta]",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Eta][],
+       Editable->False], "]"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        SuperscriptBox[
+         InterpretationBox[
+          StyleBox["\[Beta]1",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Beta]1,
+          Editable->False], "\[Prime]",
+         MultilineFunction->None], "[", 
+        InterpretationBox[
+         StyleBox["\[Eta]",
+          ShowAutoStyles->False,
+          AutoSpacing->False],
+         $CellContext`\[Eta][],
+         Editable->False], "]"}], "+", 
+       RowBox[{
+        SuperscriptBox[
+         InterpretationBox[
+          StyleBox["\[Beta]2",
+           ShowAutoStyles->False,
+           AutoSpacing->False],
+          $CellContext`\[Beta]2,
+          Editable->False], "\[Prime]",
+         MultilineFunction->None], "[", 
+        InterpretationBox[
+         StyleBox["\[Eta]",
+          ShowAutoStyles->False,
+          AutoSpacing->False],
+         $CellContext`\[Eta][],
+         Editable->False], "]"}]}], ")"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      InterpretationBox[
+       StyleBox["\[Beta]1",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Beta]1,
+       Editable->False], "\[Prime]\[Prime]",
+      MultilineFunction->None], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      InterpretationBox[
+       StyleBox["\[Beta]2",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Beta]2,
+       Editable->False], "\[Prime]\[Prime]",
+      MultilineFunction->None], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}]}], 
+   SuperscriptBox[
+    RowBox[{
+     InterpretationBox[
+      StyleBox["a",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`a,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Eta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Eta][],
+      Editable->False], "]"}], "2"]]}]], "Output"]
+}, Open  ]],
+
+Cell["\<\
+Of course the traceless part is traceless so the sum of these shear evolution \
+equations is 0\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"%", "+", "%%", "+", "%%%"}], "//", "Simplify"}]], "Input"],
+
+Cell[BoxData["0"], "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 755},
+WindowMargins->{{389, Automatic}, {Automatic, 15}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+
