@@ -3886,7 +3886,12 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
          $CellContext`\[Eta][]])}}, {$CellContext`cart, $CellContext`cart}, 
     0][$CellContext`\[Mu], $CellContext`\[Nu]],
    Editable->False]}]], "Output"]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Einstein Equations", "Subsubsection"],
 
 Cell[BoxData[
  RowBox[{
