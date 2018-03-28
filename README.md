@@ -21,7 +21,7 @@ TODO description
 **Conformal_Transformation**
 Tools to perform conformal transformations and examples. Adapted from a subpart of xPand's code.
 
-**EB-decomp-and-3+1-split**
+**EB-decomp-and-3plus1-split**
 Examples of 1+3 decomposition applied to the Weyl tensor
 
 
