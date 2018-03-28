@@ -39,10 +39,10 @@ Cell[TextData[ButtonBox["http://www2.iap.fr/users/pitrou/",
 
 Cell[TextData[{
  "This notebook shows how to compute homogeneous cosmology equations \
-(Friedmann-Lemaitre universe), using xCoBa.\nIt uses the old method of xCoBa \
+(Friedmann-Lemaitre universe), using xCoba.\nIt uses the old method of xCoBa \
 (known as the \[OpenCurlyQuote]TensorValues\[CloseCurlyQuote] approach). In \
 the future, one should prefer the \[OpenCurlyQuote]CTensor\[CloseCurlyQuote] \
-approach of xCoBa.\nIt shows\n1) How to set a metric in a specific \
+approach of xCoba.\nIt shows\n1) How to set a metric in a specific \
 coordinates system\n2) How to obtain the components of the related curvature \
 tensors (Riemann Ricci, etc...)\n3) How to define a stress energy tensor and \
 how to get Einstein equations\n4) How to express results with a different \
@@ -68,7 +68,7 @@ Cell[CellGroupData[{
 Cell["Set - up", "Subsection"],
 
 Cell["\<\
-First we load xCoBa. This loads all other packages required, that is xTensor \
+First we load xCoba. This loads all other packages required, that is xTensor \
 essentially. All these packages are part of the xAct distribution\
 \>", "Text"],
 
@@ -4937,7 +4937,7 @@ Cell[BoxData[
 
 Cell["\<\
 However we have a problem for Einstein tensor with one or two up indices. So \
-far xCoBa does not know its values.\
+far xCoba does not know its values.\
 \>", "Text"],
 
 Cell[CellGroupData[{
@@ -36632,7 +36632,7 @@ Cell["It was nicer in spherical coordinates !", "Text"]
 }, Open  ]]
 },
 WindowSize->{1227, 723},
-WindowMargins->{{Automatic, 241}, {Automatic, 0}},
+WindowMargins->{{Automatic, -73}, {Automatic, 5}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 ShowSelection->True,
 TrackCellChangeTimes->False,
