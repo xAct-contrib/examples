@@ -15,8 +15,15 @@ Example of angular integration on multiple direction vectors (adapted from Post-
 Bianchi I Einstein equation using the CTensor framework of xCoBa
 
 
+**ConformalEinsteinEqs**
+TODO description
+
 **Conformal_Transformation**
 Tools to perform conformal transformations and examples. Adapted from a subpart of xPand's code.
+
+**EB-decomp-and-3+1-split**
+Examples of 1+3 decomposition applied to the Weyl tensor
+
 
 **EDGB-and-DCS-EOMs-and-C-tensors-simplified**
 Getting equations of motion and simplifying "C-tensors" for Einstein-dilaton-Gauss-Bonnet and dynamical Chern-Simons theories
@@ -26,7 +33,7 @@ Getting equations of motion and simplifying "C-tensors" for Einstein-dilaton-Gau
 It shows how to define charts and specify the components of the metric so as to obtain the components of the related curvature tensors. Shows also how to change between different charts. Applied to homogeneous cosmology.
 
 
-**Lagrangian-variation-xPert-VarD.nb**
+**Lagrangian-variation-xPert-VarD**
 A common usage pattern for varying a Lagrangian with respect to the metric to get Einstein equations
 
 
@@ -36,6 +43,10 @@ Follows section 9.2 of Wald's book (General Relativity) on Raychaudhuri for null
 
 **SymManipulatorLovelockExample**
 Application of the Spinors and SymManipulator package to show the Lovelock tensor is non-dynamical.
+
+
+**TimelikeCongruence**
+TODO description
 
 
 **Warped-product**
