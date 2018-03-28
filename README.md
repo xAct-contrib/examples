@@ -15,6 +15,9 @@ Example of angular integration on multiple direction vectors (adapted from Post-
 Bianchi I Einstein equation using the CTensor framework of xCoBa
 
 
+**Conformal_Transformation**
+Examples of conformal transformations using the function Conformal[] implemented in xPand (for other reasons).
+
 **EDGB-and-DCS-EOMs-and-C-tensors-simplified**
 Getting equations of motion and simplifying "C-tensors" for Einstein-dilaton-Gauss-Bonnet and dynamical Chern-Simons theories
 
