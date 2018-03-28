@@ -957,6 +957,11 @@ Cell[CellGroupData[{
 
 Cell["Einstein Tensor", "Subsubsection"],
 
+Cell["\<\
+Since expressions are large we set the following variable to a large value to \
+make sure large components are displayed (Tip by JMM)\
+\>", "Text"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -2066,8 +2071,8 @@ Cell[BoxData[
                     StyleBox[
                     "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
-                    $CellContext`\[Eta][], Editable -> False], "]"}]}], ")"}]}
-                    ]]}], " ", 
+                    $CellContext`\[Eta][], Editable -> False], "]"}]}], 
+                    ")"}]}]]}], " ", 
                 RowBox[{"(", 
                   RowBox[{
                     SuperscriptBox[
@@ -4123,7 +4128,8 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     RowBox[{"H"}], AutoSpacing -> False, ShowAutoStyles -> 
                     False], $CellContext`H, Editable -> False], "[", 
                     InterpretationBox[
-                    StyleBox["\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
                     "+", 
@@ -4576,8 +4582,7 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
                     False], "\[Prime]", MultilineFunction -> None], "[", 
                     InterpretationBox[
-                    StyleBox[
-                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    StyleBox["\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
                     "-", 
@@ -5042,8 +5047,8 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     "[", 
                     InterpretationBox[
                     StyleBox[
-                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
-                    
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], 
                     ")"}]}], 
                   SuperscriptBox[
@@ -5663,8 +5668,8 @@ Cell[BoxData[
                     False], "\[Prime]", MultilineFunction -> None], "[", 
                     InterpretationBox[
                     StyleBox[
-                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
-                    
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
                     RowBox[{
                     SuperscriptBox[
