@@ -18,6 +18,7 @@ Bianchi I Einstein equation using the CTensor framework of xCoBa
 **ConformalEinsteinEqs**
 TODO description
 
+
 **Conformal_Transformation**
 Tools to perform conformal transformations and examples. Adapted from a subpart of xPand's code.
 
@@ -38,7 +39,7 @@ A common usage pattern for varying a Lagrangian with respect to the metric to ge
 
 
 **Raychaudhuri**
-Follows section 9.2 of Wald's book (General Relativity) on Raychaudhuri for null geodesics
+Follows section 9.2 of Wald's book (General Relativity) on the Raychaudhuri equation for a congruence of timelike geodesics
 
 
 **SymManipulatorLovelockExample**
