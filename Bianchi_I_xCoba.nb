@@ -149,9 +149,95 @@ Cell[BoxData[
      RowBox[{"\[Eta]", "[", "]"}], ",", 
      RowBox[{"x", "[", "]"}], ",", 
      RowBox[{"y", "[", "]"}], ",", 
-     RowBox[{"z", "[", "]"}]}], "}"}]}], "]"}]], "Input",
+     RowBox[{"z", "[", "]"}]}], "}"}], ",", 
+   RowBox[{"FormatBasis", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Partials\>\"", ",", "\"\<Differentials\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
  CellID->1163760403,
  ExpressionUUID -> "dee8c00d-3195-424a-85a5-015fda47973c"],
+
+Cell["\<\
+Because of the last option, the display is made of partial derivative and \
+coordinates differentials\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Basis", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", "cart"}]}], "}"}], ",", "a"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Basis", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "cart"}], "}"}], ",", 
+   RowBox[{"-", "a"}]}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {
+      FractionBox["\[PartialD]", 
+       RowBox[{"\[PartialD]", "\[Eta]"}]], 
+      StyleBox[GridBox[{
+         {"a"},
+         {" "}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.]}}, "RowsIndexed" -> {}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xTensor`Basis[{0, -$CellContext`cart}, $CellContext`a],
+  Editable->False]], "Output"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[GridBox[{
+     {"d\[Eta]", 
+      StyleBox[GridBox[{
+         {" "},
+         {"a"}
+        },
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.], {
+             Offset[0.034999999999999996`]}, 
+            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+             Offset[0.]}}, "RowsIndexed" -> {}}],
+       FontSize->Rational[39, 4]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.034999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   ShowAutoStyles->False,
+   AutoSpacing->False],
+  xAct`xTensor`Basis[-$CellContext`a, {0, $CellContext`cart}],
+  Editable->False]], "Output"]
+}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
@@ -965,7 +1051,8 @@ make sure large components are displayed (Tip by JMM)\
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"xAct`xCoba`$LargeComponentSize", "=", "4000"}]], "Input"],
+ RowBox[{
+  RowBox[{"xAct`xCoba`$LargeComponentSize", "=", "4000"}], ";"}]], "Input"],
 
 Cell[BoxData["4000"], "Output"]
 }, Open  ]],
@@ -1463,11 +1550,12 @@ Cell[BoxData[
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], 
                   ")"}]}]}]],
-           Annotation[#, {2, 2} -> -E^(2 $CellContext`\[Beta]1[
-                 $CellContext`\[Eta][]]) ($CellContext`H[
+           Annotation[#, {2, 2} -> (-E^(2 $CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]])) ($CellContext`H[
                  $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
-                 $CellContext`\[Eta][]] - 2 $CellContext`H[
-                $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]] - (2 $CellContext`H[
+                 $CellContext`\[Eta][]]) 
+              Derivative[1][$CellContext`\[Beta]1][
                 $CellContext`\[Eta][]] + 
               Derivative[1][$CellContext`\[Beta]1][
                  $CellContext`\[Eta][]]^2 + 
@@ -1796,12 +1884,13 @@ Cell[BoxData[
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], 
                   ")"}]}]}]],
-           Annotation[#, {3, 3} -> -E^(2 $CellContext`\[Beta]2[
-                 $CellContext`\[Eta][]]) ($CellContext`H[
+           Annotation[#, {3, 3} -> (-E^(2 $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]])) ($CellContext`H[
                  $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-                 $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
-                $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]]^2 - (2 $CellContext`H[
+                 $CellContext`\[Eta][]]) 
+              Derivative[1][$CellContext`\[Beta]2][
                 $CellContext`\[Eta][]] + 
               Derivative[1][$CellContext`\[Beta]1][
                  $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
@@ -2218,17 +2307,17 @@ Cell[BoxData[
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], 
                   ")"}]}]}]],
-           Annotation[#, {4, 4} -> -E^((-2) ($CellContext`\[Beta]1[
-                  $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-                  $CellContext`\[Eta][]])) ($CellContext`H[
+           Annotation[#, {4, 4} -> (-E^((-2) ($CellContext`\[Beta]1[
+                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                   $CellContext`\[Eta][]]))) ($CellContext`H[
                  $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
                  $CellContext`\[Eta][]]^2 + 
               Derivative[1][$CellContext`\[Beta]1][
                  $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
-                 $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
-                 $CellContext`\[Eta][]] (
+                 $CellContext`\[Eta][]]^2 + (2 $CellContext`H[
+                  $CellContext`\[Eta][]]) (
                 Derivative[1][$CellContext`\[Beta]1][
                   $CellContext`\[Eta][]] + 
                 Derivative[1][$CellContext`\[Beta]2][
@@ -2271,37 +2360,36 @@ Cell[BoxData[
        $CellContext`\[Eta][]]^2 - Derivative[1][$CellContext`\[Beta]1][
        $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
        $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]2][
-       $CellContext`\[Eta][]]^2, 0, 0, 0}, {0, -E^(2 $CellContext`\[Beta]1[
-         $CellContext`\[Eta][]]) ($CellContext`H[
+       $CellContext`\[Eta][]]^2, 0, 0, 0}, {0, (-E^(2 $CellContext`\[Beta]1[
+          $CellContext`\[Eta][]])) ($CellContext`H[
          $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
-         $CellContext`\[Eta][]] - 2 $CellContext`H[
-        $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]] - (2 $CellContext`H[
+         $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]1][
         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]1][
-       $CellContext`\[Eta][]]), 0, 0}, {0, 0, -E^(2 $CellContext`\[Beta]2[
-         $CellContext`\[Eta][]]) ($CellContext`H[
+       $CellContext`\[Eta][]]), 0, 0}, {0, 0, (-E^(2 $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]])) ($CellContext`H[
          $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-         $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
-        $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]]^2 - (2 $CellContext`H[
+         $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]2][
         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]2][
-       $CellContext`\[Eta][]]), 0}, {
-    0, 0, 0, -E^((-2) ($CellContext`\[Beta]1[
-          $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-          $CellContext`\[Eta][]])) ($CellContext`H[
+       $CellContext`\[Eta][]]), 0}, {0, 0, 0, (-E^((-2) ($CellContext`\[Beta]1[
+           $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+           $CellContext`\[Eta][]]))) ($CellContext`H[
          $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
-         $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
-         $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]]^2 + (2 $CellContext`H[
+          $CellContext`\[Eta][]]) (Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]]) + Derivative[2][$CellContext`\[Beta]1][
         $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
@@ -3281,8 +3369,8 @@ Cell[BoxData[
                     "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
-            Annotation[#, {1, 1} -> $CellContext`\[Kappa] $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) $CellContext`\[Rho][], 
+            Annotation[#, {1, 1} -> ($CellContext`\[Kappa] $CellContext`a[
+                  $CellContext`\[Eta][]]^(-2)) $CellContext`\[Rho][], 
              "Tooltip"]& ], 
            TagBox[
             TooltipBox["0",
@@ -3395,10 +3483,11 @@ Cell[BoxData[
                     "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
-            Annotation[#, {2, 2} -> E^((-2) $CellContext`\[Beta]1[
-                  $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) $CellContext`P[], "Tooltip"]& ], 
-           
+            Annotation[#, {2, 2} -> ((E^((-2) $CellContext`\[Beta]1[
+                    $CellContext`\[Eta][]]) $CellContext`\[Kappa]) \
+$CellContext`a[
+                  $CellContext`\[Eta][]]^(-2)) $CellContext`P[], 
+             "Tooltip"]& ], 
            TagBox[
             TooltipBox["0",
              RowBox[{
@@ -3510,10 +3599,11 @@ Cell[BoxData[
                     "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
-            Annotation[#, {3, 3} -> E^((-2) $CellContext`\[Beta]2[
-                  $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) $CellContext`P[], "Tooltip"]& ], 
-           
+            Annotation[#, {3, 3} -> ((E^((-2) $CellContext`\[Beta]2[
+                    $CellContext`\[Eta][]]) $CellContext`\[Kappa]) \
+$CellContext`a[
+                  $CellContext`\[Eta][]]^(-2)) $CellContext`P[], 
+             "Tooltip"]& ], 
            TagBox[
             TooltipBox["0",
              RowBox[{
@@ -3651,11 +3741,11 @@ Cell[BoxData[
                     "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
-            Annotation[#, {4, 4} -> E^(2 ($CellContext`\[Beta]1[
-                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-                   $CellContext`\[Eta][]])) $CellContext`\[Kappa] \
+            Annotation[#, {4, 4} -> ((E^(2 ($CellContext`\[Beta]1[
+                    $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                    $CellContext`\[Eta][]])) $CellContext`\[Kappa]) \
 $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) $CellContext`P[], "Tooltip"]& ]}
+                  $CellContext`\[Eta][]]^(-2)) $CellContext`P[], "Tooltip"]& ]}
          },
          AutoDelete->False,
          GridBoxDividers->{
@@ -3686,19 +3776,20 @@ $CellContext`a[
          Offset[0.2]}, "RowsIndexed" -> {}}],
     ShowAutoStyles->False,
     AutoSpacing->False],
-   xAct`xCoba`CTensor[{{$CellContext`\[Kappa] $CellContext`a[
-         $CellContext`\[Eta][]]^(-2) $CellContext`\[Rho][], 0, 0, 0}, {
-     0, E^((-2) $CellContext`\[Beta]1[
-          $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
-         $CellContext`\[Eta][]]^(-2) $CellContext`P[], 0, 0}, {
-     0, 0, E^((-2) $CellContext`\[Beta]2[
-          $CellContext`\[Eta][]]) $CellContext`\[Kappa] $CellContext`a[
-         $CellContext`\[Eta][]]^(-2) $CellContext`P[], 0}, {
-     0, 0, 0, E^(2 ($CellContext`\[Beta]1[
-           $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-           $CellContext`\[Eta][]])) $CellContext`\[Kappa] $CellContext`a[
-         $CellContext`\[Eta][]]^(-2) $CellContext`P[]}}, {$CellContext`cart, \
-$CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
+   xAct`xCoba`CTensor[{{($CellContext`\[Kappa] $CellContext`a[
+          $CellContext`\[Eta][]]^(-2)) $CellContext`\[Rho][], 0, 0, 0}, {
+     0, ((E^((-2) $CellContext`\[Beta]1[
+            $CellContext`\[Eta][]]) $CellContext`\[Kappa]) $CellContext`a[
+          $CellContext`\[Eta][]]^(-2)) $CellContext`P[], 0, 0}, {
+     0, 0, ((E^((-2) $CellContext`\[Beta]2[
+            $CellContext`\[Eta][]]) $CellContext`\[Kappa]) $CellContext`a[
+          $CellContext`\[Eta][]]^(-2)) $CellContext`P[], 0}, {
+     0, 0, 0, ((E^(2 ($CellContext`\[Beta]1[
+             $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+             $CellContext`\[Eta][]])) $CellContext`\[Kappa]) $CellContext`a[
+          $CellContext`\[Eta][]]^(-2)) $CellContext`P[]}}, \
+{$CellContext`cart, $CellContext`cart}, 
+    0][$CellContext`\[Mu], $CellContext`\[Nu]],
    Editable->False], "\[Equal]", 
   InterpretationBox[
    StyleBox[GridBox[{
@@ -3888,8 +3979,8 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], 
                    "4"]]}]}]],
-            Annotation[#, {1, 1} -> -$CellContext`a[
-                 $CellContext`\[Eta][]]^(-4) ((-3) $CellContext`H[
+            Annotation[#, {1, 1} -> ((-1) $CellContext`a[
+                  $CellContext`\[Eta][]]^(-4)) ((-3) $CellContext`H[
                    $CellContext`\[Eta][]]^2 + 
                Derivative[1][$CellContext`\[Beta]1][
                   $CellContext`\[Eta][]]^2 + 
@@ -4204,8 +4295,7 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
                     False], "\[Prime]", MultilineFunction -> None], "[", 
                     InterpretationBox[
-                    StyleBox[
-                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    StyleBox["\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], "+", 
                     SuperscriptBox[
@@ -4248,12 +4338,12 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], 
                    "4"]]}]}]],
-            Annotation[#, {2, 2} -> -E^((-2) $CellContext`\[Beta]1[
-                  $CellContext`\[Eta][]]) $CellContext`a[
-                 $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+            Annotation[#, {2, 2} -> ((-E^((-2) $CellContext`\[Beta]1[
+                    $CellContext`\[Eta][]])) $CellContext`a[
+                  $CellContext`\[Eta][]]^(-4)) ($CellContext`H[
                   $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
-                  $CellContext`\[Eta][]] - 2 $CellContext`H[
-                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]] - (2 $CellContext`H[
+                  $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]1][
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
                   $CellContext`\[Eta][]]^2 + 
                Derivative[1][$CellContext`\[Beta]1][
@@ -4582,7 +4672,8 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
                     False], "\[Prime]", MultilineFunction -> None], "[", 
                     InterpretationBox[
-                    StyleBox["\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    StyleBox[
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "2"], 
                     "-", 
@@ -4612,14 +4703,14 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], 
                    "4"]]}]}]],
-            Annotation[#, {3, 3} -> -E^((-2) $CellContext`\[Beta]2[
-                  $CellContext`\[Eta][]]) $CellContext`a[
-                 $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+            Annotation[#, {3, 3} -> ((-E^((-2) $CellContext`\[Beta]2[
+                    $CellContext`\[Eta][]])) $CellContext`a[
+                  $CellContext`\[Eta][]]^(-4)) ($CellContext`H[
                   $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
                   $CellContext`\[Eta][]] + 
                Derivative[1][$CellContext`\[Beta]1][
-                  $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
-                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                  $CellContext`\[Eta][]]^2 - (2 $CellContext`H[
+                  $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]2][
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
                   $CellContext`\[Eta][]] 
                 Derivative[1][$CellContext`\[Beta]2][
@@ -5063,10 +5154,10 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                     False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], 
                    "4"]]}]}]],
-            Annotation[#, {4, 4} -> -E^(2 ($CellContext`\[Beta]1[
-                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-                   $CellContext`\[Eta][]])) $CellContext`a[
-                 $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+            Annotation[#, {4, 4} -> ((-E^(2 ($CellContext`\[Beta]1[
+                    $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                    $CellContext`\[Eta][]]))) $CellContext`a[
+                  $CellContext`\[Eta][]]^(-4)) ($CellContext`H[
                   $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
                   $CellContext`\[Eta][]] + 
                Derivative[1][$CellContext`\[Beta]1][
@@ -5076,8 +5167,9 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
                 Derivative[1][$CellContext`\[Beta]2][
                   $CellContext`\[Eta][]] + 
                Derivative[1][$CellContext`\[Beta]2][
-                  $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
-                  $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+                  $CellContext`\[Eta][]]^2 + (2 $CellContext`H[
+                   $CellContext`\[Eta][]]) (
+                 Derivative[1][$CellContext`\[Beta]1][
                    $CellContext`\[Eta][]] + 
                  Derivative[1][$CellContext`\[Beta]2][
                    $CellContext`\[Eta][]]) + 
@@ -5114,47 +5206,48 @@ $CellContext`cart}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
          Offset[0.2]}, "RowsIndexed" -> {}}],
     ShowAutoStyles->False,
     AutoSpacing->False],
-   xAct`xCoba`CTensor[{{-$CellContext`a[
-         $CellContext`\[Eta][]]^(-4) ((-3) $CellContext`H[
+   xAct`xCoba`CTensor[{{((-1) $CellContext`a[
+          $CellContext`\[Eta][]]^(-4)) ((-3) $CellContext`H[
            $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]]^2), 0, 0, 0}, {
-     0, -E^((-2) $CellContext`\[Beta]1[
-          $CellContext`\[Eta][]]) $CellContext`a[
-         $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+     0, ((-E^((-2) $CellContext`\[Beta]1[
+            $CellContext`\[Eta][]])) $CellContext`a[
+          $CellContext`\[Eta][]]^(-4)) ($CellContext`H[
           $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
-          $CellContext`\[Eta][]] - 2 $CellContext`H[
-         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]] - (2 $CellContext`H[
+          $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]1][
         $CellContext`\[Eta][]]), 0, 0}, {
-     0, 0, -E^((-2) $CellContext`\[Beta]2[
-          $CellContext`\[Eta][]]) $CellContext`a[
-         $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+     0, 0, ((-E^((-2) $CellContext`\[Beta]2[
+            $CellContext`\[Eta][]])) $CellContext`a[
+          $CellContext`\[Eta][]]^(-4)) ($CellContext`H[
           $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-          $CellContext`\[Eta][]]^2 - 2 $CellContext`H[
-         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+          $CellContext`\[Eta][]]^2 - (2 $CellContext`H[
+          $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]]^2 - Derivative[2][$CellContext`\[Beta]2][
-        $CellContext`\[Eta][]]), 0}, {0, 0, 0, -E^(2 ($CellContext`\[Beta]1[
-           $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-           $CellContext`\[Eta][]])) $CellContext`a[
-         $CellContext`\[Eta][]]^(-4) ($CellContext`H[
+        $CellContext`\[Eta][]]), 0}, {
+     0, 0, 0, ((-E^(2 ($CellContext`\[Beta]1[
+             $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+             $CellContext`\[Eta][]]))) $CellContext`a[
+          $CellContext`\[Eta][]]^(-4)) ($CellContext`H[
           $CellContext`\[Eta][]]^2 + 2 Derivative[1][$CellContext`H][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]]^2 + Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
-          $CellContext`\[Eta][]]^2 + 2 $CellContext`H[
-          $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]]^2 + (2 $CellContext`H[
+           $CellContext`\[Eta][]]) (Derivative[1][$CellContext`\[Beta]1][
            $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
            $CellContext`\[Eta][]]) + Derivative[2][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
@@ -5686,8 +5779,8 @@ Cell[BoxData[
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], 
                   ")"}]}]}]],
            Annotation[#, {2, 2} -> E^(2 $CellContext`\[Beta]1[
-                 $CellContext`\[Eta][]]) (2 $CellContext`H[
-                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+                 $CellContext`\[Eta][]]) ((2 $CellContext`H[
+                  $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]1][
                  $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]1][
                 $CellContext`\[Eta][]]), "Tooltip"]& ], 
           TagBox[
@@ -5837,8 +5930,8 @@ Cell[BoxData[
                     $CellContext`\[Eta][], Editable -> False], "]"}]}], 
                   ")"}]}]}]],
            Annotation[#, {3, 3} -> E^(2 $CellContext`\[Beta]2[
-                 $CellContext`\[Eta][]]) (2 $CellContext`H[
-                 $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+                 $CellContext`\[Eta][]]) ((2 $CellContext`H[
+                  $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]2][
                  $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
                 $CellContext`\[Eta][]]), "Tooltip"]& ], 
           TagBox[
@@ -6003,8 +6096,8 @@ Cell[BoxData[
                     InterpretationBox[
                     StyleBox[
                     RowBox[{"\[Beta]2"}], AutoSpacing -> False, 
-                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> F\
-alse], "[", 
+                    ShowAutoStyles -> False], $CellContext`\[Beta]2, Editable -> 
+                    False], "[", 
                     InterpretationBox[
                     StyleBox[
                     "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
@@ -6081,8 +6174,8 @@ alse], "[",
                   ")"}]}]}]],
            Annotation[#, {4, 4} -> E^((-2) ($CellContext`\[Beta]1[
                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-                  $CellContext`\[Eta][]])) ((-2) $CellContext`H[
-                 $CellContext`\[Eta][]] (
+                  $CellContext`\[Eta][]])) (((-2) $CellContext`H[
+                  $CellContext`\[Eta][]]) (
                 Derivative[1][$CellContext`\[Beta]1][
                   $CellContext`\[Eta][]] + 
                 Derivative[1][$CellContext`\[Beta]2][
@@ -6120,18 +6213,18 @@ alse], "[",
    ShowAutoStyles->False,
    AutoSpacing->False],
   xAct`xCoba`CTensor[{{0, 0, 0, 0}, {0, E^(2 $CellContext`\[Beta]1[
-         $CellContext`\[Eta][]]) (2 $CellContext`H[
-         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]1][
+         $CellContext`\[Eta][]]) ((2 $CellContext`H[
+          $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]1][
          $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]1][
         $CellContext`\[Eta][]]), 0, 0}, {0, 0, E^(2 $CellContext`\[Beta]2[
-         $CellContext`\[Eta][]]) (2 $CellContext`H[
-         $CellContext`\[Eta][]] Derivative[1][$CellContext`\[Beta]2][
+         $CellContext`\[Eta][]]) ((2 $CellContext`H[
+          $CellContext`\[Eta][]]) Derivative[1][$CellContext`\[Beta]2][
          $CellContext`\[Eta][]] + Derivative[2][$CellContext`\[Beta]2][
         $CellContext`\[Eta][]]), 0}, {
     0, 0, 0, E^((-2) ($CellContext`\[Beta]1[
           $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-          $CellContext`\[Eta][]])) ((-2) $CellContext`H[
-         $CellContext`\[Eta][]] (Derivative[1][$CellContext`\[Beta]1][
+          $CellContext`\[Eta][]])) (((-2) $CellContext`H[
+          $CellContext`\[Eta][]]) (Derivative[1][$CellContext`\[Beta]1][
           $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
           $CellContext`\[Eta][]]) - Derivative[2][$CellContext`\[Beta]1][
        $CellContext`\[Eta][]] - Derivative[2][$CellContext`\[Beta]2][
@@ -6747,8 +6840,8 @@ Cell[BoxData[
                     False], $CellContext`H, Editable -> False], "[", 
                     InterpretationBox[
                     StyleBox[
-                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
-                    False], 
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
+                    
                     $CellContext`\[Eta][], Editable -> False], "]"}], "-", 
                     RowBox[{
                     SuperscriptBox[
@@ -6840,19 +6933,19 @@ Cell[BoxData[
            Annotation[#, {1} -> $CellContext`a[
                  $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
                 0, -$CellContext`cart}][
-                $CellContext`\[Rho][]] + $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+                $CellContext`\[Rho][]] + ($CellContext`a[
+                  $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-                 $CellContext`\[Eta][]]) + $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+                 $CellContext`\[Eta][]]) + ($CellContext`a[
+                  $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
                  $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]1][
                 $CellContext`\[Eta][]] - Derivative[
                1][$CellContext`\[Beta]2][
-                $CellContext`\[Eta][]]) + $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+                $CellContext`\[Eta][]]) + ($CellContext`a[
+                  $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
                  $CellContext`\[Eta][]]), "Tooltip"]& ]},
          {
@@ -6944,9 +7037,9 @@ $CellContext`\[Rho][]) ($CellContext`H[
                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
            
-           Annotation[#, {2} -> E^((-2) $CellContext`\[Beta]1[
-                 $CellContext`\[Eta][]]) $CellContext`a[
-                $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+           Annotation[#, {2} -> (E^((-2) $CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]]) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
                1, -$CellContext`cart}][
                $CellContext`P[]], "Tooltip"]& ]},
          {
@@ -7038,9 +7131,9 @@ $CellContext`\[Rho][]) ($CellContext`H[
                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
            
-           Annotation[#, {3} -> E^((-2) $CellContext`\[Beta]2[
-                 $CellContext`\[Eta][]]) $CellContext`a[
-                $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+           Annotation[#, {3} -> (E^((-2) $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]]) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
                2, -$CellContext`cart}][
                $CellContext`P[]], "Tooltip"]& ]},
          {
@@ -7158,10 +7251,10 @@ $CellContext`\[Rho][]) ($CellContext`H[
                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
            
-           Annotation[#, {4} -> E^(2 ($CellContext`\[Beta]1[
-                  $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-                  $CellContext`\[Eta][]])) $CellContext`a[
-                $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+           Annotation[#, {4} -> (E^(2 ($CellContext`\[Beta]1[
+                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                   $CellContext`\[Eta][]])) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
                3, -$CellContext`cart}][
                $CellContext`P[]], "Tooltip"]& ]}
         },
@@ -7196,31 +7289,31 @@ $CellContext`\[Rho][]) ($CellContext`H[
   xAct`xCoba`CTensor[{$CellContext`a[
         $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
        0, -$CellContext`cart}][
-       $CellContext`\[Rho][]] + $CellContext`a[
-        $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+       $CellContext`\[Rho][]] + ($CellContext`a[
+         $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-        $CellContext`\[Eta][]]) + $CellContext`a[
-        $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+        $CellContext`\[Eta][]]) + ($CellContext`a[
+         $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
         $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]1][
        $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]2][
-       $CellContext`\[Eta][]]) + $CellContext`a[
-        $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+       $CellContext`\[Eta][]]) + ($CellContext`a[
+         $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
-        $CellContext`\[Eta][]]), E^((-2) $CellContext`\[Beta]1[
-        $CellContext`\[Eta][]]) $CellContext`a[
-       $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+        $CellContext`\[Eta][]]), (E^((-2) $CellContext`\[Beta]1[
+         $CellContext`\[Eta][]]) $CellContext`a[
+        $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
       1, -$CellContext`cart}][
-      $CellContext`P[]], E^((-2) $CellContext`\[Beta]2[
-        $CellContext`\[Eta][]]) $CellContext`a[
-       $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+      $CellContext`P[]], (E^((-2) $CellContext`\[Beta]2[
+         $CellContext`\[Eta][]]) $CellContext`a[
+        $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
       2, -$CellContext`cart}][
-      $CellContext`P[]], E^(2 ($CellContext`\[Beta]1[
-         $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-         $CellContext`\[Eta][]])) $CellContext`a[
-       $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+      $CellContext`P[]], (E^(2 ($CellContext`\[Beta]1[
+          $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]])) $CellContext`a[
+        $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
       3, -$CellContext`cart}][
       $CellContext`P[]]}, {$CellContext`cart}, 0][$CellContext`\[Nu]],
   Editable->False]], "Output"]
@@ -7580,8 +7673,8 @@ Cell[BoxData[
                     False], $CellContext`H, Editable -> False], "[", 
                     InterpretationBox[
                     StyleBox[
-                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
-                    
+                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> 
+                    False], 
                     $CellContext`\[Eta][], Editable -> False], "]"}], "-", 
                     RowBox[{
                     SuperscriptBox[
@@ -7673,19 +7766,19 @@ Cell[BoxData[
            Annotation[#, {1} -> $CellContext`a[
                  $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
                 0, -$CellContext`cart}][
-                $CellContext`\[Rho][]] + $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+                $CellContext`\[Rho][]] + ($CellContext`a[
+                  $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-                 $CellContext`\[Eta][]]) + $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+                 $CellContext`\[Eta][]]) + ($CellContext`a[
+                  $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
                  $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]1][
                 $CellContext`\[Eta][]] - Derivative[
                1][$CellContext`\[Beta]2][
-                $CellContext`\[Eta][]]) + $CellContext`a[
-                 $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+                $CellContext`\[Eta][]]) + ($CellContext`a[
+                  $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
                  $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
                  $CellContext`\[Eta][]]), "Tooltip"]& ]},
          {
@@ -7777,9 +7870,9 @@ $CellContext`\[Rho][]) ($CellContext`H[
                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
            
-           Annotation[#, {2} -> E^((-2) $CellContext`\[Beta]1[
-                 $CellContext`\[Eta][]]) $CellContext`a[
-                $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+           Annotation[#, {2} -> (E^((-2) $CellContext`\[Beta]1[
+                  $CellContext`\[Eta][]]) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
                1, -$CellContext`cart}][
                $CellContext`P[]], "Tooltip"]& ]},
          {
@@ -7871,9 +7964,9 @@ $CellContext`\[Rho][]) ($CellContext`H[
                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
            
-           Annotation[#, {3} -> E^((-2) $CellContext`\[Beta]2[
-                 $CellContext`\[Eta][]]) $CellContext`a[
-                $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+           Annotation[#, {3} -> (E^((-2) $CellContext`\[Beta]2[
+                  $CellContext`\[Eta][]]) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
                2, -$CellContext`cart}][
                $CellContext`P[]], "Tooltip"]& ]},
          {
@@ -7991,10 +8084,10 @@ $CellContext`\[Rho][]) ($CellContext`H[
                    "\[Eta]", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`\[Eta][], Editable -> False], "]"}], "2"]]}]],
            
-           Annotation[#, {4} -> E^(2 ($CellContext`\[Beta]1[
-                  $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-                  $CellContext`\[Eta][]])) $CellContext`a[
-                $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+           Annotation[#, {4} -> (E^(2 ($CellContext`\[Beta]1[
+                   $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+                   $CellContext`\[Eta][]])) $CellContext`a[
+                 $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
                3, -$CellContext`cart}][
                $CellContext`P[]], "Tooltip"]& ]}
         },
@@ -8029,31 +8122,31 @@ $CellContext`\[Rho][]) ($CellContext`H[
   xAct`xCoba`CTensor[{$CellContext`a[
         $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
        0, -$CellContext`cart}][
-       $CellContext`\[Rho][]] + $CellContext`a[
-        $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+       $CellContext`\[Rho][]] + ($CellContext`a[
+         $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]1][
-        $CellContext`\[Eta][]]) + $CellContext`a[
-        $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+        $CellContext`\[Eta][]]) + ($CellContext`a[
+         $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
         $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]1][
        $CellContext`\[Eta][]] - Derivative[1][$CellContext`\[Beta]2][
-       $CellContext`\[Eta][]]) + $CellContext`a[
-        $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
-$CellContext`\[Rho][]) ($CellContext`H[
+       $CellContext`\[Eta][]]) + ($CellContext`a[
+         $CellContext`\[Eta][]]^(-2) ($CellContext`P[] + \
+$CellContext`\[Rho][])) ($CellContext`H[
         $CellContext`\[Eta][]] + Derivative[1][$CellContext`\[Beta]2][
-        $CellContext`\[Eta][]]), E^((-2) $CellContext`\[Beta]1[
-        $CellContext`\[Eta][]]) $CellContext`a[
-       $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+        $CellContext`\[Eta][]]), (E^((-2) $CellContext`\[Beta]1[
+         $CellContext`\[Eta][]]) $CellContext`a[
+        $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
       1, -$CellContext`cart}][
-      $CellContext`P[]], E^((-2) $CellContext`\[Beta]2[
-        $CellContext`\[Eta][]]) $CellContext`a[
-       $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+      $CellContext`P[]], (E^((-2) $CellContext`\[Beta]2[
+         $CellContext`\[Eta][]]) $CellContext`a[
+        $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
       2, -$CellContext`cart}][
-      $CellContext`P[]], E^(2 ($CellContext`\[Beta]1[
-         $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
-         $CellContext`\[Eta][]])) $CellContext`a[
-       $CellContext`\[Eta][]]^(-2) $CellContext`PDcart[{
+      $CellContext`P[]], (E^(2 ($CellContext`\[Beta]1[
+          $CellContext`\[Eta][]] + $CellContext`\[Beta]2[
+          $CellContext`\[Eta][]])) $CellContext`a[
+        $CellContext`\[Eta][]]^(-2)) $CellContext`PDcart[{
       3, -$CellContext`cart}][
       $CellContext`P[]]}, {$CellContext`cart}, 0][$CellContext`\[Nu]],
   Editable->False]], "Output"]

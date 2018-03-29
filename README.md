@@ -46,6 +46,11 @@ Follows section 9.2 of Wald's book (General Relativity) on the Raychaudhuri equa
 Application of the Spinors and SymManipulator package to show the Lovelock tensor is non-dynamical.
 
 
+**Schwarzschild_Metric_Birkhoff_Theorem**
+Construction of the Schwarzschild metric. 
+Eddington Finkelstein coordinates and surface gravity as simple applications of the CTensor tools of xCoba.
+
+
 **TimelikeCongruence**
 TODO description
 
