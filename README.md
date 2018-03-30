@@ -34,6 +34,10 @@ Getting equations of motion and simplifying "C-tensors" for Einstein-dilaton-Gau
 It shows how to define charts and specify the components of the metric so as to obtain the components of the related curvature tensors. Shows also how to change between different charts. Applied to homogeneous cosmology.
 
 
+**Gamma matrices (Dirac algebra).nb**:
+How to treat the algebra of gamma matrices with DefProduct, and canonicalize them to derive many standard identities.
+
+
 **Lagrangian-variation-xPert-VarD**
 A common usage pattern for varying a Lagrangian with respect to the metric to get Einstein equations
 
