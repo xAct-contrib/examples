@@ -105,7 +105,8 @@ Cell[BoxData["\<\"------------------------------------------------------------\
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$CVSimplify", "=", "Simplify"}], ";", 
+  RowBox[{
+   RowBox[{"$CVSimplify", "=", "Simplify"}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{"Why", " ", "is", " ", "it", " ", "so", " ", 
     RowBox[{"useful", " ", "?"}]}], " ", "*)"}]}]], "Input"],
@@ -232,7 +233,7 @@ vector fields with name basis on the given vbundle. Its dual -basis is also \
 implicitly defined. The list of cnumbers {c1, ..., cn} denotes the integers \
 identifying the element of the basis, and hence must have length equal to the \
 dimension of the vbundle.\"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info73731352068-2362242"]
+ CellTags->"Info63731401069-7670389"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -839,7 +840,7 @@ SetCMetric[met, tor, ch] adds the torsion tensor tor to the covariant \
 derivative associated to the metric met. An option SignatureOfMetric -> {np, \
 nn, nz} explicitly specifies the signature of the metric.\"\>", 
   "MSG"]], "Print", "PrintUsage",
- CellTags->"Info123731352069-2362242"]
+ CellTags->"Info113731401080-7670389"]
 }, Open  ]],
 
 Cell["So we tell xCoba that g is the metric", "Text"],
@@ -1126,7 +1127,8 @@ Cell["Ricci does not vanishes (yet) as expect", "Text"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"xAct`xCoba`$LargeComponentSize", "=", "3000"}], ";", 
+  RowBox[{
+   RowBox[{"xAct`xCoba`$LargeComponentSize", "=", "3000"}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{
    "This", " ", "is", " ", "to", " ", "make", " ", "sure", " ", "expressions",
@@ -2058,6 +2060,114 @@ Cell[BoxData[
   Editable->False]], "Output"]
 }, Open  ]],
 
+Cell["Killing vector of the spherical symmetry", "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"KV1", "=", 
+   RowBox[{"CTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", "B", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"KV2", "=", 
+   RowBox[{"CTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"\[Phi]", "[", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Cot", "[", 
+          RowBox[{"\[Theta]", "[", "]"}], "]"}]}], 
+        RowBox[{"Sin", "[", 
+         RowBox[{"\[Phi]", "[", "]"}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", "B", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"KV3", "=", 
+   RowBox[{"CTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", 
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"\[Phi]", "[", "]"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Cot", "[", 
+          RowBox[{"\[Theta]", "[", "]"}], "]"}]}], 
+        RowBox[{"Cos", "[", 
+         RowBox[{"\[Phi]", "[", "]"}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", "B", "}"}]}], "]"}]}], ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Symmetrize", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CD", "[", "\[Mu]", "]"}], "@", 
+    RowBox[{"KV1", "[", "\[Nu]", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Symmetrize", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CD", "[", "\[Mu]", "]"}], "@", 
+    RowBox[{"KV2", "[", "\[Nu]", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Symmetrize", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CD", "[", "\[Mu]", "]"}], "@", 
+    RowBox[{"KV3", "[", "\[Nu]", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}], "]"}]}], "Input"],
+
+Cell[BoxData["0"], "Output"],
+
+Cell[BoxData["0"], "Output"],
+
+Cell[BoxData["0"], "Output"]
+}, Open  ]],
+
+Cell["KVF of stationarity", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"KVt", "=", 
+   RowBox[{"CTensor", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", "B", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Symmetrize", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CD", "[", "\[Mu]", "]"}], "@", 
+    RowBox[{"KVt", "[", "\[Nu]", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}], "]"}]}], "Input"],
+
+Cell[BoxData["0"], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Birkhoff theorem", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{"We", " ", "solve", " ", "the", " ", 
+  SubscriptBox["G", "tt"], " ", "and", " ", "the", " ", 
+  SubscriptBox["G", "rr"], " ", "part", " ", "of", " ", "the", " ", 
+  "Einstein", " ", "equations", " ", "in", " ", "vacuum"}]], "Text"],
+
 Cell[BoxData[
  RowBox[{
   RowBox[{"G", "=", 
@@ -2139,18 +2249,7 @@ Cell[BoxData[
       AutoSpacing->False],
      $CellContext`r[],
      Editable->False], "2"]]}]], "Output"]
-}, Open  ]]
-}, Closed]],
-
-Cell[CellGroupData[{
-
-Cell["Birkhoff theorem", "Subsubsection"],
-
-Cell[BoxData[
- RowBox[{"We", " ", "solve", " ", "the", " ", 
-  SubscriptBox["G", "tt"], " ", "and", " ", "teh", " ", 
-  SubscriptBox["G", "rr"], " ", "part", " ", "of", " ", "the", " ", 
-  "Einstein", " ", "equations", " ", "in", " ", "vacuum"}]], "Text"],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2213,11 +2312,10 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Solve", "::", "ifun"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Inverse functions are being used by \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"Solve\\\"}]\\)\[NoBreak], so some solutions \
-may not be found; use Reduce for complete solution information. \
+   RowBox[{"Solve", "::", "ifun"}], "MessageName"], ":", 
+  " ", "\<\"Inverse functions are being used by \[NoBreak]\\!\\(\\*RowBox[{\\\
+\"Solve\\\"}]\\)\[NoBreak], so some solutions may not be found; use Reduce \
+for complete solution information. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Solve/ifun\\\", \
 ButtonNote -> \\\"Solve::ifun\\\"]\\)\"\>"}]], "Message", "MSG"],
@@ -2225,14 +2323,12 @@ ButtonNote -> \\\"Solve::ifun\\\"]\\)\"\>"}]], "Message", "MSG"],
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"DSolve", "::", "bvnr"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"For some branches of the general solution, the given \
-boundary conditions do not restrict the existing freedom in the general \
-solution. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/DSolve/bvnr\\\", ButtonNote -> \
-\\\"DSolve::bvnr\\\"]\\)\"\>"}]], "Message", "MSG"],
+   RowBox[{"DSolve", "::", "bvnr"}], "MessageName"], ":", 
+  " ", "\<\"For some branches of the general solution, the given boundary \
+conditions do not restrict the existing freedom in the general solution. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/DSolve/bvnr\\\", \
+ButtonNote -> \\\"DSolve::bvnr\\\"]\\)\"\>"}]], "Message", "MSG"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2439,7 +2535,7 @@ Cell[BoxData[
                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                   $CellContext`r[], Editable -> False]]}]}]],
            
-           Annotation[#, {1, 1} -> -1 + 2 $CellContext`M/$CellContext`r[], 
+           Annotation[#, {1, 1} -> -1 + 2 ($CellContext`M/$CellContext`r[]), 
             "Tooltip"]& ], 
           TagBox[
            TooltipBox["0",
@@ -2501,7 +2597,7 @@ Cell[BoxData[
                    $CellContext`r[], Editable -> False]]}]]}]],
            
            Annotation[#, {2, 
-             2} -> (1 - 2 $CellContext`M/$CellContext`r[])^(-1), 
+             2} -> (1 - 2 ($CellContext`M/$CellContext`r[]))^(-1), 
             "Tooltip"]& ], 
           TagBox[
            TooltipBox["0",
@@ -2647,8 +2743,8 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}],
    ShowAutoStyles->False,
    AutoSpacing->False],
-  xAct`xCoba`CTensor[{{-1 + 2 $CellContext`M/$CellContext`r[], 0, 0, 0}, {
-    0, (1 - 2 $CellContext`M/$CellContext`r[])^(-1), 0, 0}, {
+  xAct`xCoba`CTensor[{{-1 + 2 ($CellContext`M/$CellContext`r[]), 0, 0, 0}, {
+    0, (1 - 2 ($CellContext`M/$CellContext`r[]))^(-1), 0, 0}, {
     0, 0, $CellContext`r[]^2, 0}, {0, 0, 0, $CellContext`r[]^2 Sin[
         $CellContext`\[Theta][]]^2}}, {-$CellContext`B, -$CellContext`B}, 
    0][-$CellContext`\[Mu], -$CellContext`\[Nu]],
@@ -2875,10 +2971,10 @@ Cell[BoxData[
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False], "4"]]}]],
               
-              Annotation[#, {1, 2, 1, 2} -> 
-               2 $CellContext`M (
-                 2 $CellContext`M - $CellContext`r[]) $CellContext`r[]^(-4), 
-               "Tooltip"]& ], 
+              Annotation[#, {1, 2, 1, 
+                2} -> ((2 $CellContext`M) (
+                  2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-4),
+                "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -2960,8 +3056,8 @@ Cell[BoxData[
                     $CellContext`r[], Editable -> False]}], ")"}]}]]}]}]],
               
               Annotation[#, {1, 2, 2, 
-                1} -> (-2) $CellContext`M $CellContext`r[]^(-2)/((-2) \
-$CellContext`M + $CellContext`r[]), "Tooltip"]& ], 
+                1} -> ((-2) $CellContext`M) ($CellContext`r[]^(-2)/((-2) \
+$CellContext`M + $CellContext`r[])), "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -3126,7 +3222,7 @@ $CellContext`M + $CellContext`r[]), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False], "4"]]}]],
               
               Annotation[#, {1, 3, 1, 
-                3} -> $CellContext`M $CellContext`r[]^(-4) ((-2) \
+                3} -> ($CellContext`M $CellContext`r[]^(-4)) ((-2) \
 $CellContext`M + $CellContext`r[]), "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -3338,8 +3434,7 @@ $CellContext`M + $CellContext`r[]), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False], "4"]]}]],
               
               Annotation[#, {1, 4, 1, 
-                
-                4} -> $CellContext`M $CellContext`r[]^(-4) ((-2) \
+                4} -> ($CellContext`M $CellContext`r[]^(-4)) ((-2) \
 $CellContext`M + $CellContext`r[]), "Tooltip"]& ]},
             {
              TagBox[
@@ -3457,8 +3552,8 @@ $CellContext`M + $CellContext`r[]), "Tooltip"]& ]},
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False]]}]],
               
-              Annotation[#, {1, 4, 4, 
-                1} -> $CellContext`M $CellContext`r[]^(-1) Sin[
+              Annotation[#, {1, 4, 4, 1} -> ($CellContext`M/$CellContext`r[]) 
+                Sin[
                    $CellContext`\[Theta][]]^2, "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -3559,9 +3654,10 @@ $CellContext`M + $CellContext`r[]), "Tooltip"]& ]},
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False], "4"]]}]],
               
-              Annotation[#, {2, 1, 1, 2} -> 
-               2 $CellContext`M $CellContext`r[]^(-4) ((-2) $CellContext`M + \
-$CellContext`r[]), "Tooltip"]& ], 
+              Annotation[#, {2, 1, 1, 
+                2} -> ((
+                  2 $CellContext`M) $CellContext`r[]^(-4)) ((-2) \
+$CellContext`M + $CellContext`r[]), "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -3639,9 +3735,10 @@ $CellContext`r[]), "Tooltip"]& ],
                     StyleBox[
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False]}], ")"}]}]]}]],
-              Annotation[#, {2, 1, 2, 1} -> 
-               2 $CellContext`M $CellContext`r[]^(-2)/((-2) $CellContext`M + \
-$CellContext`r[]), "Tooltip"]& ], 
+              
+              Annotation[#, {2, 1, 2, 
+                1} -> (2 $CellContext`M) ($CellContext`r[]^(-2)/((-2) \
+$CellContext`M + $CellContext`r[])), "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -3847,6 +3944,7 @@ $CellContext`r[]), "Tooltip"]& ],
               Annotation[#, {2, 2, 4, 4} -> 0, "Tooltip"]& ]}
            },
            AutoDelete->False,
+           
            GridBoxDividers->{
             "ColumnsIndexed" -> {
               1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}, 
@@ -3956,9 +4054,9 @@ $CellContext`r[]), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False], "2"]}]]}]],
               
               Annotation[#, {2, 3, 2, 
-                3} -> $CellContext`M (
-                  2 $CellContext`M - $CellContext`r[])^(-1) \
-$CellContext`r[]^(-2), "Tooltip"]& ], 
+                3} -> ($CellContext`M/(
+                 2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2), 
+               "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -4167,9 +4265,9 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False], "2"]}]]}]],
               
               Annotation[#, {2, 4, 2, 
-                4} -> $CellContext`M (
-                  2 $CellContext`M - $CellContext`r[])^(-1) \
-$CellContext`r[]^(-2), "Tooltip"]& ]},
+                4} -> ($CellContext`M/(
+                 2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2), 
+               "Tooltip"]& ]},
             {
              TagBox[
               TooltipBox["0",
@@ -4264,8 +4362,8 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False]]}]],
               
-              Annotation[#, {2, 4, 4, 
-                2} -> $CellContext`M $CellContext`r[]^(-1) Sin[
+              Annotation[#, {2, 4, 4, 2} -> ($CellContext`M/$CellContext`r[]) 
+                Sin[
                    $CellContext`\[Theta][]]^2, "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -4365,9 +4463,9 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                     $CellContext`r[], Editable -> False], "4"]]}]],
               
               Annotation[#, {3, 1, 1, 
-                3} -> $CellContext`M (
-                 2 $CellContext`M - $CellContext`r[]) $CellContext`r[]^(-4), 
-               "Tooltip"]& ], 
+                3} -> ($CellContext`M (
+                  2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-4),
+                "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -4436,8 +4534,8 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False]]}]}]],
               
-              Annotation[#, {3, 1, 3, 1} -> -$CellContext`M/$CellContext`r[], 
-               "Tooltip"]& ], 
+              Annotation[#, {3, 1, 3, 
+                1} -> (-$CellContext`M)/$CellContext`r[], "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -4602,9 +4700,9 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                     $CellContext`r[], Editable -> False], "2"]}]]}]}]],
               
               Annotation[#, {3, 2, 2, 
-                3} -> -$CellContext`M (
-                  2 $CellContext`M - $CellContext`r[])^(-1) \
-$CellContext`r[]^(-2), "Tooltip"]& ], 
+                3} -> ((-$CellContext`M)/(
+                 2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2), 
+               "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -4651,8 +4749,8 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False]]}]}]],
               
-              Annotation[#, {3, 2, 3, 2} -> -$CellContext`M/$CellContext`r[], 
-               "Tooltip"]& ], 
+              Annotation[#, {3, 2, 3, 
+                2} -> (-$CellContext`M)/$CellContext`r[], "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
                RowBox[{
@@ -4939,8 +5037,8 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False]]}]],
               
-              Annotation[#, {3, 4, 3, 4} -> 2 $CellContext`M/$CellContext`r[],
-                "Tooltip"]& ]},
+              Annotation[#, {3, 4, 3, 4} -> 
+               2 ($CellContext`M/$CellContext`r[]), "Tooltip"]& ]},
             {
              TagBox[
               TooltipBox["0",
@@ -5016,7 +5114,7 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False]]}]}]],
               
               Annotation[#, {3, 4, 4, 
-                3} -> (-2) $CellContext`M $CellContext`r[]^(-1) Sin[
+                3} -> (((-2) $CellContext`M)/$CellContext`r[]) Sin[
                    $CellContext`\[Theta][]]^2, "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -5116,9 +5214,9 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False], "4"]]}]],
               
               Annotation[#, {4, 1, 1, 
-                4} -> $CellContext`M (
-                 2 $CellContext`M - $CellContext`r[]) $CellContext`r[]^(-4), 
-               "Tooltip"]& ]},
+                4} -> ($CellContext`M (
+                  2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-4),
+                "Tooltip"]& ]},
             {
              TagBox[
               TooltipBox["0",
@@ -5238,7 +5336,7 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                     $CellContext`r[], Editable -> False]]}]}]],
               
               Annotation[#, {4, 1, 4, 
-                1} -> -$CellContext`M $CellContext`r[]^(-1) Sin[
+                1} -> ((-$CellContext`M)/$CellContext`r[]) Sin[
                    $CellContext`\[Theta][]]^2, "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -5380,10 +5478,11 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
                     StyleBox[
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False], "2"]}]]}]}]],
+              
               Annotation[#, {4, 2, 2, 
-                4} -> -$CellContext`M (
-                  2 $CellContext`M - $CellContext`r[])^(-1) \
-$CellContext`r[]^(-2), "Tooltip"]& ]},
+                4} -> ((-$CellContext`M)/(
+                 2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2), 
+               "Tooltip"]& ]},
             {
              TagBox[
               TooltipBox["0",
@@ -5481,7 +5580,7 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                     $CellContext`r[], Editable -> False]]}]}]],
               
               Annotation[#, {4, 2, 4, 
-                2} -> -$CellContext`M $CellContext`r[]^(-1) Sin[
+                2} -> ((-$CellContext`M)/$CellContext`r[]) Sin[
                    $CellContext`\[Theta][]]^2, "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -5619,7 +5718,7 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                     $CellContext`r[], Editable -> False]]}]}]],
               
               Annotation[#, {4, 3, 3, 
-                4} -> (-2) $CellContext`M/$CellContext`r[], "Tooltip"]& ]},
+                4} -> (-2) ($CellContext`M/$CellContext`r[]), "Tooltip"]& ]},
             {
              TagBox[
               TooltipBox["0",
@@ -5692,8 +5791,8 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False]]}]],
               
-              Annotation[#, {4, 3, 4, 3} -> 
-               2 $CellContext`M $CellContext`r[]^(-1) Sin[
+              Annotation[#, {4, 3, 4, 
+                3} -> ((2 $CellContext`M)/$CellContext`r[]) Sin[
                    $CellContext`\[Theta][]]^2, "Tooltip"]& ], 
              TagBox[
               TooltipBox["0",
@@ -5864,54 +5963,53 @@ $CellContext`r[]^(-2), "Tooltip"]& ]},
    ShowAutoStyles->False,
    AutoSpacing->False],
   xAct`xCoba`CTensor[{{{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 
-     0}}, {{0, 
-       2 $CellContext`M (
-        2 $CellContext`M - $CellContext`r[]) $CellContext`r[]^(-4), 0, 
-       0}, {(-2) $CellContext`M $CellContext`r[]^(-2)/((-2) $CellContext`M + \
-$CellContext`r[]), 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}, {{
-      0, 0, $CellContext`M $CellContext`r[]^(-4) ((-2) $CellContext`M + \
+     0}}, {{0, ((2 $CellContext`M) (
+         2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-4), 0, 
+       0}, {((-2) $CellContext`M) ($CellContext`r[]^(-2)/((-2) $CellContext`M + \
+$CellContext`r[])), 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}, {{
+      0, 0, ($CellContext`M $CellContext`r[]^(-4)) ((-2) $CellContext`M + \
 $CellContext`r[]), 0}, {0, 0, 0, 
       0}, {$CellContext`M/$CellContext`r[], 0, 0, 0}, {0, 0, 0, 0}}, {{
-      0, 0, 0, $CellContext`M $CellContext`r[]^(-4) ((-2) $CellContext`M + \
+      0, 0, 0, ($CellContext`M $CellContext`r[]^(-4)) ((-2) $CellContext`M + \
 $CellContext`r[])}, {0, 0, 0, 0}, {0, 0, 0, 
-      0}, {$CellContext`M $CellContext`r[]^(-1) Sin[
+      0}, {($CellContext`M/$CellContext`r[]) Sin[
           $CellContext`\[Theta][]]^2, 0, 0, 0}}}, {{{
-      0, 2 $CellContext`M $CellContext`r[]^(-4) ((-2) $CellContext`M + \
-$CellContext`r[]), 0, 0}, {
-      2 $CellContext`M $CellContext`r[]^(-2)/((-2) $CellContext`M + \
-$CellContext`r[]), 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}, {{0, 0, 0, 0}, {0, 
+      0, ((2 $CellContext`M) $CellContext`r[]^(-4)) ((-2) $CellContext`M + \
+$CellContext`r[]), 0, 
+       0}, {(2 $CellContext`M) ($CellContext`r[]^(-2)/((-2) $CellContext`M + \
+$CellContext`r[])), 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}, {{0, 0, 0, 0}, {0, 
      0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 
      0}}, {{0, 0, 0, 0}, {
-      0, 0, $CellContext`M (
-         2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[]^(-2), 
-       0}, {0, $CellContext`M/$CellContext`r[], 0, 0}, {0, 0, 0, 0}}, {{0, 0, 
-      0, 0}, {0, 0, 
-       0, $CellContext`M (
-         2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[]^(-2)}, {0,
-       0, 0, 0}, {0, $CellContext`M $CellContext`r[]^(-1) Sin[
+      0, 0, ($CellContext`M/(
+        2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2), 0}, {
+      0, $CellContext`M/$CellContext`r[], 0, 0}, {0, 0, 0, 0}}, {{0, 0, 0, 
+      0}, {0, 0, 
+       0, ($CellContext`M/(
+        2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2)}, {0, 0, 
+      0, 0}, {0, ($CellContext`M/$CellContext`r[]) Sin[
           $CellContext`\[Theta][]]^2, 0, 0}}}, {{{
-      0, 0, $CellContext`M (
-        2 $CellContext`M - $CellContext`r[]) $CellContext`r[]^(-4), 0}, {0, 0,
-       0, 0}, {-$CellContext`M/$CellContext`r[], 0, 0, 0}, {0, 0, 0, 0}}, {{0,
-       0, 0, 0}, {
-      0, 0, -$CellContext`M (
-         2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[]^(-2), 
-       0}, {0, -$CellContext`M/$CellContext`r[], 0, 0}, {0, 0, 0, 0}}, {{0, 0,
-      0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 
+      0, 0, ($CellContext`M (
+         2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-4), 0}, {0, 
+      0, 0, 0}, {(-$CellContext`M)/$CellContext`r[], 0, 0, 0}, {0, 0, 0, 
+      0}}, {{0, 0, 0, 0}, {
+      0, 0, ((-$CellContext`M)/(
+        2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2), 0}, {
+      0, (-$CellContext`M)/$CellContext`r[], 0, 0}, {0, 0, 0, 0}}, {{0, 0, 0, 
+     0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 
      0}}, {{0, 0, 0, 0}, {0, 0, 0, 0}, {
-      0, 0, 0, 2 $CellContext`M/$CellContext`r[]}, {
-      0, 0, (-2) $CellContext`M $CellContext`r[]^(-1) Sin[
+      0, 0, 0, 2 ($CellContext`M/$CellContext`r[])}, {
+      0, 0, (((-2) $CellContext`M)/$CellContext`r[]) Sin[
           $CellContext`\[Theta][]]^2, 0}}}, {{{
-      0, 0, 0, $CellContext`M (
-        2 $CellContext`M - $CellContext`r[]) $CellContext`r[]^(-4)}, {0, 0, 0,
-       0}, {0, 0, 0, 0}, {-$CellContext`M $CellContext`r[]^(-1) Sin[
+      0, 0, 0, ($CellContext`M (
+         2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-4)}, {0, 0, 
+      0, 0}, {0, 0, 0, 0}, {((-$CellContext`M)/$CellContext`r[]) Sin[
           $CellContext`\[Theta][]]^2, 0, 0, 0}}, {{0, 0, 0, 0}, {
-      0, 0, 0, -$CellContext`M (
-         2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[]^(-2)}, {0,
-       0, 0, 0}, {0, -$CellContext`M $CellContext`r[]^(-1) Sin[
+      0, 0, 0, ((-$CellContext`M)/(
+        2 $CellContext`M - $CellContext`r[])) $CellContext`r[]^(-2)}, {0, 0, 
+      0, 0}, {0, ((-$CellContext`M)/$CellContext`r[]) Sin[
           $CellContext`\[Theta][]]^2, 0, 0}}, {{0, 0, 0, 0}, {0, 0, 0, 0}, {
-      0, 0, 0, (-2) $CellContext`M/$CellContext`r[]}, {
-      0, 0, 2 $CellContext`M $CellContext`r[]^(-1) Sin[
+      0, 0, 0, (-2) ($CellContext`M/$CellContext`r[])}, {
+      0, 0, ((2 $CellContext`M)/$CellContext`r[]) Sin[
           $CellContext`\[Theta][]]^2, 0}}, {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0,
       0, 0}, {0, 0, 0, 
      0}}}}, {-$CellContext`B, -$CellContext`B, -$CellContext`B, \
@@ -6926,10 +7024,9 @@ Cell[BoxData[
    "\[InvisibleSpace]", "Basis"}],
   SequenceForm[
   "Added independent rule ", 
-   xAct`xTensor`Basis[{2, -$CellContext`B}, {
-     1, $CellContext`EF}] -> -(
-      2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[], 
-   " for tensor ", xAct`xTensor`Basis],
+   xAct`xTensor`Basis[{2, -$CellContext`B}, {1, $CellContext`EF}] -> ((-1)/(
+     2 $CellContext`M - $CellContext`r[])) $CellContext`r[], " for tensor ", 
+   xAct`xTensor`Basis],
   Editable->False]], "Print"],
 
 Cell[BoxData[
@@ -9553,7 +9650,7 @@ Cell[BoxData[
                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                   $CellContext`r[], Editable -> False]]}]}]],
            
-           Annotation[#, {1, 1} -> -1 + 2 $CellContext`M/$CellContext`r[], 
+           Annotation[#, {1, 1} -> -1 + 2 ($CellContext`M/$CellContext`r[]), 
             "Tooltip"]& ], 
           TagBox[
            TooltipBox["1",
@@ -9732,9 +9829,8 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}],
    ShowAutoStyles->False,
    AutoSpacing->False],
-  xAct`xCoba`CTensor[{{-1 + 2 $CellContext`M/$CellContext`r[], 1, 0, 0}, {1, 
-    0, 0, 0}, {0, 0, $CellContext`r[]^2, 0}, {
-    0, 0, 0, $CellContext`r[]^2 Sin[
+  xAct`xCoba`CTensor[{{-1 + 2 ($CellContext`M/$CellContext`r[]), 1, 0, 0}, {1,
+     0, 0, 0}, {0, 0, $CellContext`r[]^2, 0}, {0, 0, 0, $CellContext`r[]^2 Sin[
         $CellContext`\[Theta][]]^2}}, {-$CellContext`EF, -$CellContext`EF}, 
    0][-$CellContext`\[Mu], -$CellContext`\[Nu]],
   Editable->False]], "Output"],
@@ -9847,7 +9943,7 @@ $CellContext`r[], "Tooltip"]& ],
                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                   $CellContext`r[], Editable -> False]]}]}]],
            
-           Annotation[#, {2, 2} -> 1 - 2 $CellContext`M/$CellContext`r[], 
+           Annotation[#, {2, 2} -> 1 - 2 ($CellContext`M/$CellContext`r[]), 
             "Tooltip"]& ], 
           TagBox[
            TooltipBox["0",
@@ -9994,7 +10090,7 @@ $CellContext`r[], "Tooltip"]& ],
    AutoSpacing->False],
   xAct`xCoba`CTensor[{{(
        2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[], 0, 0, 0}, {
-    0, 1 - 2 $CellContext`M/$CellContext`r[], 0, 0}, {
+    0, 1 - 2 ($CellContext`M/$CellContext`r[]), 0, 0}, {
     0, 0, $CellContext`r[]^(-2), 0}, {0, 0, 0, Csc[
         $CellContext`\[Theta][]]^2 $CellContext`r[]^(-2)}}, {$CellContext`B, \
 $CellContext`B}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
@@ -10019,31 +10115,28 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Power", "::", "infy"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Infinite expression \[NoBreak]\\!\\(\\*FractionBox[\\\"1\\\
-\", \\\"0\\\"]\\)\[NoBreak] encountered. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/infy\\\", ButtonNote -> \
-\\\"Power::infy\\\"]\\)\"\>"}]], "Message", "MSG"],
+   RowBox[{"Power", "::", "infy"}], "MessageName"], ":", 
+  " ", "\<\"Infinite expression \[NoBreak]\\!\\(\\*FractionBox[\\\"1\\\", \
+\\\"0\\\"]\\)\[NoBreak] encountered. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/infy\\\", \
+ButtonNote -> \\\"Power::infy\\\"]\\)\"\>"}]], "Message", "MSG"],
 
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Power", "::", "infy"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Infinite expression \[NoBreak]\\!\\(\\*FractionBox[\\\"1\\\
-\", \\\"0\\\"]\\)\[NoBreak] encountered. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/infy\\\", ButtonNote -> \
-\\\"Power::infy\\\"]\\)\"\>"}]], "Message", "MSG"],
+   RowBox[{"Power", "::", "infy"}], "MessageName"], ":", 
+  " ", "\<\"Infinite expression \[NoBreak]\\!\\(\\*FractionBox[\\\"1\\\", \
+\\\"0\\\"]\\)\[NoBreak] encountered. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/infy\\\", \
+ButtonNote -> \\\"Power::infy\\\"]\\)\"\>"}]], "Message", "MSG"],
 
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Infinity", "::", "indet"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Indeterminate expression \
+   RowBox[{"Infinity", "::", "indet"}], "MessageName"], ":", 
+  " ", "\<\"Indeterminate expression \
 \[NoBreak]\\!\\(\\*RowBox[{\\\"ComplexInfinity\\\", \\\"+\\\", \
 \\\"ComplexInfinity\\\"}]\\)\[NoBreak] encountered. \\!\\(\\*ButtonBox[\\\"\
 \[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
@@ -10312,9 +10405,9 @@ Cell[BoxData[
                   StyleBox[
                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                   $CellContext`r[], Editable -> False]}]]}]],
-           Annotation[#, {1} -> $CellContext`f[
-               $CellContext`r[]] (
-               2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[] 
+           Annotation[#, {1} -> (($CellContext`f[
+                 $CellContext`r[]]/(
+               2 $CellContext`M - $CellContext`r[])) $CellContext`r[]) 
              Derivative[1][$CellContext`f][
                $CellContext`r[]], "Tooltip"]& ]},
          {
@@ -10416,9 +10509,9 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}],
    ShowAutoStyles->False,
    AutoSpacing->False],
-  xAct`xCoba`CTensor[{$CellContext`f[
-      $CellContext`r[]] (
-      2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[] 
+  xAct`xCoba`CTensor[{(($CellContext`f[
+        $CellContext`r[]]/(
+      2 $CellContext`M - $CellContext`r[])) $CellContext`r[]) 
     Derivative[1][$CellContext`f][
       $CellContext`r[]], $CellContext`f[
       $CellContext`r[]] Derivative[1][$CellContext`f][
@@ -10559,9 +10652,9 @@ Cell[BoxData[
                   StyleBox[
                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                   $CellContext`r[], Editable -> False]}]]}]],
-           Annotation[#, {1} -> $CellContext`f[
-               $CellContext`r[]] (
-               2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[] 
+           Annotation[#, {1} -> (($CellContext`f[
+                 $CellContext`r[]]/(
+               2 $CellContext`M - $CellContext`r[])) $CellContext`r[]) 
              Derivative[1][$CellContext`f][
                $CellContext`r[]], "Tooltip"]& ]},
          {
@@ -10663,9 +10756,9 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}],
    ShowAutoStyles->False,
    AutoSpacing->False],
-  xAct`xCoba`CTensor[{$CellContext`f[
-      $CellContext`r[]] (
-      2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[] 
+  xAct`xCoba`CTensor[{(($CellContext`f[
+        $CellContext`r[]]/(
+      2 $CellContext`M - $CellContext`r[])) $CellContext`r[]) 
     Derivative[1][$CellContext`f][
       $CellContext`r[]], $CellContext`f[
       $CellContext`r[]] Derivative[1][$CellContext`f][
@@ -10698,23 +10791,20 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Attributes", "::", "notfound"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Symbol \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"DSolveDispatchODE\\\\\\\"\\\"}]\\)\
-\[NoBreak] not found. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/notfound\\\", ButtonNote -> \
-\\\"Attributes::notfound\\\"]\\)\"\>"}]], "Message", "MSG"],
+   RowBox[{"Attributes", "::", "notfound"}], "MessageName"], ":", 
+  " ", "\<\"Symbol \[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"DSolveDispatchODE\\\
+\\\\\"\\\"}]\\)\[NoBreak] not found. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/notfound\\\", \
+ButtonNote -> \\\"Attributes::notfound\\\"]\\)\"\>"}]], "Message", "MSG"],
 
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"DSolve", "::", "bvnul"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"For some branches of the general solution, the given \
-boundary conditions lead to an empty solution. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+   RowBox[{"DSolve", "::", "bvnul"}], "MessageName"], ":", 
+  " ", "\<\"For some branches of the general solution, the given boundary \
+conditions lead to an empty solution. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\
+\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
 ButtonData:>\\\"paclet:ref/message/DSolve/bvnul\\\", ButtonNote -> \
 \\\"DSolve::bvnul\\\"]\\)\"\>"}]], "Message", "MSG"],
 
@@ -10874,17 +10964,15 @@ Cell[CellGroupData[{
 
 Cell["Surface Gravity", "Subsubsection"],
 
-Cell["The time translation Killing Vector Field is", "Text"],
+Cell["\<\
+Let us consider the Killin - Vector field of time translations\
+\>", "Text"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"KV", "=", 
-  RowBox[{"CTensor", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"1", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
-    RowBox[{"{", "B", "}"}]}], "]"}]}]], "Input"],
+ RowBox[{
+  RowBox[{"KV", "=", "KVt"}], ";"}]], "Input"],
 
 Cell[BoxData[
  RowBox[{"CTensor", "[", 
@@ -10892,224 +10980,6 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"1", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
    RowBox[{"{", "B", "}"}], ",", "0"}], "]"}]], "Output"]
-}, Open  ]],
-
-Cell["We check that it is indeed a Killilng Vector Field", "Text"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"CD", "[", "\[Mu]", "]"}], "@", 
-  RowBox[{"KV", "[", "\[Nu]", "]"}]}]], "Input"],
-
-Cell[BoxData[
- InterpretationBox[
-  StyleBox[GridBox[{
-     {
-      StyleBox[GridBox[{
-         {
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {1, 1} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox[
-            FractionBox[
-             InterpretationBox[
-              StyleBox["M",
-               ShowAutoStyles->False,
-               AutoSpacing->False],
-              $CellContext`M,
-              Editable->False], 
-             SuperscriptBox[
-              InterpretationBox[
-               StyleBox["r",
-                ShowAutoStyles->False,
-                AutoSpacing->False],
-               $CellContext`r[],
-               Editable->False], "2"]],
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", 
-              FractionBox[
-               InterpretationBox[
-                StyleBox[
-                 RowBox[{"M"}], AutoSpacing -> False, ShowAutoStyles -> 
-                 False], $CellContext`M, Editable -> False], 
-               SuperscriptBox[
-                InterpretationBox[
-                 StyleBox["r", AutoSpacing -> False, ShowAutoStyles -> False], 
-                 $CellContext`r[], Editable -> False], "2"]]}]],
-           
-           Annotation[#, {1, 2} -> $CellContext`M $CellContext`r[]^(-2), 
-            "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"1", ",", "3"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {1, 3} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"1", ",", "4"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {1, 4} -> 0, "Tooltip"]& ]},
-         {
-          TagBox[
-           TooltipBox[
-            RowBox[{"-", 
-             FractionBox[
-              InterpretationBox[
-               StyleBox["M",
-                ShowAutoStyles->False,
-                AutoSpacing->False],
-               $CellContext`M,
-               Editable->False], 
-              SuperscriptBox[
-               InterpretationBox[
-                StyleBox["r",
-                 ShowAutoStyles->False,
-                 AutoSpacing->False],
-                $CellContext`r[],
-                Editable->False], "2"]]}],
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
-              RowBox[{"-", 
-                FractionBox[
-                 InterpretationBox[
-                  StyleBox[
-                   RowBox[{"M"}], AutoSpacing -> False, ShowAutoStyles -> 
-                   False], $CellContext`M, Editable -> False], 
-                 SuperscriptBox[
-                  InterpretationBox[
-                   StyleBox[
-                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
-                   $CellContext`r[], Editable -> False], "2"]]}]}]],
-           
-           Annotation[#, {2, 1} -> -$CellContext`M $CellContext`r[]^(-2), 
-            "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"2", ",", "2"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {2, 2} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"2", ",", "3"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {2, 3} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"2", ",", "4"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {2, 4} -> 0, "Tooltip"]& ]},
-         {
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"3", ",", "1"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {3, 1} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"3", ",", "2"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {3, 2} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"3", ",", "3"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {3, 3} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"3", ",", "4"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {3, 4} -> 0, "Tooltip"]& ]},
-         {
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"4", ",", "1"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {4, 1} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"4", ",", "2"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {4, 2} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"4", ",", "3"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {4, 3} -> 0, "Tooltip"]& ], 
-          TagBox[
-           TooltipBox["0",
-            RowBox[{
-              RowBox[{"{", 
-                RowBox[{"4", ",", "4"}], "}"}], "\[Rule]", "0"}]],
-           Annotation[#, {4, 4} -> 0, "Tooltip"]& ]}
-        },
-        AutoDelete->False,
-        GridBoxDividers->{
-         "ColumnsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]},
-           "RowsIndexed" -> {1 -> RGBColor[1, 0, 0], 5 -> RGBColor[1, 0, 0]}}],
-       FontSize->Small], 
-      StyleBox[GridBox[{
-         {"\[Nu]", "\[Mu]"},
-         {" ", " "}
-        },
-        GridBoxSpacings->{"Columns" -> {
-            Offset[0.], {
-             Offset[0.034999999999999996`]}, 
-            Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
-             Offset[0.]}}, "RowsIndexed" -> {}}],
-       FontSize->Rational[39, 4]]}
-    },
-    GridBoxAlignment->{
-     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
-      "RowsIndexed" -> {}},
-    GridBoxSpacings->{"Columns" -> {
-        Offset[0.27999999999999997`], {
-         Offset[0.034999999999999996`]}, 
-        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
-        Offset[0.2], {
-         Offset[0.4]}, 
-        Offset[0.2]}, "RowsIndexed" -> {}}],
-   ShowAutoStyles->False,
-   AutoSpacing->False],
-  xAct`xCoba`CTensor[{{
-    0, $CellContext`M $CellContext`r[]^(-2), 0, 
-     0}, {-$CellContext`M $CellContext`r[]^(-2), 0, 0, 0}, {0, 0, 0, 0}, {0, 
-    0, 0, 0}}, {$CellContext`B, $CellContext`B}, 
-   0][$CellContext`\[Nu], $CellContext`\[Mu]],
-  Editable->False]], "Output"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Symmetrize", "[", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"CD", "[", "\[Mu]", "]"}], "@", 
-    RowBox[{"KV", "[", "\[Nu]", "]"}]}], ",", 
-   RowBox[{"{", 
-    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}], "]"}]], "Input"],
-
-Cell[BoxData["0"], "Output"]
 }, Open  ]],
 
 Cell["It is null at the horizon.", "Text"],
@@ -11131,30 +11001,38 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{"-", 
-  FractionBox[
+  SuperscriptBox["\[ExponentialE]", 
    RowBox[{
-    RowBox[{
-     RowBox[{"-", "2"}], " ", 
-     InterpretationBox[
-      StyleBox["M",
-       ShowAutoStyles->False,
-       AutoSpacing->False],
-      $CellContext`M,
-      Editable->False]}], "+", 
+    InterpretationBox[
+     StyleBox["\[Lambda]tt",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Lambda]tt,
+     Editable->False], "[", 
     InterpretationBox[
      StyleBox["r",
       ShowAutoStyles->False,
       AutoSpacing->False],
      $CellContext`r[],
-     Editable->False]}], 
-   InterpretationBox[
-    StyleBox["r",
-     ShowAutoStyles->False,
-     AutoSpacing->False],
-    $CellContext`r[],
-    Editable->False]]}]], "Output"],
+     Editable->False], "]"}]]}]], "Output"],
 
-Cell[BoxData["0"], "Output"]
+Cell[BoxData[
+ RowBox[{"-", 
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{
+    InterpretationBox[
+     StyleBox["\[Lambda]tt",
+      ShowAutoStyles->False,
+      AutoSpacing->False],
+     $CellContext`\[Lambda]tt,
+     Editable->False], "[", 
+    RowBox[{"2", " ", 
+     InterpretationBox[
+      StyleBox["M",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`M,
+      Editable->False]}], "]"}]]}]], "Output"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -11163,8 +11041,7 @@ Cell[TextData[{
   FormBox[
    RowBox[{
     SuperscriptBox["\[Kappa]", 
-     RowBox[{"2", " "}]], " ", "=", " "}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+     RowBox[{"2", " "}]], " ", "=", " "}], TraditionalForm]]],
  " -1/2 ",
  Cell[BoxData[
   FormBox[
@@ -11174,8 +11051,7 @@ Cell[TextData[{
      SubscriptBox["V", "\[Nu]"]}], 
     RowBox[{
      SuperscriptBox["\[Del]", "\[Mu]"], 
-     SuperscriptBox["V", "\[Nu]"]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+     SuperscriptBox["V", "\[Nu]"]}]}], TraditionalForm]]]
 }], "Text"],
 
 Cell[CellGroupData[{
@@ -11250,3 +11126,4 @@ FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
 2016)",
 StyleDefinitions->"Default.nb"
 ]
+
