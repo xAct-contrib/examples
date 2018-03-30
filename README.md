@@ -1,7 +1,7 @@
 Example xAct notebooks
 ========
 
-This is a collection of example xAct notebooks that contain common xAct usage patterns.
+This is a collection of example xAct notebooks that contain common xAct usage patterns.  Right click on a file name below and hit "Save link as..." to download a notebook.
 
 [`ActionVariation_Metric_Fields.nb`](../../raw/master/ActionVariation_Metric_Fields.nb):
 General function to vary a Lagrangian
