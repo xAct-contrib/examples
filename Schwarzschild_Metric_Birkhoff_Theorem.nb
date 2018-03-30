@@ -10968,7 +10968,7 @@ Cell[CellGroupData[{
 Cell["Surface Gravity", "Subsubsection"],
 
 Cell["\<\
-Let us consider the Killin - Vector field of time translations\
+Let us consider the Killing - Vector field of time translations\
 \>", "Text"],
 
 Cell[CellGroupData[{
