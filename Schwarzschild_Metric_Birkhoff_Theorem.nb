@@ -800,21 +800,19 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"MetricsOfVBundle", "::", "missing"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"There is no \
-\[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"metric\\\\\\\"\\\"}]\\)\[NoBreak] in \
-\[NoBreak]\\!\\(\\*InterpretationBox[StyleBox[\\\"\[DoubleStruckCapitalT]M4\\\
-\", Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], TangentM4, \
-Rule[Editable, False]]\\)\[NoBreak].\"\>"}]], "Message", "MSG"],
+   RowBox[{"MetricsOfVBundle", "::", "missing"}], "MessageName"], ":", 
+  " ", "\<\"There is no \[NoBreak]\\!\\(\\*RowBox[{\\\"\\\\\\\"metric\\\\\\\"\
+\\\"}]\\)\[NoBreak] in \[NoBreak]\\!\\(\\*InterpretationBox[StyleBox[\\\"\
+\[DoubleStruckCapitalT]M4\\\", Rule[AutoSpacing, False], Rule[ShowAutoStyles, \
+False]], TangentM4, Rule[Editable, False]]\\)\[NoBreak].\"\>"}]], "Message", \
+"MSG"],
 
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Throw", "::", "nocatch"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Uncaught \[NoBreak]\\!\\(\\*RowBox[{\\\"Throw\\\", \\\"[\\\
-\", \\\"Null\\\", \\\"]\\\"}]\\)\[NoBreak] returned to top level. \
+   RowBox[{"Throw", "::", "nocatch"}], "MessageName"], ":", 
+  " ", "\<\"Uncaught \[NoBreak]\\!\\(\\*RowBox[{\\\"Throw\\\", \\\"[\\\", \
+\\\"Null\\\", \\\"]\\\"}]\\)\[NoBreak] returned to top level. \
 \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Throw/nocatch\\\", \
 ButtonNote -> \\\"Throw::nocatch\\\"]\\)\"\>"}]], "Message", "MSG"],
@@ -1358,15 +1356,15 @@ Cell[BoxData[
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False]}]]}]}]],
            
-           Annotation[#, {1, 1} -> 
-            Rational[-1, 4] E^(-$CellContext`\[Lambda]rr[
-                 $CellContext`r[]]) $CellContext`r[]^(-1) ((
+           Annotation[#, {1, 
+             1} -> ((Rational[-1, 4] E^(-$CellContext`\[Lambda]rr[
+                   $CellContext`r[]]))/$CellContext`r[]) ((
                 4 - $CellContext`r[] Derivative[1][$CellContext`\[Lambda]rr][
                   $CellContext`r[]]) Derivative[1][$CellContext`\[Lambda]tt][
                  $CellContext`r[]] + $CellContext`r[] 
                Derivative[1][$CellContext`\[Lambda]tt][
-                  $CellContext`r[]]^2 + 
-              2 $CellContext`r[] Derivative[2][$CellContext`\[Lambda]tt][
+                  $CellContext`r[]]^2 + (2 $CellContext`r[]) 
+               Derivative[2][$CellContext`\[Lambda]tt][
                  $CellContext`r[]]), "Tooltip"]& ], 
           TagBox[
            TooltipBox["0",
@@ -1593,8 +1591,10 @@ Cell[BoxData[
                   StyleBox[
                   "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                   $CellContext`r[], Editable -> False]}]]}]],
-           Annotation[#, {2, 2} -> Rational[1, 4] E^(-$CellContext`\[Lambda]rr[
-                 $CellContext`r[]]) $CellContext`r[]^(-1) (
+           
+           Annotation[#, {2, 
+             2} -> ((Rational[1, 4] E^(-$CellContext`\[Lambda]rr[
+                   $CellContext`r[]]))/$CellContext`r[]) (
               Derivative[1][$CellContext`\[Lambda]rr][
                  $CellContext`r[]] (
                 4 + $CellContext`r[] Derivative[1][$CellContext`\[Lambda]tt][
@@ -1790,8 +1790,9 @@ Cell[BoxData[
                    StyleBox[
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False], "2"]}]]}]],
-           Annotation[#, {3, 3} -> Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
-                 $CellContext`r[]]) $CellContext`r[]^(-2) (-2 + 
+           Annotation[#, {3, 
+             3} -> ((Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
+                   $CellContext`r[]])) $CellContext`r[]^(-2)) (-2 + 
               2 E^$CellContext`\[Lambda]rr[
                   $CellContext`r[]] + $CellContext`r[] 
                Derivative[1][$CellContext`\[Lambda]rr][
@@ -1985,8 +1986,10 @@ Cell[BoxData[
                    StyleBox[
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False], "2"]}]]}]],
-           Annotation[#, {4, 4} -> Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
-                 $CellContext`r[]]) $CellContext`r[]^(-2) (-2 + 
+           
+           Annotation[#, {4, 
+             4} -> ((Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
+                   $CellContext`r[]])) $CellContext`r[]^(-2)) (-2 + 
               2 E^$CellContext`\[Lambda]rr[
                   $CellContext`r[]] + $CellContext`r[] 
                Derivative[1][$CellContext`\[Lambda]rr][
@@ -2022,17 +2025,17 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}],
    ShowAutoStyles->False,
    AutoSpacing->False],
-  xAct`xCoba`CTensor[{{Rational[-1, 4] E^(-$CellContext`\[Lambda]rr[
-         $CellContext`r[]]) $CellContext`r[]^(-1) ((4 - $CellContext`r[] 
+  xAct`xCoba`CTensor[{{((Rational[-1, 4] E^(-$CellContext`\[Lambda]rr[
+           $CellContext`r[]]))/$CellContext`r[]) ((4 - $CellContext`r[] 
         Derivative[1][$CellContext`\[Lambda]rr][
           $CellContext`r[]]) Derivative[1][$CellContext`\[Lambda]tt][
          $CellContext`r[]] + $CellContext`r[] 
        Derivative[1][$CellContext`\[Lambda]tt][
-          $CellContext`r[]]^2 + 
-      2 $CellContext`r[] Derivative[2][$CellContext`\[Lambda]tt][
+          $CellContext`r[]]^2 + (2 $CellContext`r[]) 
+       Derivative[2][$CellContext`\[Lambda]tt][
          $CellContext`r[]]), 0, 0, 0}, {
-    0, Rational[1, 4] E^(-$CellContext`\[Lambda]rr[
-         $CellContext`r[]]) $CellContext`r[]^(-1) (
+    0, ((Rational[1, 4] E^(-$CellContext`\[Lambda]rr[
+           $CellContext`r[]]))/$CellContext`r[]) (
       Derivative[1][$CellContext`\[Lambda]rr][
          $CellContext`r[]] (
         4 + $CellContext`r[] Derivative[1][$CellContext`\[Lambda]tt][
@@ -2040,16 +2043,16 @@ Cell[BoxData[
        Derivative[1][$CellContext`\[Lambda]tt][
           $CellContext`r[]]^2 + 2 Derivative[2][$CellContext`\[Lambda]tt][
           $CellContext`r[]])), 0, 0}, {
-    0, 0, Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
-         $CellContext`r[]]) $CellContext`r[]^(-2) (-2 + 
+    0, 0, ((Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
+           $CellContext`r[]])) $CellContext`r[]^(-2)) (-2 + 
       2 E^$CellContext`\[Lambda]rr[
           $CellContext`r[]] + $CellContext`r[] 
        Derivative[1][$CellContext`\[Lambda]rr][
          $CellContext`r[]] - $CellContext`r[] 
       Derivative[1][$CellContext`\[Lambda]tt][
         $CellContext`r[]]), 0}, {
-    0, 0, 0, Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
-         $CellContext`r[]]) $CellContext`r[]^(-2) (-2 + 
+    0, 0, 0, ((Rational[1, 2] E^(-$CellContext`\[Lambda]rr[
+           $CellContext`r[]])) $CellContext`r[]^(-2)) (-2 + 
       2 E^$CellContext`\[Lambda]rr[
           $CellContext`r[]] + $CellContext`r[] 
        Derivative[1][$CellContext`\[Lambda]rr][
