@@ -16,7 +16,8 @@ Bianchi I Einstein equation using the CTensor framework of xCoba
 
 
 [`ConformalEinsteinEqs.nb`](../../raw/master/ConformalEinsteinEqs.nb):
-TODO description
+Implementation of the Friedrich's conformal field equations in dimension 4 
+(metric equations and extended equations). 
 
 
 [`Conformal_Transformation.nb`](../../raw/master/Conformal_Transformation.nb):
@@ -57,7 +58,9 @@ Eddington Finkelstein coordinates and surface gravity as simple applications of 
 
 
 [`TimelikeCongruence.nb`](../../raw/master/TimelikeCongruence.nb):
-TODO description
+1+3 decomposition of the Ricci and Bianchi identities in dimension 4 with respect to an 
+arbitrary unit timelike vector field. The kinematical quantities and the spatial parts of the Riemann
+tensor are used to obtain the decompositions.
 
 
 [`Warped-product.nb`](../../raw/master/Warped-product.nb):
