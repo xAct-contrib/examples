@@ -15,6 +15,10 @@ Example of angular integration on multiple direction vectors (adapted from Post-
 Bianchi I Einstein equation using the CTensor framework of xCoba
 
 
+[`Clifford_Algebra_Traces.nb`](../../raw/master/Clifford_Algebra_Traces.nb):
+Clifford algebra construction in all integer dimensions and fast evaluations of traces of products of Dirac matrices.
+The tracing function is applied to weak-interaction reaction rates.
+
 [`ConformalEinsteinEqs.nb`](../../raw/master/ConformalEinsteinEqs.nb):
 Implementation of the Friedrich's conformal field equations in dimension 4 
 (metric equations and extended equations). 
