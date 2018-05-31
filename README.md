@@ -27,6 +27,8 @@ Implementation of the Friedrich's conformal field equations in dimension 4
 [`Conformal_Transformation.nb`](../../raw/master/Conformal_Transformation.nb):
 Tools to perform conformal transformations and examples. Adapted from a subpart of xPand's code.
 
+[`CTensorChangeCoords.nb`](../../raw/master/CTensorChangeCoords.nb):
+Simple example of coordinate change using the CTensor framework.
 
 [`EB-decomp-and-3+1-split.nb`](../../raw/master/EB-decomp-and-3+1-split.nb):
 Examples of 3+1 decomposition applied to the Weyl tensor
@@ -43,6 +45,8 @@ It shows how to define charts and specify the components of the metric so as to 
 [`Gamma matrices (Dirac algebra).nb`](../../raw/master/Gamma%20matrices%20(Dirac%20algebra).nb):
 How to treat the algebra of gamma matrices with DefProduct, and canonicalize them to derive many standard identities.
 
+[`KerrMetric.nb`](../../raw/master/KerrMetric.nb):
+Some computations for the Kerr metric in Boyer Lindqvist coordinates and the null tetrad. Computation of the surface gravity.
 
 [`Lagrangian-variation-xPert-VarD.nb`](../../raw/master/Lagrangian-variation-xPert-VarD.nb):
 A common usage pattern for varying a Lagrangian with respect to the metric to get Einstein equations
