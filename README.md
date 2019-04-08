@@ -14,6 +14,12 @@ Example of angular integration on multiple direction vectors (adapted from Post-
 [`Bianchi_I_xCoba.nb`](../../raw/master/Bianchi_I_xCoba.nb):
 Bianchi I Einstein equation using the CTensor framework of xCoba
 
+[`CCE-system.nb`](../../raw/master/CCE-system.nb):
+Equations for Cauchy-characteristic extraction, in 1+1+2 form. The
+angular sector is treated with spin-weighted scalars and
+raising/lowering operators eth (or edth). A large number of features
+are demonstrated, including product manifolds and metrics, and multiple
+metrics on the same manifold. Needs more documentation.
 
 [`Clifford_Algebra_Traces.nb`](../../raw/master/Clifford_Algebra_Traces.nb):
 Clifford algebra construction in all integer dimensions and fast evaluations of traces of products of Dirac matrices.
