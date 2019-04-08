@@ -14,7 +14,7 @@ Example of angular integration on multiple direction vectors (adapted from Post-
 [`Bianchi_I_xCoba.nb`](../../raw/master/Bianchi_I_xCoba.nb):
 Bianchi I Einstein equation using the CTensor framework of xCoba
 
-[`CCE-system.nb`](../../raw/master/CCE-system.nb):
+[`CCE-system-public.nb`](../../raw/master/CCE-system-public.nb):
 Equations for Cauchy-characteristic extraction, in 1+1+2 form. The
 angular sector is treated with spin-weighted scalars and
 raising/lowering operators eth (or edth). A large number of features
