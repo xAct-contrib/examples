@@ -233,7 +233,7 @@ vector fields with name basis on the given vbundle. Its dual -basis is also \
 implicitly defined. The list of cnumbers {c1, ..., cn} denotes the integers \
 identifying the element of the basis, and hence must have length equal to the \
 dimension of the vbundle.\"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info73731667098-9896009"]
+ CellTags->"Info73731738696-7852094"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -840,7 +840,7 @@ SetCMetric[met, tor, ch] adds the torsion tensor tor to the covariant \
 derivative associated to the metric met. An option SignatureOfMetric -> {np, \
 nn, nz} explicitly specifies the signature of the metric.\"\>", 
   "MSG"]], "Print", "PrintUsage",
- CellTags->"Info123731667099-9896009"]
+ CellTags->"Info123731738697-7852094"]
 }, Open  ]],
 
 Cell["So we tell xCoba that g is the metric", "Text"],
@@ -1108,6 +1108,15 @@ Cell[BoxData[
         $CellContext`\[Theta][]]^2 $CellContext`r[]^(-2)}}, {$CellContext`B, \
 $CellContext`B}, 0][$CellContext`\[Mu], $CellContext`\[Nu]],
   Editable->False]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SignDetOfMetric", "[", "g", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"-", "1"}]], "Output"]
 }, Open  ]],
 
 Cell["We compute all curvature tensor related to g", "Text"],
@@ -3656,7 +3665,6 @@ $CellContext`M + $CellContext`r[]), "Tooltip"]& ]},
                     StyleBox[
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False], "4"]]}]],
-              
               Annotation[#, {2, 1, 1, 2} -> 
                2 $CellContext`M $CellContext`r[]^(-4) ((-2) $CellContext`M + \
 $CellContext`r[]), "Tooltip"]& ], 
@@ -4268,6 +4276,7 @@ $CellContext`r[]^(-2), "Tooltip"]& ],
               
               Annotation[#, {2, 4, 2, 
                 4} -> $CellContext`M (
+                  
                   2 $CellContext`M - $CellContext`r[])^(-1) \
 $CellContext`r[]^(-2), "Tooltip"]& ]},
             {
@@ -6107,7 +6116,7 @@ Cell[BoxData[
 with respect to the n abstract indices i1, ..., in. By convention, the result \
 has a factor 1/n! multiplying. Antisymmetrize[expr] antisymmetrizes all free \
 indices.\"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info373731667102-9896009"]
+ CellTags->"Info393731738700-7852094"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6167,6 +6176,175 @@ Cell[BoxData["0"], "Output"]
 
 Cell[CellGroupData[{
 
+Cell["Levi - Civita Tensor", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SignDetOfMetric", "[", "g", "]"}], "^=", 
+   RowBox[{"-", "1"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"epsilon", "[", "g", "]"}], "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"-", "B"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{"-", "B"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     RowBox[{"-", "B"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", 
+     RowBox[{"-", "B"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"epsilon", "[", "g", "]"}], "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "B"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "B"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "B"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "B"}], "}"}]}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SignDetOfMetric", "::", "num"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot determine sign of determinant of matrix \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", FractionBox[RowBox[{RowBox[{RowBox[{\\\"-\\\", \
+\\\"2\\\"}], \\\" \\\", InterpretationBox[StyleBox[RowBox[{\\\"M\\\"}], \
+Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], M, Rule[Editable, \
+False]]}], \\\"+\\\", InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, \
+False], Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]]}], \
+InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, False], \
+Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]]]}], \\\",\\\", \
+\\\"0\\\", \\\",\\\", \\\"0\\\", \\\",\\\", \\\"0\\\"}], \\\"}\\\"}], \\\",\\\
+\", RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", FractionBox[\\\"1\\\", \
+RowBox[{\\\"1\\\", \\\"-\\\", FractionBox[RowBox[{\\\"2\\\", \\\" \\\", \
+InterpretationBox[StyleBox[RowBox[{\\\"M\\\"}], Rule[AutoSpacing, False], \
+Rule[ShowAutoStyles, False]], M, Rule[Editable, False]]}], \
+InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, False], \
+Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]]]}]], \\\",\\\", \
+\\\"0\\\", \\\",\\\", \\\"0\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"0\\\", \\\",\\\", \\\"0\\\", \\\",\\\", \
+SuperscriptBox[InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, \
+False], Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]], \
+\\\"2\\\"], \\\",\\\", \\\"0\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", \\\"0\\\", \\\",\\\", \
+\\\"0\\\", \\\",\\\", RowBox[{SuperscriptBox[InterpretationBox[StyleBox[\\\"r\
+\\\", Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], r[], \
+Rule[Editable, False]], \\\"2\\\"], \\\" \\\", \
+SuperscriptBox[RowBox[{InterpretationBox[StyleBox[RowBox[{\\\"Sin\\\"}], \
+Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], Sin, Rule[Editable, \
+False]], \\\"[\\\", InterpretationBox[StyleBox[\\\"\[Theta]\\\", \
+Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], \\\\[Theta][], \
+Rule[Editable, False]], \\\"]\\\"}], \\\"2\\\"]}]}], \\\"}\\\"}]}], \
+\\\"}\\\"}]\\)\[NoBreak]. Assuming +1.\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData[
+ SqrtBox[
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox[
+     InterpretationBox[
+      StyleBox["r",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`r[],
+      Editable->False], "4"]}], " ", 
+   SuperscriptBox[
+    RowBox[{
+     InterpretationBox[
+      StyleBox["Sin",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      Sin,
+      Editable->False], "[", 
+     InterpretationBox[
+      StyleBox["\[Theta]",
+       ShowAutoStyles->False,
+       AutoSpacing->False],
+      $CellContext`\[Theta][],
+      Editable->False], "]"}], "2"]}]]], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SignDetOfMetric", "::", "num"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot determine sign of determinant of matrix \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", FractionBox[RowBox[{RowBox[{RowBox[{\\\"-\\\", \
+\\\"2\\\"}], \\\" \\\", InterpretationBox[StyleBox[RowBox[{\\\"M\\\"}], \
+Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], M, Rule[Editable, \
+False]]}], \\\"+\\\", InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, \
+False], Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]]}], \
+InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, False], \
+Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]]]}], \\\",\\\", \
+\\\"0\\\", \\\",\\\", \\\"0\\\", \\\",\\\", \\\"0\\\"}], \\\"}\\\"}], \\\",\\\
+\", RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", FractionBox[\\\"1\\\", \
+RowBox[{\\\"1\\\", \\\"-\\\", FractionBox[RowBox[{\\\"2\\\", \\\" \\\", \
+InterpretationBox[StyleBox[RowBox[{\\\"M\\\"}], Rule[AutoSpacing, False], \
+Rule[ShowAutoStyles, False]], M, Rule[Editable, False]]}], \
+InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, False], \
+Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]]]}]], \\\",\\\", \
+\\\"0\\\", \\\",\\\", \\\"0\\\"}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{\\\"0\\\", \\\",\\\", \\\"0\\\", \\\",\\\", \
+SuperscriptBox[InterpretationBox[StyleBox[\\\"r\\\", Rule[AutoSpacing, \
+False], Rule[ShowAutoStyles, False]], r[], Rule[Editable, False]], \
+\\\"2\\\"], \\\",\\\", \\\"0\\\"}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"0\\\", \\\",\\\", \\\"0\\\", \\\",\\\", \
+\\\"0\\\", \\\",\\\", RowBox[{SuperscriptBox[InterpretationBox[StyleBox[\\\"r\
+\\\", Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], r[], \
+Rule[Editable, False]], \\\"2\\\"], \\\" \\\", \
+SuperscriptBox[RowBox[{InterpretationBox[StyleBox[RowBox[{\\\"Sin\\\"}], \
+Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], Sin, Rule[Editable, \
+False]], \\\"[\\\", InterpretationBox[StyleBox[\\\"\[Theta]\\\", \
+Rule[AutoSpacing, False], Rule[ShowAutoStyles, False]], \\\\[Theta][], \
+Rule[Editable, False]], \\\"]\\\"}], \\\"2\\\"]}]}], \\\"}\\\"}]}], \
+\\\"}\\\"}]\\)\[NoBreak]. Assuming +1.\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData[
+ FractionBox["1", 
+  SqrtBox[
+   RowBox[{
+    RowBox[{"-", 
+     SuperscriptBox[
+      InterpretationBox[
+       StyleBox["r",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`r[],
+       Editable->False], "4"]}], " ", 
+    SuperscriptBox[
+     RowBox[{
+      InterpretationBox[
+       StyleBox["Sin",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       Sin,
+       Editable->False], "[", 
+      InterpretationBox[
+       StyleBox["\[Theta]",
+        ShowAutoStyles->False,
+        AutoSpacing->False],
+       $CellContext`\[Theta][],
+       Editable->False], "]"}], "2"]}]]]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Eddington - Finkelstein coordinates", "Subsubsection"],
 
 Cell["\<\
@@ -6184,7 +6362,7 @@ Cell[BoxData[
 a coordinate system on manifold, with coordinate fields given by the list \
 scalars and the integer cnumbers identifying those coordinates and the \
 associated vectors/covectors fields. \"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info413731667102-9896009"]
+ CellTags->"Info463731738701-7852094"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -7309,7 +7487,6 @@ $CellContext`r[], "Tooltip"]& ],
                     StyleBox[
                     "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                     $CellContext`r[], Editable -> False]}]]}]}]],
-             
              Annotation[#, {2, 
                1} -> -(
                  2 $CellContext`M - $CellContext`r[])^(-1) $CellContext`r[], 
@@ -7740,7 +7917,7 @@ Cell[BoxData[
  StyleBox["\<\"SetBasisChange[CTensor[matrix, {-newbasis, oldbasis}]] stores, \
 both using a CTensor and TensorValues, the change of basis from the oldbasis \
 to the newbasis.\"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info603731667103-9896009"]
+ CellTags->"Info653731738702-7852094"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -11066,8 +11243,7 @@ Cell[TextData[{
      SuperscriptBox["k", "\[Nu]"], 
      RowBox[{
       SubscriptBox["\[Del]", "\[Nu]"], 
-      SuperscriptBox["k", "\[Mu]"]}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      SuperscriptBox["k", "\[Mu]"]}]}]}], TraditionalForm]]],
  "."
 }], "Text"],
 
@@ -11639,7 +11815,7 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1298, 1006},
+WindowSize->{1298, 723},
 WindowMargins->{{5, Automatic}, {Automatic, 0}},
 ShowSelection->True,
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \

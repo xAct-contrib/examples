@@ -173,7 +173,7 @@ Cell[BoxData[
       ",", "k"}], "}"}]}], "]"}]], "Input",
  CellID->980217220,
  ExpressionUUID -> "6c0eb81e-55d7-4c6a-8c33-ccaee072e171"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -686,7 +686,7 @@ Cell[BoxData[
         Editable->False], "]"}]}], "]"}]}]}], "}"}]], "Output",
  ExpressionUUID -> "b25208f0-f133-4930-b004-c6353d0e39cb"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -2072,7 +2072,7 @@ can also be given as SetBasisChange[CTensor[Transpose[matrix], {upbasis, \
 -downbasis}]]. SetBasisChange[{direct, inverse}] provides a pair of CTensor \
 objects describing the direct and inverse basis changes.\"\>", 
   "MSG"]], "Print", "PrintUsage",
- CellTags->"Info233767347050-1543441"]
+ CellTags->"Info233767348814-1282620"]
 }, Open  ]],
 
 Cell["\<\
@@ -4584,7 +4584,7 @@ Cell[BoxData[
  RowBox[{"SetBasisChange", "[", 
   RowBox[{"cart2sphJacobian", ",", "cart"}], "]"}]], "Input",
  ExpressionUUID -> "2a900a79-795a-4653-a27e-e7c8584599cf"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -4630,7 +4630,7 @@ Cell[BoxData[
   "]"}]], "Input",
  CellID->1009691769,
  ExpressionUUID -> "c3928df2-6ff2-44f7-8b3f-6948b6e43207"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -4824,7 +4824,7 @@ Cell[BoxData[
      RowBox[{"-", "Osph"}], ",", 
      RowBox[{"-", "Osph"}]}], "}"}], ",", "0"}], "]"}]], "Output"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -5086,7 +5086,7 @@ Christoffel tensor as required. ToCCovD[ccovd, pd, bases] also changes the \
 bases of the new Christoffel Tensor. ToCCovD[ccovd, pd, chrbases, metbases] \
 changes the bases of both the Christoffel tensor and the associated metric \
 tensor. \"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info433767347052-1543441"]
+ CellTags->"Info433767348816-1282620"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5117,7 +5117,7 @@ Cell[BoxData[
        RowBox[{"-", "cart"}], ",", 
        RowBox[{"-", "cart"}]}], "}"}], ",", "0"}], "]"}]}], "]"}]], "Output"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -5138,7 +5138,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.030645`", ",", "Null"}], "}"}]], "Output",
+  RowBox[{"0.02409`", ",", "Null"}], "}"}]], "Output",
  ExpressionUUID -> "902d495b-6cf8-4e17-afde-6d5e852b46a5"]
 }, Open  ]],
 
@@ -5304,7 +5304,7 @@ Cell[BoxData[
 Cell[BoxData["Zero"], "Output",
  ExpressionUUID -> "8465aa44-5bcf-4607-9c58-e34210999420"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5383,7 +5383,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"xAct`xCoba`$LargeComponentSize", "=", "10000"}], ";"}]], "Input",
  ExpressionUUID -> "5fa91307-7315-4afd-859c-fc68b88b8407"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -5932,12 +5932,9 @@ $CellContext`y[]^2 + $CellContext`z[]^2)^
      Rational[-5, 2] (-$CellContext`x[]^2 - $CellContext`y[]^2 + 
      2 $CellContext`z[]^2)}, {$CellContext`cart}, 0][$CellContext`i],
   Editable->False]], "Output"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
-
-Cell[BoxData[
- RowBox[{"ToCTensor", "[", "BOsph", "]"}]], "Input"]
-}, Closed]]
-}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -6435,7 +6432,7 @@ Cell[BoxData[
    RowBox[{"{", "sph", "}"}], ",", "0"}], "]"}]], "Output",
  ExpressionUUID -> "6846c1f8-8c11-4bcb-9f02-2b485bfb812d"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -7003,7 +7000,7 @@ Cell[BoxData[
    MatrixForm[BoxForm`e$]]]], "Output",
  ExpressionUUID -> "f7e18678-039a-4694-a3b4-f0ea8ebfb0b4"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -7730,7 +7727,7 @@ Cell[BoxData[
    RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "]"}]}]], "Output",
  ExpressionUUID -> "fff41dfb-6bb3-41f2-99de-b7d4f3b74634"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -8076,7 +8073,7 @@ Cell[BoxData[
    RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]"}], "]"}]}]], "Output",
  ExpressionUUID -> "de528986-ab5c-4964-80ba-34e26be08a8f"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -8863,7 +8860,6 @@ Cell[BoxData[
                     Offset[0.]}}, "RowsIndexed" -> {}}],
                     FontSize->Rational[39, 4]]}
                    },
-                   
                    GridBoxAlignment->{
                     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
                     "Rows" -> {{Center}}, "RowsIndexed" -> {}},
@@ -9771,6 +9767,7 @@ $CellContext`PDsph[{3, -$CellContext`sph}][
                     Offset[0.]}}, "RowsIndexed" -> {}}],
                     FontSize->Rational[39, 4]]}
                  },
+                 
                  GridBoxAlignment->{
                   "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
                    "Rows" -> {{Center}}, "RowsIndexed" -> {}},
@@ -10149,6 +10146,7 @@ $CellContext`PDsph[{3, -$CellContext`sph}][
                     StyleBox[
                     
                     GridBox[{{
+                    
                     "\!\(\*StyleBox[\"2\",FontColor->RGBColor[1., 0., \
 0.]]\)"}, {" "}}, RowSpacings -> 0, ColumnSpacings -> 0.05, 
                     GridFrameMargins -> {{0, 0}, {0, 0}}], FontSize -> 
@@ -10190,6 +10188,7 @@ $CellContext`PDsph[{3, -$CellContext`sph}][
                     StyleBox[
                     RowBox[{
                     SubscriptBox[
+                    
                     "\!\(\*StyleBox[\"\[ScriptCapitalD]\",FontColor->RGBColor[\
 1., 0., 0.]]\)", "\!\(\*StyleBox[\"2\",FontColor->RGBColor[1., 0., 0.]]\)"], 
                     GridBox[{{"V", 
@@ -11042,7 +11041,6 @@ $CellContext`PDsph[{3, -$CellContext`sph}][
                    StyleBox[
                    "r", AutoSpacing -> False, ShowAutoStyles -> False], 
                    $CellContext`r[], Editable -> False], "2"]]}]}]],
-           
            Annotation[#, {3} -> 
             4 $CellContext`r[]^(-1) $CellContext`PDsph[{1, -$CellContext`sph}][
                 $CellContext`V[{3, $CellContext`sph}]] + $CellContext`PDsph[{
@@ -13625,7 +13623,7 @@ Cell[BoxData[
       RowBox[{"i", ",", "j", ",", 
        RowBox[{"-", "j"}]}], "]"}]}], "]"}]}], "*)"}]], "Input",
  ExpressionUUID -> "59ee4b26-4663-466c-8422-a188bcca7501"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -15898,7 +15896,7 @@ Cell[BoxData[
    MatrixForm[BoxForm`e$]]]], "Output",
  ExpressionUUID -> "fff41dfb-6bb3-41f2-99de-b7d4f3b74634"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -16598,7 +16596,7 @@ Cell[BoxData[
   Editable->False]], "Output",
  ExpressionUUID -> "b921c198-6a2e-453e-8562-8c77e16922f0"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 

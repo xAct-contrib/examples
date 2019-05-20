@@ -18,9 +18,8 @@ Stein (",
  StyleBox[")\nAddition of tools for traces of gamma matrices : \[Copyright] \
 Cyril Pitrou (pitrou@iap.fr).\n\nDate: April 2018\n\nThis notebook builds on \
 the Dirac Algebra construction provided by Leo Stein.\nIts main purpose is to \
-provide tools to perform products of Dirac matrices and  extract their trace \
-in all integer dimensions\n\nDecomposition in irreducible components is also \
-implemented following the ",
+provide tools to perform products of Dirac matrices and extract their trace.\n\
+Decomposition in irreducible components is also implemented following the ",
   FontSize->18],
  StyleBox[ButtonBox["GAMMA.m package",
   BaseStyle->"Hyperlink",
@@ -216,7 +215,7 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"-", "1"}]], "Output"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -315,7 +314,7 @@ Cell[BoxData[
 product prod.\\n\\nGradeOfTensor is also an option of DefTensor specifying \
 the grade of the tensor being defined in various products, as in \
 GradeOfTensor->{wedge->1, clifford->2}.\"\>", "MSG"]], "Print", "PrintUsage",
- CellTags->"Info163732304762-9775066"]
+ CellTags->"Info163767357244-9107285"]
 }, Open  ]],
 
 Cell["List of elements in the algebra. ", "Text"],
@@ -6454,8 +6453,7 @@ Cell[TextData[{
  "For even dimensions, we want to define a chiral matrix such that ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Gamma]chiral", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Gamma]chiral", "2"], TraditionalForm]]],
  "=Id ",
  Cell[BoxData[
   FormBox[
@@ -6481,8 +6479,7 @@ Cell[TextData[{
  ". That way ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Gamma]chiral", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Gamma]chiral", "2"], TraditionalForm]]],
  " is Id for even dimension and -Id for odd dimensions."
 }], "Text"],
 
@@ -7236,7 +7233,8 @@ Cell[BoxData[
         RowBox[{"TangentM", ",", "dim"}], "]"}]}], "}"}], ",", 
      RowBox[{"IndexRule", "[", 
       RowBox[{
-       RowBox[{"\[Gamma]hat", "[", "]"}], ",", 
+       RowBox[{"HoldPattern", "[", 
+        RowBox[{"\[Gamma]hat", "[", "]"}], "]"}], ",", 
        RowBox[{
         RowBox[{"1", "/", 
          RowBox[{"dim", "!"}]}], 
@@ -7313,7 +7311,7 @@ Cell[BoxData[
    Editable->False]}]], "Print"],
 
 Cell[BoxData[
- RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+ RowBox[{"\[ImaginaryI]", " ", 
   InterpretationBox[
    StyleBox["\[DoubleStruckCapitalI]",
     ShowAutoStyles->False,
@@ -7330,7 +7328,14 @@ Cell[BoxData[
    $CellContext`Id[],
    Editable->False]}]], "Print"],
 
-Cell[BoxData["0"], "Output"],
+Cell[BoxData[
+ RowBox[{"-", 
+  InterpretationBox[
+   StyleBox["\[DoubleStruckCapitalI]",
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`Id[],
+   Editable->False]}]], "Output"],
 
 Cell[BoxData[
  RowBox[{
@@ -7342,7 +7347,15 @@ Cell[BoxData[
    $CellContext`Id[],
    Editable->False]}]], "Print"],
 
-Cell[BoxData["0"], "Output"]
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "\[ImaginaryI]"}], " ", 
+  InterpretationBox[
+   StyleBox["\[DoubleStruckCapitalI]",
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`Id[],
+   Editable->False]}]], "Output"]
 }, Open  ]],
 
 Cell["\<\
@@ -8305,7 +8318,8 @@ Cell[BoxData[
 Cell["\<\
 Cyril TODO Careful that if the user uses the index ' p' then it conflicts \
 with the code and factor functions, resulting in nonsensical results.
-So I added a Module[{p},...]\
+So I added a DummyIn[...]. Not the best method...but it works to avoid \
+conflicts of indices.\
 \>", "Text"],
 
 Cell[BoxData[{
@@ -9111,8 +9125,7 @@ get.\nWe check the sign of (",
   FormBox[
    SuperscriptBox[
     RowBox[{
-     OverscriptBox["\[Gamma]", "^"], ")"}], "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+     OverscriptBox["\[Gamma]", "^"], ")"}], "2"], TraditionalForm]]]
 }], "Text"],
 
 Cell[CellGroupData[{
@@ -9306,8 +9319,7 @@ Cell[TextData[{
  "CYRIL : This double application of ",
  Cell[BoxData[
   FormBox[
-   OverscriptBox["\[Gamma]", "^"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   OverscriptBox["\[Gamma]", "^"], TraditionalForm]]],
  " works only because I have modified sinrev[dim] into sinrev[n] inside the \
 implementation of GE[AP[ ...]]"
 }], "Text"],
@@ -9524,14 +9536,12 @@ Cell[TextData[{
     SuperscriptBox["\[Gamma]", "i"], 
     SuperscriptBox["\[Gamma]", "j"], 
     SuperscriptBox["\[Gamma]", "k"], 
-    OverscriptBox["\[Gamma]", "^"]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    OverscriptBox["\[Gamma]", "^"]}], TraditionalForm]]],
  ", to express it with only ",
  Cell[BoxData[
   FormBox[
    RowBox[{"some", " ", 
-    SuperscriptBox["\[Gamma]", "i"], " ", "or", " "}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SuperscriptBox["\[Gamma]", "i"], " ", "or", " "}], TraditionalForm]]],
  "some ",
  Cell[BoxData[
   RowBox[{
@@ -12741,7 +12751,7 @@ Cell["Implementation", "Subsection"],
 Cell[CellGroupData[{
 
 Cell[TextData[{
- "1. Collect factors of ",
+ "Collect factors of ",
  Cell[BoxData[
   FormBox[
    OverscriptBox["\[Gamma]", "^"], TraditionalForm]]]
@@ -13056,7 +13066,7 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["2. Formal trace of a \[Gamma] product", "Subsubsection"],
+Cell["Formal trace of a \[Gamma] product", "Subsubsection"],
 
 Cell["\<\
 We will add the SpinorTrace[] head to all gamma matrices products (including \
@@ -13415,7 +13425,7 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["3. Replacing the trace by a multi-index tensor", "Subsubsection"],
+Cell["Replacing the trace by a multi-index tensor", "Subsubsection"],
 
 Cell[TextData[{
  "Now we replace all traces by a tensor which has some symmetries,\nThese are \
@@ -13431,8 +13441,7 @@ Transpose of ",
     RowBox[{"C", " ", 
      SuperscriptBox["\[Gamma]", "i"], 
      SuperscriptBox["C", 
-      RowBox[{"-", "1"}]]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      RowBox[{"-", "1"}]]}]}], TraditionalForm]]],
  " (*). Hence transposing on an even number of matrices does not change the \
 trace.\nThis is the reversal symmetry (reversing the order of all matrices \
 inside a trace). Combined with the cyclic symmetry, this is exactly the \
@@ -13453,8 +13462,7 @@ details.\nThat is reversal is accompanied by a factor ",
      RowBox[{"(", 
       RowBox[{"-", "1"}], ")"}], 
      RowBox[{"Floor", "[", 
-      RowBox[{"d", "/", "2"}], "]"}]]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      RowBox[{"d", "/", "2"}], "]"}]]}], TraditionalForm]]],
  " \n\nWe use the possibility of using tensors with variable number of indices"
 }], "Text"],
 
@@ -14127,7 +14135,7 @@ Cell[BoxData["4"], "Output"]
 
 Cell[CellGroupData[{
 
-Cell["4. Recursive computation of traces ", "Subsubsection"],
+Cell["Recursive computation of traces ", "Subsubsection"],
 
 Cell["\<\
 We use a recursive algorithm which caches the results (adapted from Guillaume \
@@ -14200,8 +14208,7 @@ indices in 3D this is for instance (using 1 instead of ",
  Cell[BoxData[
   FormBox[
    RowBox[{
-    SubscriptBox["i", "1"], " "}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SubscriptBox["i", "1"], " "}], TraditionalForm]]],
  "for indices)\n",
  Cell[BoxData[
   FormBox[
@@ -14210,8 +14217,7 @@ indices in 3D this is for instance (using 1 instead of ",
      RowBox[{"(", 
       RowBox[{"5", "-", "d"}], ")"}], "/", "2"}], 
     RowBox[{"Tr", "[", 
-     SuperscriptBox["\[Gamma]", "12345"]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+     SuperscriptBox["\[Gamma]", "12345"]}]}], TraditionalForm]]],
  "] = ",
  Cell[BoxData[
   FormBox[
@@ -14219,8 +14225,7 @@ indices in 3D this is for instance (using 1 instead of ",
     RowBox[{
      SuperscriptBox["g", "12"], " ", 
      RowBox[{"Tr", "[", 
-      SuperscriptBox["\[Gamma]", "345"], "]"}]}], "-"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      SuperscriptBox["\[Gamma]", "345"], "]"}]}], "-"}], TraditionalForm]]],
  " ",
  Cell[BoxData[
   FormBox[
@@ -14228,39 +14233,34 @@ indices in 3D this is for instance (using 1 instead of ",
     RowBox[{
      SuperscriptBox["g", "13"], " ", 
      RowBox[{"Tr", "[", 
-      SuperscriptBox["\[Gamma]", "245"], "]"}]}], "+"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      SuperscriptBox["\[Gamma]", "245"], "]"}]}], "+"}], TraditionalForm]]],
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{
      SuperscriptBox["g", "14"], " ", 
      RowBox[{"Tr", "[", 
-      SuperscriptBox["\[Gamma]", "235"], "]"}]}], "+"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      SuperscriptBox["\[Gamma]", "235"], "]"}]}], "+"}], TraditionalForm]]],
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{
      SuperscriptBox["g", "23"], " ", 
      RowBox[{"Tr", "[", 
-      SuperscriptBox["\[Gamma]", "145"], "]"}]}], "-"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      SuperscriptBox["\[Gamma]", "145"], "]"}]}], "-"}], TraditionalForm]]],
  Cell[BoxData[
   FormBox[
    RowBox[{
     SuperscriptBox["g", "24"], " ", 
     RowBox[{"Tr", "[", 
-     SuperscriptBox["\[Gamma]", "135"], "]"}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+     SuperscriptBox["\[Gamma]", "135"], "]"}]}], TraditionalForm]]],
  "+",
  Cell[BoxData[
   FormBox[
    RowBox[{
     SuperscriptBox["g", "34"], " ", 
     RowBox[{"Tr", "[", 
-     SuperscriptBox["\[Gamma]", "125"], "]"}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+     SuperscriptBox["\[Gamma]", "125"], "]"}]}], TraditionalForm]]]
 }], "Text"],
 
 Cell[TextData[{
@@ -14280,8 +14280,7 @@ put them on the metric. The sign is ",
     RowBox[{"(", 
      RowBox[{"1", ",", "2", ",", "3", ",", "4"}], ")"}], " ", "of", " ", 
     "the", " ", 
-    RowBox[{"index", "."}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+    RowBox[{"index", "."}]}], TraditionalForm]]]
 }], "Text"],
 
 Cell[BoxData[
@@ -14522,8 +14521,7 @@ Cell[TextData[{
       RowBox[{
        RowBox[{"d", "(", 
         RowBox[{"d", "-", "1"}], ")"}], "/", "2"}]], "det", " ", 
-     RowBox[{"g", "."}]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+     RowBox[{"g", "."}]}]}], TraditionalForm]]]
 }], "Text"],
 
 Cell[BoxData[
@@ -14549,84 +14547,272 @@ Cell["The recursion itself", "Text"],
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{"Trn\[Gamma]hatRec", "[", 
+   RowBox[{"x__", ",", 
+    RowBox[{"is", ":", 
+     RowBox[{"(", 
+      RowBox[{"Repeated", "[", 
+       RowBox[{"_", ",", 
+        RowBox[{"{", 
+         RowBox[{"dim", "-", "1"}], "}"}]}], "]"}], ")"}]}]}], "]"}], ":=", 
   RowBox[{
-   RowBox[{"Trn\[Gamma]hatRec", "[", 
-    RowBox[{"x__", ",", 
-     RowBox[{"is", ":", 
-      RowBox[{"(", 
-       RowBox[{"Repeated", "[", 
-        RowBox[{"_", ",", 
-         RowBox[{"{", 
-          RowBox[{"dim", "-", "1"}], "}"}]}], "]"}], ")"}]}]}], "]"}], ":=", 
-   RowBox[{
-    RowBox[{"Module", "[", 
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"\[Gamma]l", "=", 
-         RowBox[{"\[Gamma]", "/@", 
-          RowBox[{"{", "is", "}"}]}]}], ",", "reshapedap", ",", "resa"}], 
-       "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
       RowBox[{
-       RowBox[{"reshapedap", "=", 
-        RowBox[{"ToCanonical", "@", 
-         RowBox[{"AP", "[", 
+       RowBox[{"\[Gamma]l", "=", 
+        RowBox[{"\[Gamma]", "/@", 
+         RowBox[{"{", "is", "}"}]}]}], ",", "reshapedap", ",", "resa"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"reshapedap", "=", 
+       RowBox[{"ToCanonical", "@", 
+        RowBox[{"AP", "[", 
+         RowBox[{
+          RowBox[{"Sequence", "@@", 
+           RowBox[{"(", 
+            RowBox[{"\[Gamma]", "/@", 
+             RowBox[{"{", "x", "}"}]}], ")"}]}], ",", 
           RowBox[{
-           RowBox[{"Sequence", "@@", 
-            RowBox[{"(", 
-             RowBox[{"\[Gamma]", "/@", 
-              RowBox[{"{", "x", "}"}]}], ")"}]}], ",", 
-           RowBox[{
+           RowBox[{"AP", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"GammaDecomposition", "[", 
+               RowBox[{"AP", "@@", "\[Gamma]l"}], "]"}], "-", 
+              RowBox[{"AP", "[", 
+               RowBox[{"\[Gamma]", "@@", 
+                RowBox[{"{", "is", "}"}]}], "]"}]}], ",", 
+             RowBox[{"\[Gamma]hat", "[", "]"}]}], "]"}], "+", 
+           RowBox[{"GammaDecomposition", "[", 
             RowBox[{"AP", "[", 
              RowBox[{
-              RowBox[{
-               RowBox[{"GammaDecomposition", "[", 
-                RowBox[{"AP", "@@", "\[Gamma]l"}], "]"}], "-", 
-               RowBox[{"AP", "[", 
-                RowBox[{"\[Gamma]", "@@", 
-                 RowBox[{"{", "is", "}"}]}], "]"}]}], ",", 
-              RowBox[{"\[Gamma]hat", "[", "]"}]}], "]"}], "+", 
-            RowBox[{"GammaDecomposition", "[", 
-             RowBox[{"AP", "[", 
-              RowBox[{
-               RowBox[{"\[Gamma]", "@@", 
-                RowBox[{"{", "is", "}"}]}], ",", 
-               RowBox[{"\[Gamma]hat", "[", "]"}]}], "]"}], "]"}]}]}], 
-          "]"}]}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"resa", "=", 
-        RowBox[{"TraceGammaToTensor", "[", 
-         RowBox[{"SpinorTrace", "[", "reshapedap", "]"}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"ContractMetric", "[", 
-        RowBox[{
-         RowBox[{"resa", "/.", 
-          RowBox[{
-           RowBox[{"Trn", "[", "args___", "]"}], "\[RuleDelayed]", 
-           RowBox[{"Compute\[Gamma]Traces", "[", 
-            RowBox[{"Trn", "[", "args", "]"}], "]"}]}]}], "/.", 
+              RowBox[{"\[Gamma]", "@@", 
+               RowBox[{"{", "is", "}"}]}], ",", 
+              RowBox[{"\[Gamma]hat", "[", "]"}]}], "]"}], "]"}]}]}], 
+         "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"resa", "=", 
+       RowBox[{"TraceGammaToTensor", "[", 
+        RowBox[{"SpinorTrace", "[", "reshapedap", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ContractMetric", "[", 
+       RowBox[{
+        RowBox[{"resa", "/.", 
          RowBox[{
-          RowBox[{"Trn\[Gamma]hat", "[", "args___", "]"}], ":>", 
-          RowBox[{"Compute\[Gamma]Traces\[Gamma]hat", "[", 
-           RowBox[{"Trn\[Gamma]hat", "[", "args", "]"}], "]"}]}]}], "]"}]}]}],
-      "\[IndentingNewLine]", "]"}], "/;", 
+          RowBox[{"Trn", "[", "args___", "]"}], "\[RuleDelayed]", 
+          RowBox[{"Compute\[Gamma]Traces", "[", 
+           RowBox[{"Trn", "[", "args", "]"}], "]"}]}]}], "/.", 
+        RowBox[{
+         RowBox[{"Trn\[Gamma]hat", "[", "args___", "]"}], ":>", 
+         RowBox[{"Compute\[Gamma]Traces\[Gamma]hat", "[", 
+          RowBox[{"Trn\[Gamma]hat", "[", "args", "]"}], "]"}]}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}], "/;", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"EvenQ", "[", "dim", "]"}], "&&", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"EvenQ", "[", "#", "]"}], "&&", 
+         RowBox[{"#", "\[GreaterEqual]", 
+          RowBox[{"(", 
+           RowBox[{"dim", "+", "2"}], ")"}]}]}], ")"}]}], "&"}], ")"}], "[", 
+    RowBox[{"Length", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"{", "x", "}"}], ",", 
+       RowBox[{"{", "is", "}"}]}], "]"}], "]"}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input"],
+
+Cell["\<\
+There is a slower but more general method which does not break the symmetry \
+and does not use dimensional identities implicitly. 
+If interested in t his method, one needs to comments the two cells above for \
+Trn\[Gamma]hatRec and to uncomment the cell below.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"Instead", ",", " ", 
+  RowBox[{"we", " ", "use", " ", 
+   FormBox[
     RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"that", "(", 
+        RowBox[{"4", "-", "d"}], ")"}], "/", "2"}], 
+      RowBox[{"Tr", "[", 
+       RowBox[{
+        OverscriptBox["\[Gamma]", "^"], 
+        SuperscriptBox["\[Gamma]", "1234"]}], "]"}]}], "=", " ", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["g", "12"], " ", 
+          RowBox[{"Tr", "[", 
+           RowBox[{
+            OverscriptBox["\[Gamma]", "^"], 
+            SuperscriptBox["\[Gamma]", "34"]}], "]"}]}], "-"}],
+        TraditionalForm], " ", 
+       FormBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["g", "13"], " ", 
+          RowBox[{"Tr", "[", 
+           RowBox[{
+            OverscriptBox["\[Gamma]", "^"], 
+            SuperscriptBox["\[Gamma]", "24"]}], "]"}]}], "+"}],
+        TraditionalForm], 
+       FormBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["g", "14"], " ", 
+          RowBox[{"Tr", "[", 
+           RowBox[{
+            OverscriptBox["\[Gamma]", "^"], 
+            SuperscriptBox["\[Gamma]", "23"]}], "]"}]}], "+"}],
+        TraditionalForm], 
+       FormBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["g", "23"], " ", 
+          RowBox[{"Tr", "[", 
+           RowBox[{
+            OverscriptBox["\[Gamma]", "^"], 
+            SuperscriptBox["\[Gamma]", "14"]}], "]"}]}], "-"}],
+        TraditionalForm], 
+       FormBox[
+        RowBox[{
+         SuperscriptBox["g", "24"], " ", 
+         RowBox[{"Tr", "[", 
+          RowBox[{
+           OverscriptBox["\[Gamma]", "^"], 
+           SuperscriptBox["\[Gamma]", "13"]}], "]"}]}],
+        TraditionalForm]}], "+", 
+      FormBox[
+       RowBox[{
+        SuperscriptBox["g", "34"], " ", 
+        RowBox[{"Tr", "[", 
+         RowBox[{
+          OverscriptBox["\[Gamma]", "^"], 
+          SuperscriptBox["\[Gamma]", "12"]}], "]"}]}],
+       TraditionalForm]}]}],
+    TraditionalForm], " ", "which", " ", "is", " ", "valid", " ", "even", " ",
+    "with", " ", "a", " ", "\[Gamma]hat", " ", "function"}], ",", " ", 
+  RowBox[{
+  "and", " ", "obvious", " ", "generalization", " ", "with", " ", "more", " ", 
+   RowBox[{"indices", ".", "\[IndentingNewLine]", "It"}], " ", "should", " ", 
+   "work", " ", "and", " ", "it", " ", "gives", " ", "bigger", " ", 
+   "expression", " ", "which", " ", "are", " ", "probably", " ", "related", 
+   " ", "to", " ", "the", " ", "results", " ", "of", " ", "the", " ", "other",
+    " ", "method", " ", "thanks", " ", "to", " ", 
+   RowBox[{"identities", ".", " "}]}]}]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Trn\[Gamma]hatRec", "[", "inds__", "]"}], ":=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"spinordim", "*", 
+        RowBox[{"sinrev", "[", "dim", "]"}]}], ")"}], " ", 
+      RowBox[{
+       RowBox[{"epsilon", "[", "g", "]"}], "[", "inds", "]"}]}], "/;", 
+     RowBox[{
+      RowBox[{"EvenQ", "[", "dim", "]"}], "&&", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"{", "inds", "}"}], "]"}], "==", "dim"}], ")"}]}]}]}], ";", 
+   "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Trn\[Gamma]hatRec", "[", "indices__", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"len", "=", 
+          RowBox[{"Length", "[", 
+           RowBox[{"{", "indices", "}"}], "]"}]}], ",", 
+         RowBox[{"list", "=", 
+          RowBox[{"{", "indices", "}"}]}], ",", "res"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"res", "=", 
+         RowBox[{
+          RowBox[{"2", "/", 
+           RowBox[{"(", 
+            RowBox[{"len", "-", "dim"}], ")"}]}], "*", 
+          RowBox[{"Plus", "@@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"g", "[", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ",", "1"}], "]"}], "]"}]}], "]"}], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"-", "1"}], ")"}], "^", 
+                 RowBox[{"(", 
+                  RowBox[{"1", "+", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "2"}], "]"}], "]"}], "+", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "2"}], "]"}], "]"}]}], ")"}]}], 
+                RowBox[{"Compute\[Gamma]Traces\[Gamma]hat", "[", 
+                 RowBox[{"Trn\[Gamma]hat", "@@", 
+                  RowBox[{"(", 
+                   RowBox[{"Complement", "[", 
+                    RowBox[{"list", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"2", ",", "1"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+                   ")"}]}], "]"}]}], ")"}], "&"}], "/@", 
+             RowBox[{"Subsets", "[", 
+              RowBox[{
+               RowBox[{"MapIndexed", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"#1", ",", 
+                    RowBox[{"First", "@", "#2"}]}], "}"}], "&"}], ",", 
+                 "list"}], "]"}], ",", 
+               RowBox[{"{", "2", "}"}]}], "]"}]}], ")"}]}]}]}], ";", 
+        "\[IndentingNewLine]", "res"}]}], "\[IndentingNewLine]", "]"}], "/;", 
+     
      RowBox[{"(", 
       RowBox[{
-       RowBox[{
-        RowBox[{"EvenQ", "[", "dim", "]"}], "&&", 
-        RowBox[{"(", 
+       RowBox[{"(", 
+        RowBox[{
          RowBox[{
-          RowBox[{"EvenQ", "[", "#", "]"}], "&&", 
-          RowBox[{"#", "\[GreaterEqual]", 
-           RowBox[{"(", 
-            RowBox[{"dim", "+", "2"}], ")"}]}]}], ")"}]}], "&"}], ")"}], "[", 
-     
-     RowBox[{"Length", "[", 
-      RowBox[{"Join", "[", 
-       RowBox[{
-        RowBox[{"{", "x", "}"}], ",", 
-        RowBox[{"{", "is", "}"}]}], "]"}], "]"}], "]"}]}]}], 
-  "\[IndentingNewLine]"}]], "Input"],
+          RowBox[{"EvenQ", "[", "dim", "]"}], "&&", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"EvenQ", "[", "#", "]"}], "&&", 
+            RowBox[{"#", "\[GreaterEqual]", 
+             RowBox[{"(", 
+              RowBox[{"dim", "+", "2"}], ")"}]}]}], ")"}]}], "&"}], ")"}], 
+       "[", 
+       RowBox[{"Length", "[", 
+        RowBox[{"{", "indices", "}"}], "]"}], "]"}], ")"}]}]}], ";"}], 
+  "*)"}]], "Input"],
 
 Cell["Caching function", "Text",
  FontSize->18,
@@ -14763,8 +14949,7 @@ Cell[TextData[{
  "We consider that a product of ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Gamma]", "i"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Gamma]", "i"], TraditionalForm]]],
  " times ",
  Cell[BoxData[
   OverscriptBox["\[Gamma]", "^"]]],
@@ -16514,11 +16699,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.009173`", ",", "Null"}], "}"}]], "Output"],
+  RowBox[{"0.008771`", ",", "Null"}], "}"}]], "Output"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.002802`", ",", "Null"}], "}"}]], "Output"],
+  RowBox[{"0.003488`", ",", "Null"}], "}"}]], "Output"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -16532,11 +16717,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.104207`", ",", "Null"}], "}"}]], "Output"],
+  RowBox[{"0.0937`", ",", "Null"}], "}"}]], "Output"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.03905`", ",", "Null"}], "}"}]], "Output"],
+  RowBox[{"0.036924`", ",", "Null"}], "}"}]], "Output"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -16550,21 +16735,428 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"1.316362`", ",", "Null"}], "}"}]], "Output"],
+  RowBox[{"1.160461`", ",", "Null"}], "}"}]], "Output"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.474135`", ",", "Null"}], "}"}]], "Output"]
+  RowBox[{"0.428894`", ",", "Null"}], "}"}]], "Output"]
 }, Open  ]],
 
 Cell[TextData[{
  "For traces of products with a ",
  Cell[BoxData[
   FormBox[
-   OverscriptBox["\[Gamma]", "^"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
- " at the end "
+   OverscriptBox["\[Gamma]", "^"], TraditionalForm]]],
+ " at the end :"
 }], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Compute\[Gamma]Traces\[Gamma]hat", "[", 
+  RowBox[{"Trn\[Gamma]hat", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Compute\[Gamma]Traces\[Gamma]hat", "[", 
+  RowBox[{"Trn\[Gamma]hat", "[", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "i", ",", "j"}], "]"}], 
+  "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"4", " ", 
+  InterpretationBox[
+   StyleBox[GridBox[{
+      {"\[Epsilon]g", 
+       StyleBox[GridBox[{
+          {"a", "b", "c", "d"},
+          {" ", " ", " ", " "}
+         },
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.], {
+              Offset[0.034999999999999996`]}, 
+             Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+              Offset[0.]}}, "RowsIndexed" -> {}}],
+        FontSize->Rational[39, 4]]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.034999999999999996`]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    ShowAutoStyles->False,
+    AutoSpacing->False],
+   $CellContext`epsilong[$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`d],
+   Editable->False]}]], "Output"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Caching Result for \"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\" \\!\\(\\*SuperscriptBox[\\(\[Gamma]\\), \
+\\(i\\)]\\) x \\!\\(\\*OverscriptBox[\\(\[Gamma]\\), \\(^\\)]\\).\"\>"}],
+  SequenceForm[
+  "Caching Result for ", 6, 
+   " \!\(\*SuperscriptBox[\(\[Gamma]\), \(i\)]\) x \!\(\*OverscriptBox[\(\
+\[Gamma]\), \(^\)]\)."],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "4"}], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"\[Epsilon]g", 
+        StyleBox[GridBox[{
+           {"d", "i", "j", "c"},
+           {" ", " ", " ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`epsilong[$CellContext`d, $CellContext`i, $CellContext`j, \
+$CellContext`c],
+    Editable->False], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"g", 
+        StyleBox[GridBox[{
+           {"a", "b"},
+           {" ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`g[$CellContext`a, $CellContext`b],
+    Editable->False]}], "+", 
+  RowBox[{"4", " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"\[Epsilon]g", 
+        StyleBox[GridBox[{
+           {"d", "i", "j", "b"},
+           {" ", " ", " ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`epsilong[$CellContext`d, $CellContext`i, $CellContext`j, \
+$CellContext`b],
+    Editable->False], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"g", 
+        StyleBox[GridBox[{
+           {"a", "c"},
+           {" ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`g[$CellContext`a, $CellContext`c],
+    Editable->False]}], "-", 
+  RowBox[{"4", " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"\[Epsilon]g", 
+        StyleBox[GridBox[{
+           {"d", "i", "j", "a"},
+           {" ", " ", " ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`epsilong[$CellContext`d, $CellContext`i, $CellContext`j, \
+$CellContext`a],
+    Editable->False], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"g", 
+        StyleBox[GridBox[{
+           {"b", "c"},
+           {" ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`g[$CellContext`b, $CellContext`c],
+    Editable->False]}], "+", 
+  RowBox[{"4", " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"\[Epsilon]g", 
+        StyleBox[GridBox[{
+           {"a", "b", "c", "j"},
+           {" ", " ", " ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`epsilong[$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`j],
+    Editable->False], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"g", 
+        StyleBox[GridBox[{
+           {"d", "i"},
+           {" ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`g[$CellContext`d, $CellContext`i],
+    Editable->False]}], "-", 
+  RowBox[{"4", " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"\[Epsilon]g", 
+        StyleBox[GridBox[{
+           {"a", "b", "c", "i"},
+           {" ", " ", " ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`epsilong[$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`i],
+    Editable->False], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"g", 
+        StyleBox[GridBox[{
+           {"d", "j"},
+           {" ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`g[$CellContext`d, $CellContext`j],
+    Editable->False]}], "+", 
+  RowBox[{"4", " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"\[Epsilon]g", 
+        StyleBox[GridBox[{
+           {"a", "b", "c", "d"},
+           {" ", " ", " ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`epsilong[$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`d],
+    Editable->False], " ", 
+   InterpretationBox[
+    StyleBox[GridBox[{
+       {"g", 
+        StyleBox[GridBox[{
+           {"i", "j"},
+           {" ", " "}
+          },
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.], {
+               Offset[0.034999999999999996`]}, 
+              Offset[0.]}, "ColumnsIndexed" -> {}, "Rows" -> {{
+               Offset[0.]}}, "RowsIndexed" -> {}}],
+         FontSize->Rational[39, 4]]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Center}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.034999999999999996`]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     ShowAutoStyles->False,
+     AutoSpacing->False],
+    $CellContext`g[$CellContext`i, $CellContext`j],
+    Editable->False]}]}]], "Output"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -16579,17 +17171,6 @@ Cell[BoxData[
    "Timing"}]], "Input"],
 
 Cell[CellGroupData[{
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"Caching Result for \"\>", "\[InvisibleSpace]", "6", 
-   "\[InvisibleSpace]", "\<\" \\!\\(\\*SuperscriptBox[\\(\[Gamma]\\), \
-\\(i\\)]\\) x \\!\\(\\*OverscriptBox[\\(\[Gamma]\\), \\(^\\)]\\).\"\>"}],
-  SequenceForm[
-  "Caching Result for ", 6, 
-   " \!\(\*SuperscriptBox[\(\[Gamma]\), \(i\)]\) x \!\(\*OverscriptBox[\(\
-\[Gamma]\), \(^\)]\)."],
-  Editable->False]], "Print"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -16627,9 +17208,9 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"2.127674`", ",", "Null"}], "}"}]], "Output"]
+  RowBox[{"1.843123`", ",", "Null"}], "}"}]], "Output"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -17209,7 +17790,7 @@ Cell["Weak - interactions", "Subsection"],
 
 Cell[CellGroupData[{
 
-Cell["0. Problem investigated", "Subsubsection"],
+Cell["Problem investigated", "Subsubsection"],
 
 Cell[BoxData[
  RowBox[{
@@ -17250,11 +17831,11 @@ Cell[BoxData[
     SuperscriptBox["e", "-"], "+", 
     RowBox[{"p", "."}]}]}]}]], "Text",
  FontFamily->"Arial"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["1. Momenta and masses", "Subsubsection"],
+Cell["Momenta and masses", "Subsubsection"],
 
 Cell[BoxData[{
  RowBox[{"DefTensor", "[", 
@@ -18210,12 +18791,10 @@ Cell[BoxData["0"], "Output"]
 Cell[CellGroupData[{
 
 Cell[TextData[{
- "2.",
  Cell[BoxData[
   FormBox[
    RowBox[{"|", "M", 
-    SuperscriptBox["|", "2"]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SuperscriptBox["|", "2"]}], TraditionalForm]]],
  " of the reaction"
 }], "Subsubsection"],
 
@@ -18966,7 +19545,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.030907`", ",", 
+  RowBox[{"0.028235`", ",", 
    RowBox[{
     RowBox[{
      RowBox[{"-", "8"}], " ", 
@@ -19328,7 +19907,7 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.06824`", ",", 
+  RowBox[{"0.066414`", ",", 
    RowBox[{
     RowBox[{
      RowBox[{"-", "4"}], " ", 
@@ -20428,13 +21007,13 @@ Cell[BoxData[
     $CellContext`P4[-$CellContext`j],
     Editable->False]}]}]], "Output"]
 }, Open  ]]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1304, 723},
-WindowMargins->{{Automatic, 52}, {Automatic, 9}},
+WindowMargins->{{198, Automatic}, {Automatic, 151}},
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
 2016)",
 StyleDefinitions->"Default.nb"
