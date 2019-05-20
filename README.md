@@ -70,6 +70,10 @@ Application of the Spinors and SymManipulator package to show the Lovelock tenso
 Construction of the Schwarzschild metric. 
 Eddington Finkelstein coordinates and surface gravity as simple applications of the CTensor tools of xCoba.
 
+[`Spherical-vs-Cartesian-Coordinates`](../../raw/master/Spherical-vs-Cartesian-Coordinates.nb):
+Change of coordinates between Cartesian and spherical coordinates in flat 3D.
+Can be used as a template for setting up change of coordinates.
+
 
 [`TimelikeCongruence.nb`](../../raw/master/TimelikeCongruence.nb):
 1+3 decomposition of the Ricci and Bianchi identities in dimension 4 with respect to an 
